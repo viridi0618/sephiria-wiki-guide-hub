@@ -5,17 +5,12 @@ import nextTs from "eslint-config-next/typescript";
 const eslintConfig = defineConfig([
   ...nextVitals,
   ...nextTs,
-  {
-    rules: {
-      "@next/next/no-html-link-for-pages": "off",
-      "@next/next/no-img-element": "off",
-    },
-  },
   // Override default ignores of eslint-config-next.
   globalIgnores([
     // Default ignores of eslint-config-next:
     ".next/**",
     "out/**",
+    "public/**",
     "build/**",
     "next-env.d.ts",
   ]),
