@@ -1,0 +1,2 @@
+import { generic,make } from "./content-helpers";
+export const toolPages=[make({path:"build-picker",title:"Build Picker",h1:"Build Picker",eyebrow:"COMING SOON",description:"A future decision tool for matching playstyle to a guide.",answer:"The interactive picker is reserved for a later release. For now, use the Builds Hub to compare strategies without fabricated recommendations.",category:"Tools",pageType:"webpage",sections:generic("matching a playstyle"),related:["builds","beginner-guide","weapons-guide"],tool:"build-picker"})];

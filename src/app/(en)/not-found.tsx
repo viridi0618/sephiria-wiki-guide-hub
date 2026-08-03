@@ -1,0 +1,1 @@
+import Link from"next/link";export default function NotFound(){return <main className="not-found" id="main-content"><p className="eyebrow">404</p><h1>Guide not found</h1><p>This page is not part of the current Sephiria guide hub.</p><Link className="button button-primary" href="/">Return home</Link></main>}

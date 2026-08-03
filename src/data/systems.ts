@@ -1,0 +1,6 @@
+import { generic,make } from "./content-helpers";
+export const systemPages=[
+ make({path:"weapons-guide",title:"Weapons Guide",h1:"Weapons Guide",eyebrow:"CHOOSE YOUR RHYTHM",description:"How to compare weapon choices for comfort, damage and survival.",answer:"Choose by the problem you need to solve: reach, safety, control, or a combat rhythm you can execute consistently.",category:"Gameplay",sections:generic("weapon choices"),related:["builds","beginner-guide","boss-guide"]}),
+ make({path:"destiny-tree-guide",title:"Destiny Tree Guide",h1:"Destiny Tree Guide",eyebrow:"PRIORITIZE THE PATH",description:"Plan unlocks around current needs rather than completionism.",answer:"Treat the Destiny Tree as a sequence of decisions. Verify each option in-game, then prioritize what directly supports your current learning goal.",category:"Systems",sections:generic("Destiny Tree priorities"),related:["progression-guide","upgrade-guide","builds"]}),
+ make({path:"upgrade-guide",title:"Upgrade Guide",h1:"Upgrade Guide",eyebrow:"INVEST WITH A REASON",description:"A simple framework for evaluating upgrades during a run.",answer:"An upgrade is useful when it strengthens your plan or fixes a known weakness. Novelty alone is not a reason to pivot.",category:"Systems",sections:generic("upgrade decisions"),related:["progression-guide","destiny-tree-guide","builds"]}),
+];
