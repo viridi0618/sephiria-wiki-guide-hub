@@ -1,174 +1,28 @@
-// Sephiria Strategy Layer — generates structured strategy sections for build pages.
-// Data fields come from extracted game data; weapon→skill/upgrade/boss associations
-// are editorial analysis and are labeled as such.
 import { weaponProfiles } from "@/data/game-data/weapon-profiles";
 import { bosses } from "@/data/game-data/bosses";
 import type { GuideSection } from "@/lib/types";
 
 type ProfileId = "swordShield" | "greatsword" | "dagger" | "crossbow" | "staff" | "grimoire";
-
-/** Weapon→skill-name associations. Skill names are real (game data); the association is editorial. */
-const weaponSkillNames: Record<ProfileId, string[]> = {
-  swordShield: ["Shield", "Blessing", "Healing Stream", "Stone Wave"],
-  greatsword: ["Stone Wave", "Judgment of Thunder", "Telekinetic Blow", "Rock Oink"],
-  dagger: ["Frost Dagger", "Haste", "Sharp Eye", "Smoke Screen"],
-  crossbow: ["Rain of Arrows", "Lightning Arrow", "Fire Arrow", "Light Arrow"],
-  staff: ["Call Lightning", "Fire Circus", "Meteor Shower", "Tempest"],
-  grimoire: ["Raise Skeleton", "Summon Thorn Ball", "Spirit Rabbit Warrior", "Tornado"],
+const skills:Record<ProfileId,string[]>={swordShield:["Shield","Blessing","Healing Stream"],greatsword:["Stone Wave","Judgment of Thunder","Telekinetic Blow"],dagger:["Frost Dagger","Haste","Smoke Screen"],crossbow:["Rain of Arrows","Lightning Arrow","Fire Arrow"],staff:["Call Lightning","Fire Circus","Meteor Shower"],grimoire:["Raise Skeleton","Summon Thorn Ball","Tornado"]};
+const upgrades:Record<ProfileId,string[]>={swordShield:["Toughness","Composure","Slim Cushion"],greatsword:["Enrage","Bushwhack","Green Sawblade"],dagger:["Smoke Screen","Sharp Acorn","Composure"],crossbow:["Ice Arrow","Sharp Acorn","Radiating Charm"],staff:["Toughness","Radiating Charm","Composure"],grimoire:["Enrage","Split","Water Elemental's Paw Wax"]};
+const plans:Record<ProfileId,{role:string;avoid:string;goal:string;loop:string[];early:string[];mid:string[];end:string[];fail:string[];boss:[string,string,string][]}>={
+ swordShield:{role:"Short-range defensive counter pressure",avoid:"You prefer safe ranged play",goal:"Convert readable attacks into controlled counter windows",loop:["Approach behind guard","Read one telegraph","Use the confirmed guard opportunity","Take one safe punish","Reset behind the shield"],early:["Stabilize guard timing before adding another attack condition.","Take a defensive fallback while counters are inconsistent.","Do not chase beyond the short punish range."],mid:["Online test: guard, punish, and reset without losing position.","Keep the defensive option when choices compete.","If counters remain unreliable, use ordinary guarded approaches."],end:["Primary target: a repeatable guard-to-punish loop.","Success means converting only confirmed attacks.","Optional choices should cover range or recovery."],fail:["Overcommitting after the counter window","Short reach against movement","No fallback after a missed guard","Chasing out of position"],boss:[["Askard","Neutral","Readable calls support observation; chapter mechanics remain unverified."],["BirdDemon","Difficult","Aerial movement may reduce short-range access."]]},
+ greatsword:{role:"Committed melee area control",avoid:"You dislike waiting for an opening",goal:"Convert one safe window into one wide hit, then clear recovery",loop:["Group or observe targets","Wait for an opening","Commit one wide attack","Leave the recovery zone","Reassess before another swing"],early:["Find a usable attack rhythm before conditional offense.","Keep a survival option for long recovery.","Skip picks that require repeated fast hits."],mid:["Online test: one swing controls a pack without forcing a second.","Preserve recovery safety over speculative damage.","If the intended option is absent, retain a one-hit punish plan."],end:["Primary target: reliable single-window impact.","Success means each commitment solves a target or creates space.","Optional skills cover downtime; no fixed final set is verified."],fail:["Starting an unconfirmed second swing","Recovery into a call-out","Fast targets leaving the arc","Building attack chains too early"],boss:[["Askard","Neutral","Calls can define commit windows; interrupt behavior is unknown."],["MadArmadillo","Favorable","Recovery-themed cues support deliberate single-hit punishes editorially."]]},
+ dagger:{role:"Close-range mobile pressure",avoid:"You want low-input safety",goal:"Enter briefly, create value, and leave before pressure reverses",loop:["Approach on an angle","Use a short pressure string","Reserve a defensive option","Exit close range","Re-enter after a fresh cue"],early:["Secure one escape before extending attack strings.","Treat named skills as candidates until effects are confirmed.","Avoid combining several resource demands."],mid:["Online test: short entries preserve defensive resources.","Keep mobility when damage competes with the exit plan.","Without a core option, shorten engagements and pivot to survival."],end:["Primary target: repeatable short pressure with a protected exit.","Success means resources recover between cycles.","Exact output rankings remain unverified."],fail:["Staying after the safe string","Resource starvation","No exit option","Pressuring through a boss cue"],boss:[["MoleBigBomb","Neutral","Numerous calls can support short entries after study."],["Larid","Difficult","Sparse verified attack data makes close commitment harder."]]},
+ crossbow:{role:"Ranged pressure with reload planning",avoid:"You dislike downtime management",goal:"Spend a magazine from controlled range and reload in low pressure",loop:["Establish distance","Fire while an exit remains","Stop before pressure arrives","Reposition","Reload in a quiet window"],early:["Build a safe reload habit before arrow synergies.","Keep an escape route before emptying the magazine.","Use general survival if the intended arrow is absent."],mid:["Online test: every magazine has a reload location.","Keep spacing support when upgrades compete.","Without synergy, stay on general ranged control."],end:["Primary target: continuous cycles without emergency reloads.","Success means cues change position, not the whole plan.","No highest-output arrow is verified."],fail:["Reloading under pressure","Backing into an uncleared edge","Empty magazine without an exit","A gap closer erasing range"],boss:[["BirdDemon","Favorable","Range may preserve reaction time around aerial cues."],["OinkKing","Neutral","Spacing helps, but attack detail is sparse."]]},
+ staff:{role:"Ranged casting around MP and cooldowns",avoid:"You want constant output without resource checks",goal:"Cast in a confirmed window and retain MP for the next problem",loop:["Observe the room","Use one skill candidate","Fill downtime without exhausting MP","Reposition","Hold a reserve for the next cue"],early:["Prioritize resource stability before chaining spells.","Verify current effects before planning interactions.","Do not spend every resource on the first pack."],mid:["Online test: one cast cycle leaves an answer for the next threat.","Keep resource support over speculative combinations.","Without the intended spell, use basics plus one dependable cast."],end:["Primary target: sustainable cast-fill-reset cycles.","Success means important cues find MP available.","Exact spell scaling is unknown."],fail:["Empty MP before a cue","Casting without a safe window","Standing still in downtime","Taking unrelated spells without a resource plan"],boss:[["MadArmadillo","Neutral","Recovery dialogue may offer windows; mechanics are not confirmed."],["BirdDemon","Neutral","Range aids observation while event data remains limited."]]},
+ grimoire:{role:"Mid-range spell and summon control",avoid:"You want immediate direct feedback",goal:"Set up one threat, reposition while it works, and refresh deliberately",loop:["Choose safe setup space","Deploy one skill candidate","Move while pressure develops","Check MP and position","Refresh or reset, not both"],early:["Establish one dependable cast before several summons.","Treat summon roles as editorial until confirmed.","Avoid parallel resource demands without recovery."],mid:["Online test: setup creates space while you move.","Retain the skill supporting the room plan.","Without a preferred summon, use one control spell conservatively."],end:["Primary target: controlled uptime, not a fixed summon set.","Success means setup remains available for the next room.","Exact summon values are unknown."],fail:["Refreshing setup too early","Parallel-summon resource starvation","Losing mid-range spacing","Assuming a summon solves an unknown mechanic"],boss:[["OinkKing","Neutral","Identity is confirmed while mechanics remain sparse."],["Askard","Difficult","Recurring chapter cues reward flexible resets over static setup."]]}
 };
-
-/** Weapon→upgrade-name associations. Upgrade names are real (game data); the association is editorial. */
-const weaponUpgradeNames: Record<ProfileId, string[]> = {
-  swordShield: ["Toughness", "Composure", "Slim Cushion", "Split"],
-  greatsword: ["Enrage", "Bushwhack", "Green Sawblade", "Split"],
-  dagger: ["Smoke Screen", "Sharp Acorn", "Composure", "Radiating Charm"],
-  crossbow: ["Ice Arrow", "Sharp Acorn", "Radiating Charm", "Bushwhack"],
-  staff: ["Toughness", "Radiating Charm", "Green Sawblade", "Composure"],
-  grimoire: ["Enrage", "Split", "Water Elemental's Paw Wax", "Helena's Stairway Fragment"],
-};
-
-/** Weapon→boss associations (editorial). Boss names are real (game data). */
-const weaponBossIds: Record<ProfileId, string[]> = {
-  swordShield: ["Askard", "BirdDemon"],
-  greatsword: ["Askard", "MadArmadillo"],
-  dagger: ["MoleBigBomb", "Larid"],
-  crossbow: ["BirdDemon", "OinkKing"],
-  staff: ["MadArmadillo", "QBoss"],
-  grimoire: ["OinkKing", "QBoss"],
-};
-
-const bossPagePath: Record<string, string> = {
-  Askard: "/bosses/askard/",
-  MoleBigBomb: "/bosses/mole-big-bomb/",
-  MadArmadillo: "/bosses/mad-armadillo/",
-  BirdDemon: "/bosses/bird-demon/",
-  Larid: "/bosses/larid/",
-  OinkKing: "/bosses/oink-king/",
-};
-
-export function buildStrategySections(profileId: ProfileId): GuideSection[] {
-  const profile = weaponProfiles.find((p) => p.id === profileId);
-  if (!profile) return [];
-
-  const skills = weaponSkillNames[profileId];
-  const ups = weaponUpgradeNames[profileId];
-  const bossIds = weaponBossIds[profileId];
-  const bossRows = bossIds
-    .map((bid) => {
-      const boss = bosses.find((b) => b.id === bid);
-      const path = bossPagePath[bid];
-      if (!boss || !path) return null;
-      return [`<a href="${path}">${boss.displayName}</a>`, boss.chapters.length ? `Chapter ${boss.chapters.join(", ")}` : "Chapter unknown"];
-    })
-    .filter((r): r is string[] => r !== null);
-
-  const roleRows = [
-    [
-      "Combat range",
-      profile.tags.includes("ranged") || profile.tags.includes("safe-distance") || profile.tags.includes("magic-ranged")
-        ? "Ranged"
-        : profile.tags.includes("close-range")
-          ? "Close"
-          : profile.tags.includes("mid-range-melee")
-            ? "Mid melee"
-            : profile.tags.includes("short-range")
-              ? "Short melee"
-              : "Melee",
-    ],
-    [
-      "Attack pace",
-      profile.tags.includes("fast") || profile.tags.includes("multi-hit")
-        ? "Fast, multi-hit"
-        : profile.tags.includes("slow-heavy")
-          ? "Slow, heavy"
-          : "Mid-paced",
-    ],
-    ["Difficulty (community assessment)", profile.difficulty === "unverified" ? "Unverified" : profile.difficulty],
-  ];
-
-  return [
-    {
-      heading: "Weapon Role",
-      paragraphs: [
-        `${profile.family} fills a distinct role in the weapon roster. The traits below come from the extracted weapon data; difficulty is a community assessment, not an official rating.`,
-      ],
-      table: { headers: ["Attribute", "Value"], rows: roleRows },
-      note: "Role data extracted from game files (en-US.json localization); difficulty is a community assessment.",
-    },
-    {
-      heading: "How This Build Plays",
-      paragraphs: [
-        `${profile.family} gameplay is defined by its pace and positioning. ${profile.playstyles.join(", ")} playstyles reward players who read the room and stay within the family's effective range.`,
-        `Key combat traits from the data: ${profile.tags.slice(0, 4).join(", ")}.`,
-      ],
-      bullets: profile.tags.slice(0, 5).map((t) => t.replace(/-/g, " ")),
-      note: "Traits derived from extracted weapon data tags.",
-    },
-    {
-      heading: "Early Progression",
-      paragraphs: [
-        "In the first floors, prioritize upgrades that make your core loop consistent before chasing synergy. Survival upgrades first, then the attack pattern that defines your weapon, and only then expensive side branches.",
-      ],
-      bullets: [
-        "Unlock basic attack and defense upgrades before expensive branches.",
-        `Look for early upgrades in this family's pool: ${ups.slice(0, 2).join(", ")}.`,
-        "Avoid committing to a late-game synergy before the core loop is comfortable.",
-      ],
-      note: "Progression guidance is editorial; upgrade names are extracted from game data.",
-    },
-    {
-      heading: "Core Skills",
-      paragraphs: [
-        `The skills below pair naturally with ${profile.family} in the current build. Skill names are extracted from game files; the pairing is editorial analysis.`,
-      ],
-      bullets: skills.map((s) => `${s} — available skill name from game data`),
-      note: "Skill names extracted from game data; associations are editorial.",
-    },
-    {
-      heading: "Core Upgrades",
-      paragraphs: [
-        "These upgrades support the family's core loop. Upgrade names are extracted from game files; the pairing is editorial analysis.",
-      ],
-      bullets: ups.map((u) => `${u} — upgrade name from game data`),
-      note: "Upgrade names extracted from game data; associations are editorial.",
-    },
-    {
-      heading: "Endgame Setup",
-      paragraphs: [
-        "A late-run setup for this family combines the weapon, one or two core skills, and the upgrades that keep the loop running.",
-      ],
-      table: {
-        headers: ["Slot", "Selection"],
-        rows: [
-          ["Main weapon", profile.family],
-          ["Core skills", skills.slice(0, 2).join(", ")],
-          ["Core upgrades", ups.slice(0, 2).join(", ")],
-          ["Playstyle", profile.playstyles.join(", ")],
-        ],
-      },
-      note: "Endgame recommendations are editorial synthesis of extracted game data.",
-    },
-    {
-      heading: "Weaknesses",
-      paragraphs: [
-        "No weapon family is universally strong. These trade-offs are editorial assessments based on the weapon's extracted traits.",
-      ],
-      bullets: profile.tags.includes("close-range")
-        ? ["You take hits where you deal them — positioning mistakes are expensive.", "Crowds can overwhelm the range if you are surrounded.", "Requires tighter dodge timing than ranged families."]
-        : profile.tags.includes("slow-heavy")
-          ? ["Long recovery on committed swings leaves you exposed.", "Fast mobile enemies are frustrating to hit.", "Needs attack-speed investment before it feels responsive."]
-          : profile.tags.includes("safe-distance")
-            ? ["Reload or cast windows are exploitable under pressure.", "Positioning mistakes are punished harder than for melee.", "Some rooms force close-quarters combat."]
-            : ["MP management is mandatory; an empty bar stalls the loop.", "Effects and costs are sparsely documented; verify in-game."],
-      note: "Weakness analysis is editorial; based on extracted weapon traits.",
-    },
-    {
-      heading: "Related Bosses",
-      paragraphs: [
-        "These bosses appear in the game data and are worth studying for this weapon family. Boss names are extracted from game files; the pairing is editorial.",
-      ],
-      table: { headers: ["Boss", "Chapter"], rows: bossRows },
-      note: "Boss names extracted from game data (BossSpeech keys); chapter from boss event markers where available.",
-    },
-  ];
-}
+const bossPaths:Record<string,string>={Askard:"askard",MoleBigBomb:"mole-big-bomb",MadArmadillo:"mad-armadillo",BirdDemon:"bird-demon",Larid:"larid",OinkKing:"oink-king"};
+export function buildStrategySections(id:ProfileId):GuideSection[]{const p=weaponProfiles.find(x=>x.id===id);if(!p)return[];const q=plans[id];return[
+ {heading:"Build Summary",paragraphs:[`${p.family} uses ${q.role.toLowerCase()}.`],table:{headers:["Field","Answer"],rows:[["Role",q.role],["Range",p.tags.includes("ranged")?"Ranged":"Melee"],["Pace",p.tags.includes("fast")?"Fast":p.tags.includes("slow-heavy")?"Deliberate":"Measured"],["Difficulty",p.difficulty],["Best for",p.playstyles.join(", ")],["Avoid if",q.avoid],["Primary goal",q.goal]]},note:"Editorial strategy based on verified game data. Names and tags are verified; judgments are editorial."},
+ {heading:"What This Build Is Trying to Achieve",paragraphs:[q.goal+". Each room should end with the core loop still available; spending its exit or resource plan breaks the build."],note:"Editorial strategy based on verified game data."},
+ {heading:"Combat Loop",paragraphs:["Use this as a decision loop, not an undocumented skill sequence."],bullets:q.loop,note:"Editorial strategy based on verified game data; exact timings are unverified."},
+ {heading:"Early Progression",paragraphs:["Early goal: make the base weapon loop repeatable before narrowing the route."],bullets:[...q.early,`${upgrades[id][0]} - Source: extracted upgrades; why: inspect as a stability candidate; Confidence: name verified, recommendation editorial.`,`Fallback plan: preserve the basic ${p.family} loop and take general survival.`],note:"Editorial strategy based on verified game data."},
+ {heading:"Mid-Game Transition",paragraphs:["Narrow choices only after the online test succeeds."],bullets:q.mid,note:"Editorial strategy based on verified game data."},
+ {heading:"Endgame Target",paragraphs:q.end,table:{headers:["Target","Selection"],rows:[["Core skills",skills[id].slice(0,2).join(", ")],["Core upgrades/items",upgrades[id].slice(0,2).join(", ")],["Optional alternatives",`${skills[id][2]}; ${upgrades[id][2]}`]]},note:"Editorial strategy based on verified game data. This is not a unique final loadout."},
+ {heading:"Core Skills",paragraphs:["Skill names are verified in extracted data; roles and timing below are editorial."],bullets:skills[id].map((x,i)=>`${x}: verified extracted skill name. Role: ${i?"conditional support":"primary route candidate"}. Prioritize only when it solves the active loop. Verification: effect and pairing require in-game confirmation.`),note:"Editorial strategy based on verified game data."},
+ {heading:"Core Upgrades / Items",paragraphs:["These are real extracted names, not a numeric ranking."],bullets:upgrades[id].map((x,i)=>`${x}: ${i<2?"stability/core formation":"late conditional reinforcement"}. Skip when it creates a resource conflict. Name verified; role editorial.`),note:"Editorial strategy based on verified game data."},
+ {heading:"Failure Modes",paragraphs:["Use a failed room to identify which part of the loop broke."],bullets:q.fail,note:"Editorial strategy based on verified game data."},
+ {heading:"Related Bosses",paragraphs:["Ratings are editorial and do not claim official balance."],table:{headers:["Boss","Matchup","Why","Preparation"],rows:q.boss.map(([name,rating,why])=>{const b=bosses.find(x=>x.id===name);return [`<a href=\"/bosses/${bossPaths[name]}/\">${b?.displayName??name}</a>`,rating,why,"Read verified call-outs, preserve the reset option, and open the boss guide before entering."]})},note:"Editorial strategy based on verified game data."}
+];}

@@ -45,7 +45,7 @@ if (fs.existsSync(bpPath)) {
 
 if (errors.length) { console.error(errors.join("\n")); process.exit(1); }
 // Strategy Layer checks: build pages must have Weapon Role + Core Skills sections
-  const strategyHeadings = ["Weapon Role", "How This Build Plays", "Early Progression", "Core Skills", "Core Upgrades", "Endgame Setup", "Weaknesses", "Related Bosses"];
+  const strategyHeadings = ["Build Summary", "What This Build Is Trying to Achieve", "Combat Loop", "Early Progression", "Mid-Game Transition", "Core Skills", "Core Upgrades / Items", "Endgame Target", "Failure Modes", "Related Bosses"];
   for (const bp of buildPages) {
     const file = path.join(out, bp, "index.html");
     if (!fs.existsSync(file)) continue;
