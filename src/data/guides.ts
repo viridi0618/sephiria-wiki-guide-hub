@@ -94,6 +94,16 @@ export const guidePages = [
         ],
       },
     ],
+    contentVideos: [
+      {
+        id: "sephiria-1.0-launch-trailer",
+        title: "Sephiria - 1.0 Launch Trailer",
+        channel: "TEAM HORAY",
+        youtubeUrl: "https://www.youtube.com/watch?v=PXwDUrWFvGs",
+        placementAfterHeading: "The Core Loop in One Paragraph",
+        description: "Official 1.0 launch trailer from TEAM HORAY. Shows combat overview, weapon variety, boss encounters, and the game's pixel-art style.",
+      },
+    ],
     sources: [steamSource, outdatedSteamGuideSource],
     related: ["builds", "weapons-guide", "boss-guide", "progression-guide"],
     guidePath: [
@@ -341,6 +351,16 @@ export const guidePages = [
     category: "Guides",
     version,
     platforms,
+    contentVideos: [
+      {
+        id: "sephiria-early-access-trailer",
+        title: "Sephiria Early Access Trailer",
+        channel: "TEAM HORAY",
+        youtubeUrl: "https://www.youtube.com/watch?v=uK0Yjz3Q3Sc",
+        placementAfterHeading: "Overview",
+        description: "Official Early Access trailer from TEAM HORAY. Provides a look at core gameplay, artifact collection, weapon combat, and the inventory management system.",
+      },
+    ],
     informationType: "Editorial review with official feature references",
     heroImage: "/screenshots/sephiria-weapons.webp",
     heroImageAlt:

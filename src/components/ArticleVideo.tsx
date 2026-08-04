@@ -26,7 +26,7 @@ export default function ArticleVideo({ video }: { video: ContentVideo }) {
         >
           {activated ? (
             <iframe
-              src={`https://www.youtube.com/embed/${videoId}?autoplay=0&rel=0`}
+              src={`https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`}
               title={video.title}
               loading="lazy"
               allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
