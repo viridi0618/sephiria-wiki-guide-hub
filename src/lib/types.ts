@@ -12,6 +12,6 @@ export type GuidePageData = {
   published:string; updated:string; version:string; platforms:string; informationType:string;
   heroImage?:string; heroImageAlt?:string; heroImageCaption?:string; heroImageSourceUrl?:string; heroImageWidth?:number; heroImageHeight?:number;
   sections:GuideSection[]; faqs:{question:string;answer:string}[]; related:string[]; sources:GuideSource[];
-  contentImages?:ContentImage[]; contentVideos?:ContentVideo[]; guidePath?:GuidePathStep[]; pickerCta?:string; tool?:"build-picker";
+  contentImages?:ContentImage[]; contentVideos?:ContentVideo[]; featuredVideo?:ContentVideo; guidePath?:GuidePathStep[]; pickerCta?:string; tool?:"build-picker";
   verifiedData?: { weaponId: string; description?: string | null; relatedSkills?: string[] };
 };

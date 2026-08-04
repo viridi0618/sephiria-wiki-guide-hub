@@ -4,7 +4,9 @@ import Link from "next/link";
 import GuideCard from "@/components/GuideCard";
 import FAQ from "@/components/FAQ";
 import JsonLd from "@/components/JsonLd";
+import WeaponCard from "@/components/game/WeaponCard";
 import { getPage, pages } from "@/data/pages";
+import { weaponProfiles } from "@/data/game-data/weapon-profiles";
 import { absoluteUrl, siteConfig } from "@/lib/site-config";
 
 const title = "Sephiria Wiki - Builds, Weapons, Guides & Gameplay";
@@ -38,16 +40,6 @@ const featured = [
   "destiny-tree-guide",
   "boss-guide",
   "progression-guide",
-]
-  .map(getPage)
-  .filter(Boolean);
-const builds = [
-  "builds/sword-and-shield",
-  "builds/greatsword",
-  "builds/dagger",
-  "builds/crossbow",
-  "builds/staff",
-  "builds/grimoire",
 ]
   .map(getPage)
   .filter(Boolean);
@@ -174,8 +166,10 @@ export default function Home() {
             and playstyle fit for its weapon family so you can compare like with
             like.
           </p>
-          <div className="guide-grid class-grid">
-            {builds.map((p) => p && <GuideCard key={p.path} page={p} />)}
+          <div className="visual-entity-grid class-grid">
+            {weaponProfiles.map((profile) => (
+              <WeaponCard key={profile.id} profile={profile} />
+            ))}
           </div>
         </section>
         <section className="split-feature">
