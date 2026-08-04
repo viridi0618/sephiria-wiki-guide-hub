@@ -1,0 +1,11 @@
+import type { BossAsset } from "@/data/assets/types";
+
+// Publication is gated by visual review. Name-matched legacy assets remain unverified.
+export const bossAssets: Record<string, BossAsset & { image: string; alt: string; caption: string; visuallyVerified: boolean }> = {
+  askard: { boss: "askard", image: "/screenshots/sephiria-boss.webp", alt: "Official Sephiria boss encounter screenshot", caption: "Official Sephiria screenshot; specific boss identity is not visually confirmed.", asset: null, type: null, source: null, verified: false, visuallyVerified: false, note: "Neutral official screenshot only." },
+  "mole-big-bomb": { boss: "mole-big-bomb", image: "/screenshots/sephiria-boss.webp", alt: "Official Sephiria boss encounter screenshot", caption: "Official Sephiria screenshot; specific boss identity is not visually confirmed.", asset: null, type: null, source: null, verified: false, visuallyVerified: false, note: "Candidate requires visual review." },
+  "mad-armadillo": { boss: "mad-armadillo", image: "/screenshots/sephiria-boss.webp", alt: "Official Sephiria boss encounter screenshot", caption: "Official Sephiria screenshot; specific boss identity is not visually confirmed.", asset: null, type: null, source: null, verified: false, visuallyVerified: false, note: "Candidate requires visual review." },
+  "bird-demon": { boss: "bird-demon", image: "/screenshots/sephiria-boss.webp", alt: "Official Sephiria boss encounter screenshot", caption: "Official Sephiria screenshot; specific boss identity is not visually confirmed.", asset: null, type: null, source: null, verified: false, visuallyVerified: false, note: "Candidate requires visual review." },
+  larid: { boss: "larid", image: "/screenshots/sephiria-boss.webp", alt: "Official Sephiria boss encounter screenshot", caption: "Official Sephiria screenshot; specific boss identity is not visually confirmed.", asset: null, type: null, source: null, verified: false, visuallyVerified: false, note: "No candidate found." },
+  "oink-king": { boss: "oink-king", image: "/screenshots/sephiria-boss.webp", alt: "Official Sephiria boss encounter screenshot", caption: "Official Sephiria screenshot; specific boss identity is not visually confirmed.", asset: null, type: null, source: null, verified: false, visuallyVerified: false, note: "Candidate requires visual review." },
+};
