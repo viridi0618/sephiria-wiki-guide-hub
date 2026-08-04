@@ -1,0 +1,186 @@
+{
+  "meta": {
+    "game": "Sephiria",
+    "created": "2026-08-04",
+    "method": "Name-prefix matching against asset-index.json",
+    "note": "Visual asset names use a different system than BossSpeech event keys (e.g. DemonBoss vs Askard). This map is name-based inference and MUST be spot-checked before publishing any image."
+  },
+  "bosses": {
+    "Askard": {
+      "prefixes": [
+        "DemonBoss",
+        "Sephirite",
+        "Qliphoth"
+      ],
+      "visualAssetCount": 10,
+      "samples": [
+        "DemonBoss_Airborne_00",
+        "DemonBoss_Airborne_01",
+        "DemonBoss_Airborne_02",
+        "DemonBoss_BigLightning_FrontFX00",
+        "DemonBoss_BigLightning_FrontFX01",
+        "DemonBoss_BigLightning_FrontFX02",
+        "DemonBoss_BigLightning_FrontFX03",
+        "DemonBoss_BigLightning_FrontFX04",
+        "DemonBoss_BigLightning_FrontFX05",
+        "DemonBoss_BigLightning_FrontFX06"
+      ],
+      "sources": [
+        "sharedassets0.assets",
+        "sharedassets2.assets",
+        "resources.assets"
+      ]
+    },
+    "MoleBigBomb": {
+      "prefixes": [
+        "MoleBombBoss",
+        "MoleBoss"
+      ],
+      "visualAssetCount": 10,
+      "samples": [
+        "MoleBombBossBombBox",
+        "MoleBombBossBombBox_Shadow",
+        "MoleBombBossGround0",
+        "MoleBombBossGround1",
+        "MoleBombBossGround2",
+        "MoleBombBossGround3",
+        "MoleBombBossGround4",
+        "MoleBombBossObj0",
+        "MoleBombBossObj1",
+        "MoleBombBossObj_Ground0"
+      ],
+      "sources": [
+        "sharedassets0.assets",
+        "resources.assets"
+      ]
+    },
+    "MadArmadillo": {
+      "prefixes": [
+        "MadArmadillo"
+      ],
+      "visualAssetCount": 0,
+      "samples": [],
+      "sources": []
+    },
+    "BirdDemon": {
+      "prefixes": [
+        "BirdDemon",
+        "DemonBoss"
+      ],
+      "visualAssetCount": 10,
+      "samples": [
+        "DemonBoss_Airborne_00",
+        "DemonBoss_Airborne_01",
+        "DemonBoss_Airborne_02",
+        "DemonBoss_BigLightning_FrontFX00",
+        "DemonBoss_BigLightning_FrontFX01",
+        "DemonBoss_BigLightning_FrontFX02",
+        "DemonBoss_BigLightning_FrontFX03",
+        "DemonBoss_BigLightning_FrontFX04",
+        "DemonBoss_BigLightning_FrontFX05",
+        "DemonBoss_BigLightning_FrontFX06"
+      ],
+      "sources": [
+        "sharedassets0.assets"
+      ]
+    },
+    "Larid": {
+      "prefixes": [
+        "Larid"
+      ],
+      "visualAssetCount": 0,
+      "samples": [],
+      "sources": []
+    },
+    "OinkKing": {
+      "prefixes": [
+        "OinkBoss"
+      ],
+      "visualAssetCount": 10,
+      "samples": [
+        "OinkBoss_TotemSeedSummonFX_00",
+        "OinkBoss_TotemSeedSummonFX_01",
+        "OinkBoss_TotemSeedSummonFX_02",
+        "OinkBoss_TotemSeedSummonFX_03",
+        "OinkBoss_TotemSeedSummonFX_04",
+        "OinkBoss_TotemSeedSummonFX_05",
+        "OinkBoss_TotemSeedSummonFX_06",
+        "OinkBoss_TotemSeedSummonFX_07",
+        "OinkBoss_TotemSeedSummonFX_08",
+        "OinkBoss_TotemSeedSummonFX_09"
+      ],
+      "sources": [
+        "sharedassets0.assets"
+      ]
+    },
+    "QBoss": {
+      "prefixes": [
+        "QBoss"
+      ],
+      "visualAssetCount": 1,
+      "samples": [
+        "QBossLightLine"
+      ],
+      "sources": [
+        "sharedassets0.assets"
+      ]
+    },
+    "QQBoss": {
+      "prefixes": [
+        "QQBoss",
+        "QQQBoss"
+      ],
+      "visualAssetCount": 6,
+      "samples": [
+        "QQQBossLightning01",
+        "QQQBossLightning02",
+        "QQQBossLightning03",
+        "QQQBossLightning04",
+        "QQQBossLightning05",
+        "QQQBossLightning06"
+      ],
+      "sources": [
+        "sharedassets0.assets"
+      ]
+    },
+    "SkelBoss": {
+      "prefixes": [
+        "SkelBoss"
+      ],
+      "visualAssetCount": 7,
+      "samples": [
+        "SkelBoss_Stmap_FX0",
+        "SkelBoss_Stmap_FX1",
+        "SkelBoss_Stmap_FX2",
+        "SkelBoss_Stmap_FX3",
+        "SkelBoss_Stmap_FX4",
+        "SkelBoss_Stmap_FX5",
+        "SkelBoss_Stmap_FX6"
+      ],
+      "sources": [
+        "sharedassets0.assets"
+      ]
+    },
+    "BookBoss": {
+      "prefixes": [
+        "BookBoss"
+      ],
+      "visualAssetCount": 10,
+      "samples": [
+        "BookBoss_BiteCycle00",
+        "BookBoss_BiteCycle01",
+        "BookBoss_BiteEnd00",
+        "BookBoss_BiteReady00",
+        "BookBoss_BiteReady01",
+        "BookBoss_BiteReady02",
+        "BookBoss_BiteReady03",
+        "BookBoss_BiteReady04",
+        "BookBoss_BiteReady05",
+        "BookBoss_BiteReady06"
+      ],
+      "sources": [
+        "sharedassets0.assets"
+      ]
+    }
+  }
+}
