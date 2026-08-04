@@ -62,11 +62,13 @@ Reason: `E:\Sephiria` is available and the existing `asset-index.json` identifie
 
 ## Validation
 
-Pending local command run after implementation:
+Passed locally on 2026-08-04:
 
-- `npm run lint`
+- `npm run lint` (passed with 7 pre-existing warnings)
 - `npm run typecheck`
-- `npm run build`
+- `npm run build` (39 static pages)
 - `npm run verify`
 - `npm run check:ia`
+- `npm run check:build-data`
+- `npm run check:strategy-depth`
 - `npm run check:media`
