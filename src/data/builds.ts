@@ -1,4 +1,5 @@
 import { make } from "./content-helpers";
+import { buildStrategySections } from "@/lib/strategy-sections";
 import type { GuidePageData, GuideSource, GuideSection } from "@/lib/types";
 
 const STEAM_URL = "https://store.steampowered.com/app/2436940/Sephiria/";
@@ -31,8 +32,18 @@ interface BuildPageInput {
 }
 
 function buildPage(input: BuildPageInput): GuidePageData {
+  const profileIdMap: Record<string, "swordShield" | "greatsword" | "dagger" | "crossbow" | "staff" | "grimoire"> = {
+    "Sword and Shield": "swordShield",
+    Greatsword: "greatsword",
+    Dagger: "dagger",
+    Crossbow: "crossbow",
+    Staff: "staff",
+    Grimoire: "grimoire",
+  };
+  const pid = input.verifiedData?.weaponId ? profileIdMap[input.verifiedData.weaponId] : undefined;
   return make({
     ...input,
+    sections: pid ? [...input.sections, ...buildStrategySections(pid)] : input.sections,
     category: "Builds",
     categoryPath: "builds",
     version: BUILD_VERSION,

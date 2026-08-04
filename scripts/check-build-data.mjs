@@ -44,4 +44,26 @@ if (fs.existsSync(bpPath)) {
 }
 
 if (errors.length) { console.error(errors.join("\n")); process.exit(1); }
-console.log("Build data checks passed: 6 build pages with Verified Data, weaponProfiles enhanced, BuildPicker profile-based.");
+// Strategy Layer checks: build pages must have Weapon Role + Core Skills sections
+  const strategyHeadings = ["Weapon Role", "How This Build Plays", "Early Progression", "Core Skills", "Core Upgrades", "Endgame Setup", "Weaknesses", "Related Bosses"];
+  for (const bp of buildPages) {
+    const file = path.join(out, bp, "index.html");
+    if (!fs.existsSync(file)) continue;
+    const html = fs.readFileSync(file, "utf8");
+    for (const heading of strategyHeadings) {
+      if (!html.includes(heading)) errors.push(bp + " missing strategy section: " + heading);
+    }
+  }
+
+  // Boss pages must exist with extracted dialogue
+  const bossPages = ["bosses/askard", "bosses/mole-big-bomb", "bosses/mad-armadillo", "bosses/bird-demon", "bosses/larid", "bosses/oink-king"];
+  for (const bp of bossPages) {
+    const file = path.join(out, bp, "index.html");
+    if (!fs.existsSync(file)) { errors.push("Missing boss page: " + bp); continue; }
+    const html = fs.readFileSync(file, "utf8");
+    if (!html.includes("Boss Overview")) errors.push(bp + " missing Boss Overview");
+    if (!html.includes("Recommended Builds")) errors.push(bp + " missing Recommended Builds");
+  }
+
+  if (errors.length) { console.error(errors.join("\n")); process.exit(1); }
+  console.log("Strategy layer checks passed: 6 build pages with strategy sections, 6 boss pages with extracted dialogue data.");

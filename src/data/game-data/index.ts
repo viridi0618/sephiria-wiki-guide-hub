@@ -13,3 +13,8 @@ export { enemies } from "./enemies";
 export type { EnemyData } from "./enemies";
 export { chapters } from "./maps";
 export type { MapData } from "./maps";
+
+export { bosses } from "./bosses";
+export type { BossData } from "./bosses";
+export { stages } from "./stages";
+export type { StageData } from "./stages";

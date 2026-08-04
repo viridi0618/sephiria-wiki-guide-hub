@@ -3,7 +3,7 @@ import path from "node:path";
 
 const out = path.join(process.cwd(), "out");
 // Real, canonical routes (old weapon URLs are compatibility pages that canonical to these)
-const routes = ["", "beginner-guide", "tips-and-tricks", "progression-guide", "boss-guide", "co-op", "review", "builds", "builds/sword-and-shield", "builds/greatsword", "builds/dagger", "builds/crossbow", "builds/staff", "builds/grimoire", "weapons-guide", "destiny-tree-guide", "upgrade-guide", "is-sephiria-worth-playing", "is-sephiria-multiplayer", "is-sephiria-hard", "controller-support", "build-picker"];
+const routes = ["", "beginner-guide", "tips-and-tricks", "progression-guide", "boss-guide", "co-op", "review", "builds", "builds/sword-and-shield", "builds/greatsword", "builds/dagger", "builds/crossbow", "builds/staff", "builds/grimoire", "weapons-guide", "destiny-tree-guide", "upgrade-guide", "is-sephiria-worth-playing", "is-sephiria-multiplayer", "is-sephiria-hard", "controller-support", "build-picker", "bosses/askard", "bosses/mole-big-bomb", "bosses/mad-armadillo", "bosses/bird-demon", "bosses/larid", "bosses/oink-king"];
 // Legacy weapon URLs must exist but canonical to the real URL and must NOT appear in sitemap
 const legacy = {
   "builds/sword": "builds/sword-and-shield",
