@@ -46,6 +46,16 @@ const buildPathByName: Record<string, string> = {
   Grimoire: "/builds/grimoire/",
 };
 
+/** Map build name to page path for related arrays. */
+const buildPagePath: Record<string, string> = {
+  "Sword and Shield": "builds/sword-and-shield",
+  Greatsword: "builds/greatsword",
+  Dagger: "builds/dagger",
+  Crossbow: "builds/crossbow",
+  Staff: "builds/staff",
+  Grimoire: "builds/grimoire",
+};
+
 function bossSections(input: BossPageInput): GuideSection[] {
   const boss = bosses.find((b) => b.id === input.bossId);
   const sections: GuideSection[] = [];
@@ -148,6 +158,12 @@ const bossSlugs: Record<string, string> = {
 };
 
 function bossPage(input: BossPageInput): GuidePageData {
+  // Build related array: boss-guide hub + specific build pages + progression guide
+  const buildRelated = input.recommendedBuilds
+    .map((rb) => buildPagePath[rb.name])
+    .filter(Boolean);
+  const defaultRelated = ["boss-guide", ...buildRelated, "progression-guide"];
+
   return make({
     path: `bosses/${bossSlugs[input.bossId] ?? input.bossId}`,
     title: input.title,
@@ -168,7 +184,7 @@ function bossPage(input: BossPageInput): GuidePageData {
     sections: bossSections(input),
     faqs: [],
     sources: bossSources,
-    related: input.related ?? ["boss-guide", "builds", "progression-guide"],
+    related: input.related ?? defaultRelated,
   });
 }
 

@@ -105,7 +105,7 @@ export const guidePages = [
       },
     ],
     sources: [steamSource, outdatedSteamGuideSource],
-    related: ["builds", "weapons-guide", "boss-guide", "progression-guide"],
+    related: ["builds", "weapons-guide", "boss-guide", "progression-guide", "controller-support"],
     guidePath: [
       { step: 1, label: "Beginner Guide", href: "/beginner-guide/", question: "Learn a repeatable first-run process." },
       { step: 2, label: "Builds Hub", href: "/builds/", question: "Choose a coherent playstyle." },
@@ -267,6 +267,24 @@ export const guidePages = [
         ],
       },
       {
+        heading: "Boss Guides",
+        paragraphs: [
+          "Each boss has a dedicated guide with attack call-outs, phase cues, and dialogue extracted from the game's localization data. Pick a boss below to dive into its patterns.",
+        ],
+        table: {
+          headers: ["Boss", "Guide"],
+          rows: [
+            ["Askard", `<a href="/bosses/askard/">View guide</a>`],
+            ["Odner (Mole Big Bomb)", `<a href="/bosses/mole-big-bomb/">View guide</a>`],
+            ["Mad Armadillo", `<a href="/bosses/mad-armadillo/">View guide</a>`],
+            ["Bird Demon", `<a href="/bosses/bird-demon/">View guide</a>`],
+            ["Larid", `<a href="/bosses/larid/">View guide</a>`],
+            ["Oink King", `<a href="/bosses/oink-king/">View guide</a>`],
+          ],
+        },
+        note: "Each boss guide includes extracted dialogue and editorial build recommendations.",
+      },
+      {
         heading: "Note on the Boss Roster",
         paragraphs: [
           "Sephiria contains more than 10 bosses across its six chapters, but TEAM HORAY has not published the complete official boss list. Community playthroughs describe a variety of encounters, but no specific boss mechanics are verified here because they are not published in official materials.",
@@ -336,7 +354,7 @@ export const guidePages = [
       },
     ],
     sources: [steamSource, boilingSteamSource],
-    related: ["beginner-guide", "builds", "boss-guide", "review"],
+    related: ["beginner-guide", "builds", "boss-guide", "review", "is-sephiria-multiplayer"],
   }),
 
   make({

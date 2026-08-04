@@ -2841,3 +2841,21 @@ tbody tr:nth-child(even) td {
 .lite-video--playing::after {
   display: none;
 }
+
+/* Contextual sidebar 鈥?sibling/category navigation */
+.article-rail .wiki-contextual {
+  margin-top: 0;
+}
+
+.article-rail .wiki-contextual .rail-label {
+  padding: 16px 16px 4px;
+}
+
+.article-rail .wiki-contextual a.contextual-current {
+  color: var(--gold-light);
+  font-weight: 500;
+}
+
+.article-rail .wiki-contextual a {
+  font-size: 13px;
+}

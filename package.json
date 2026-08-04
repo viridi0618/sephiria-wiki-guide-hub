@@ -14,8 +14,9 @@
     "check:site": "node scripts/check-site.mjs",
     "check:navigation": "node scripts/check-navigation.mjs",
     "check:english-seo": "node scripts/check-english-seo.mjs",
-    "verify": "node scripts/check-site.mjs && node scripts/check-navigation.mjs && node scripts/check-english-seo.mjs && node scripts/check-build-data.mjs",
-    "check:build-data": "node scripts/check-build-data.mjs"
+    "verify": "node scripts/check-site.mjs && node scripts/check-navigation.mjs && node scripts/check-english-seo.mjs && node scripts/check-build-data.mjs && npx tsx scripts/verify-ia.mjs",
+    "check:build-data": "node scripts/check-build-data.mjs",
+    "check:ia": "npx tsx scripts/verify-ia.mjs"
   },
   "dependencies": {
     "next": "16.2.12",
