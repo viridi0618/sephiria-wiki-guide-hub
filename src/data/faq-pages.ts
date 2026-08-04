@@ -48,7 +48,7 @@ export const faqPages = [
         heading: "Who might want to wait",
         paragraphs: [
           "If you dislike repeating content after death or prefer linear, story-driven campaigns, the roguelite structure may feel repetitive. Sephiria does not hold your hand, and several systems are learned through experimentation rather than tutorial text.",
-          "The 1.0 build is content-complete. Watch official gameplay footage on the Steam store page to confirm the combat rhythm appeals to you before buying.",
+          "TEAM HORAY announced the 1.0 full release for July 31, 2026. Check the current Steam announcements for the latest content and patch status. Watch official gameplay footage on the Steam store page to confirm the combat rhythm appeals to you before buying.",
         ],
       },
     ],
@@ -128,7 +128,7 @@ export const faqPages = [
         heading: "The most forgiving weapons",
         paragraphs: [
           "The Sword and Shield is commonly recommended as the most forgiving starter because it pairs offense with a block, giving you a defensive answer when you misread an attack. Stick with one weapon family for several runs so mastery compounds.",
-          "To reduce difficulty early, take survivability upgrades before chasing damage, and avoid complex synergies until the core loop feels comfortable. Co-op also naturally softens the experience by sharing aggro across the party.",
+          "To reduce difficulty early, take survivability upgrades before chasing damage, and avoid complex synergies until the core loop feels comfortable. Some players may find co-op more forgiving because attention can be divided across the party.",
         ],
       },
     ],

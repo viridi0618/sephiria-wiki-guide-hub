@@ -15,12 +15,12 @@ const outdatedSteamGuideSource = {
   note: "Outdated community guide for an earlier game version. Use only for historical system names and old-version reference, not for current builds, numbers, bosses, or multiplayer rules.",
 };
 
-const v1AnnouncementSource = {
-  label: "Sephiria 1.0 Launch Announcement (17173)",
-  url: "http://news.17173.com/content/07312026/231256229.shtml",
+const invenReleaseSource = {
+  label: "Sephiria full release report (INVEN Global, EN)",
+  url: "https://labs.invenglobal.com/articles/24352/enjoying-the-movie-odyssey-then-its-time-to-play-assassins-creed-odyssey",
   level: "Media" as const,
   lastChecked: "2026-08-04",
-  note: "Used for release timing and announcement context only.",
+  note: "English media report on the full release and feature summary.",
 };
 
 const version = "1.0";
@@ -146,7 +146,7 @@ export const systemPages = [
         ],
       },
     ],
-    sources: [steamSource, outdatedSteamGuideSource, v1AnnouncementSource],
+    sources: [steamSource, outdatedSteamGuideSource, invenReleaseSource],
     related: ["progression-guide", "upgrade-guide", "builds", "beginner-guide"],
   }),
 

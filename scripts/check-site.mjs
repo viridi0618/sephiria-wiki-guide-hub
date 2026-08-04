@@ -74,6 +74,9 @@ const banned = [
   "Phase two — build literacy",
   "shows a Full Controller Support badge",
   "harder than most casual roguelites",
+  "content-complete",
+  "before you unlock more capacity through permanent progression",
+  "As you unlock bag capacity through permanent upgrades",
 ];
 for (const route of routes) {
   const file = fileFor(route);

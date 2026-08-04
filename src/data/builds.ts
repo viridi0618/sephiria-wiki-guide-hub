@@ -2,11 +2,11 @@ import { make } from "./content-helpers";
 import type { GuidePageData, GuideSource, GuideSection } from "@/lib/types";
 
 const STEAM_URL = "https://store.steampowered.com/app/2436940/Sephiria/";
-const BILIBILI_URL = "https://www.bilibili.com/opus/1119413776142041088";
+const BOILING_STEAM_URL = "https://boilingsteam.com/new-steam-games-playable-on-the-steam-deck-2026-08-01-edition/";
 
 const buildSources: GuideSource[] = [
   { label: "Sephiria on Steam", url: STEAM_URL, level: "Official", lastChecked: "2026-08-04" },
-  { label: "Sephiria weapon ranking (Bilibili Opus) — community opinion", url: BILIBILI_URL, level: "Community", lastChecked: "2026-08-04" },
+  { label: "Sephiria player impressions (Boiling Steam, EN) — community opinion", url: BOILING_STEAM_URL, level: "Community", lastChecked: "2026-08-04" },
 ];
 
 const BUILD_HERO_IMAGE = "/screenshots/sephiria-builds.webp";

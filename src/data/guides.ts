@@ -22,20 +22,20 @@ const outdatedSteamGuideSource = {
   note: "Outdated community guide for an earlier game version. Use only for historical system names and old-version reference, not for current builds, numbers, bosses, or multiplayer rules.",
 };
 
-const v1AnnouncementSource = {
-  label: "Sephiria 1.0 Launch Announcement (17173)",
-  url: "http://news.17173.com/content/07312026/231256229.shtml",
+const invenReleaseSource = {
+  label: "Sephiria full release report (INVEN Global, EN)",
+  url: "https://labs.invenglobal.com/articles/24352/enjoying-the-movie-odyssey-then-its-time-to-play-assassins-creed-odyssey",
   level: "Media" as const,
   lastChecked: "2026-08-04",
-  note: "Used for release timing and announcement context only.",
+  note: "English media report on the full release and feature summary.",
 };
 
-const releaseAnnouncementSource = {
-  label: "Sephiria Release Announcement (17173)",
-  url: "http://news.17173.com/content/07092026/003057782.shtml",
+const boilingSteamSource = {
+  label: "Sephiria on Steam Deck (Boiling Steam, EN)",
+  url: "https://boilingsteam.com/new-steam-games-playable-on-the-steam-deck-2026-08-01-edition/",
   level: "Media" as const,
   lastChecked: "2026-08-04",
-  note: "Used for release timing and announcement context only.",
+  note: "English media coverage with player-reported impressions of weapons, difficulty, and controller support.",
 };
 
 const version = "1.0";
@@ -160,9 +160,9 @@ export const guidePages = [
       {
         heading: "Inventory and Bag Management",
         paragraphs: [
-          "Your bag space is limited, especially early in a run before you unlock more capacity through permanent progression. Make a habit of evaluating your bag after every few rooms: are there items you picked up early that no longer serve your build?",
+          "Your available inventory space is limited, so review what you are carrying regularly and remove items that no longer support the current build.",
           "When the game offers item conversion, use it to turn dead weight into build-relevant picks. Do not hesitate to convert items you will never equip — holding onto them wastes a bag slot that could hold something useful.",
-          "As you unlock bag capacity through permanent upgrades, the pressure eases, but the principle remains the same: every slot should serve your build or provide a contingency. Hoarding without a plan is how runs end with a full bag and a dead character.",
+          "Every slot should serve your build or provide a contingency. Hoarding without a plan is how runs end with a full bag and a dead character.",
         ],
       },
       {
@@ -223,7 +223,7 @@ export const guidePages = [
         ],
       },
     ],
-    sources: [steamSource, outdatedSteamGuideSource, v1AnnouncementSource],
+    sources: [steamSource, outdatedSteamGuideSource, invenReleaseSource],
     related: ["beginner-guide", "builds", "upgrade-guide", "destiny-tree-guide"],
   }),
 
@@ -333,7 +333,7 @@ export const guidePages = [
         ],
       },
     ],
-    sources: [steamSource, releaseAnnouncementSource],
+    sources: [steamSource, boilingSteamSource],
     related: ["beginner-guide", "builds", "boss-guide", "review"],
   }),
 
@@ -399,7 +399,7 @@ export const guidePages = [
         ],
       },
     ],
-    sources: [steamSource, steamAnnouncementSource, v1AnnouncementSource],
+    sources: [steamSource, steamAnnouncementSource, invenReleaseSource],
     related: ["beginner-guide", "is-sephiria-worth-playing", "co-op", "weapons-guide"],
   }),
 ];
