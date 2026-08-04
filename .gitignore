@@ -18,6 +18,13 @@
 /.vinext/
 /out/
 
+# build output
+/build-out/
+.next_trash_*/
+.next_dead_*/
+.next_broken_*/
+out_trash_*/
+
 # misc
 .DS_Store
 *.pem

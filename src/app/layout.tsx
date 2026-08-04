@@ -1,6 +1,8 @@
 import type{Metadata}from"next";
 import Script from"next/script";
 import"./globals.css";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import{absoluteUrl,siteConfig}from"@/lib/site-config";
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID || "G-3S7FP0B669";
@@ -35,7 +37,9 @@ export default function RootLayout({children}:{children:React.ReactNode}){
       </head>
       <body>
         <a className="skip-link" href="#main-content">Skip to content</a>
+        <Header/>
         {children}
+        <Footer/>
       </body>
     </html>
   );
