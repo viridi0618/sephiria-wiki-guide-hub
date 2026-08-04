@@ -22,20 +22,12 @@ const outdatedSteamGuideSource = {
   note: "Outdated community guide for an earlier game version. Use only for historical system names and old-version reference, not for current builds, numbers, bosses, or multiplayer rules.",
 };
 
-const invenReleaseSource = {
-  label: "Sephiria full release report (INVEN Global, EN)",
-  url: "https://labs.invenglobal.com/articles/24352/enjoying-the-movie-odyssey-then-its-time-to-play-assassins-creed-odyssey",
-  level: "Media" as const,
-  lastChecked: "2026-08-04",
-  note: "English media report on the full release and feature summary.",
-};
-
 const boilingSteamSource = {
   label: "Sephiria on Steam Deck (Boiling Steam, EN)",
   url: "https://boilingsteam.com/new-steam-games-playable-on-the-steam-deck-2026-08-01-edition/",
   level: "Media" as const,
   lastChecked: "2026-08-04",
-  note: "English media coverage with player-reported impressions of weapons, difficulty, and controller support.",
+  note: "English media summary of Steam player impressions. Covers general reception, Steam Deck compatibility, controller feedback, and difficulty impressions — not per-weapon build mechanics.",
 };
 
 const version = "1.0";
@@ -223,7 +215,7 @@ export const guidePages = [
         ],
       },
     ],
-    sources: [steamSource, outdatedSteamGuideSource, invenReleaseSource],
+    sources: [steamSource, outdatedSteamGuideSource, steamAnnouncementSource],
     related: ["beginner-guide", "builds", "upgrade-guide", "destiny-tree-guide"],
   }),
 
@@ -399,7 +391,7 @@ export const guidePages = [
         ],
       },
     ],
-    sources: [steamSource, steamAnnouncementSource, invenReleaseSource],
+    sources: [steamSource, boilingSteamSource],
     related: ["beginner-guide", "is-sephiria-worth-playing", "co-op", "weapons-guide"],
   }),
 ];

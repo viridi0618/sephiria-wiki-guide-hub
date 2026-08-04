@@ -6,6 +6,12 @@ const steamSource = {
   level: "Official" as const,
   lastChecked: "2026-08-04",
 };
+const steamAnnouncementSource = {
+  label: "TEAM HORAY official Steam announcement (1.0 Update)",
+  url: "https://store.steampowered.com/news/app/2436940/view/692016318956700220",
+  level: "Official" as const,
+  lastChecked: "2026-08-04",
+};
 
 const outdatedSteamGuideSource = {
   label: "Steam Community Guide for Sephiria (outdated, earlier game version)",
@@ -13,14 +19,6 @@ const outdatedSteamGuideSource = {
   level: "Community" as const,
   lastChecked: "2026-08-04",
   note: "Outdated community guide for an earlier game version. Use only for historical system names and old-version reference, not for current builds, numbers, bosses, or multiplayer rules.",
-};
-
-const invenReleaseSource = {
-  label: "Sephiria full release report (INVEN Global, EN)",
-  url: "https://labs.invenglobal.com/articles/24352/enjoying-the-movie-odyssey-then-its-time-to-play-assassins-creed-odyssey",
-  level: "Media" as const,
-  lastChecked: "2026-08-04",
-  note: "English media report on the full release and feature summary.",
 };
 
 const version = "1.0";
@@ -146,7 +144,7 @@ export const systemPages = [
         ],
       },
     ],
-    sources: [steamSource, outdatedSteamGuideSource, invenReleaseSource],
+    sources: [steamSource, outdatedSteamGuideSource, steamAnnouncementSource],
     related: ["progression-guide", "upgrade-guide", "builds", "beginner-guide"],
   }),
 
