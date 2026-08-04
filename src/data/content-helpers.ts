@@ -1,8 +1,8 @@
 import type { GuidePageData } from "@/lib/types";
 
 export const common = {
-  published: "2026-08-03",
-  updated: "2026-08-03",
+  published: "2026-08-04",
+  updated: "2026-08-04",
 } satisfies Partial<GuidePageData>;
 
 export const make = (

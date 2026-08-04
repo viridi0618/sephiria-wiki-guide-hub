@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import GuideCard from "@/components/GuideCard";
@@ -42,12 +42,12 @@ const featured = [
   .map(getPage)
   .filter(Boolean);
 const builds = [
-  "builds/sword",
-  "builds/bow",
-  "builds/magic",
-  "builds/spear",
-  "builds/fist",
-  "builds/scythe",
+  "builds/sword-and-shield",
+  "builds/greatsword",
+  "builds/dagger",
+  "builds/crossbow",
+  "builds/staff",
+  "builds/grimoire",
 ]
   .map(getPage)
   .filter(Boolean);
@@ -55,17 +55,17 @@ const faqs = [
   {
     question: "Is Sephiria multiplayer?",
     answer:
-      "Yes — Sephiria supports online co-op for up to 4 players. You can trade items, revive teammates, and tackle the tower together.",
+      "Yes — the Steam store confirms Sephiria supports online co-op for up to 4 players. You can trade items, revive teammates, and tackle the tower together.",
   },
   {
     question: "What platforms is Sephiria on?",
     answer:
-      "Sephiria is available on Steam for Windows and macOS, with full controller support.",
+      "Sephiria is available on Steam for Windows and macOS. Controller compatibility should be checked with the specific device and current game version.",
   },
   {
     question: "How many weapons are in Sephiria?",
     answer:
-      "Sephiria has 6 weapon families — Sword & Shield, Great Sword, Dagger, Crossbow, Staff, and Magic Tome — each with over 50 upgrades.",
+      "Sephiria has 6 weapon families — Sword and Shield, Greatsword, Dagger, Crossbow, Staff, and Grimoire. The Steam store describes each as having more than 50 upgrades.",
   },
 ];
 const lastUpdated = [...pages]
@@ -100,7 +100,7 @@ export default function Home() {
         <figure className="home-hero-media">
           <Image
             src="/screenshots/sephiria-home.webp"
-            alt="Sephiria official screenshot showing Bunnyville village entrance"
+            alt="Sephiria official screenshot showing Bunnyville village entrance with an NPC"
             width={1792}
             height={1024}
             priority
@@ -171,8 +171,8 @@ export default function Home() {
           <h2>Six weapon-family playstyles</h2>
           <p className="section-intro">
             Each build page covers the core combat loop, strengths, weaknesses,
-            and opening choices for its weapon family so you can compare like
-            with like.
+            and playstyle fit for its weapon family so you can compare like with
+            like.
           </p>
           <div className="guide-grid class-grid">
             {builds.map((p) => p && <GuideCard key={p.path} page={p} />)}
@@ -193,14 +193,14 @@ export default function Home() {
           </div>
           <div>
             <p className="section-label">Systems</p>
-            <h2>Destiny Tree</h2>
+            <h2>Destiny Inscription</h2>
             <p>
-              Treat the Destiny Tree as a sequence of decisions. Prioritize the
-              next useful unlock instead of treating progression as a completion
-              checklist.
+              Treat the permanent progression system as a sequence of
+              decisions. Prioritize the next useful upgrade instead of treating
+              progression as a completion checklist.
             </p>
             <div className="inline-links">
-              <Link href="/destiny-tree-guide/">Destiny Tree</Link>
+              <Link href="/destiny-tree-guide/">Destiny Inscription</Link>
               <Link href="/upgrade-guide/">Upgrade Guide</Link>
             </div>
           </div>
