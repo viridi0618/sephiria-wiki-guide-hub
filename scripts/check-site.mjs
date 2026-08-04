@@ -1,4 +1,4 @@
-import fs from "node:fs";
+﻿import fs from "node:fs";
 import path from "node:path";
 
 const out = path.join(process.cwd(), "out");
@@ -35,5 +35,21 @@ for (const route of routes) {
 }
 const robots = fs.existsSync(path.join(out, "robots.txt")) ? fs.readFileSync(path.join(out, "robots.txt"), "utf8") : "";
 if (!robots.includes("Allow: /") || !robots.includes("https://sephiria.wiki/sitemap.xml")) errors.push("Robots output is incorrect.");
+// Content quality checks: reject template boilerplate in production pages
+const banned = [
+  "Build Picker is not available yet",
+  "Build Picker — coming soon",
+  "not another database",
+  "generic(",
+  "buildSections(",
+];
+for (const route of routes) {
+  const file = fileFor(route);
+  if (!fs.existsSync(file)) continue;
+  const html = fs.readFileSync(file, "utf8");
+  for (const term of banned) {
+    if (html.includes(term)) errors.push(`Banned template term "${term}" found on /${route}.`);
+  }
+}
 if (errors.length) { console.error(errors.join("\n")); process.exit(1); }
 console.log(`Site checks passed: ${routes.length} public routes, canonical, sitemap, robots, manifest, schemas, H1s, image alt text, breadcrumbs, and 0 internal dead links.`);
