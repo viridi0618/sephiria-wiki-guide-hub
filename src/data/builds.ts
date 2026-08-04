@@ -27,6 +27,7 @@ interface BuildPageInput {
   warning: string;
   sections: GuideSection[];
   related?: string[];
+  verifiedData?: { weaponId: string; description?: string | null; relatedSkills?: string[] };
 }
 
 function buildPage(input: BuildPageInput): GuidePageData {
@@ -625,6 +626,7 @@ const swordShieldReal = buildPage({
     "Sword and Shield is Sephiria's defensive weapon family. Hold the shield to block while moving, perfect-guard to open a counter, and punish at short range. This guide covers the loop and trade-offs without inventing stats.",
   warning:
     "Accuracy note: perfect-guard timing is community-sourced; confirm counter damage and MP costs in your current patch.",
+  verifiedData: { weaponId: "Sword and Shield", description: "Defensive weapon family with block-while-move and perfect-guard counter-attack.", relatedSkills: ["Call Lightning", "Fire Circus"] },
   sections: swordShieldSections,
 });
 
@@ -681,6 +683,7 @@ const daggerReal = buildPage({
     "Dagger is Sephiria's close-range multi-hit family, presented by community players as high-output with the most dangerous output range. The parry refunds MP (community-reported). This guide covers the loop without inventing exact values.",
   warning:
     "Accuracy note: parry startup frames and MP refund amounts are community-sourced; confirm timing windows in-game.",
+  verifiedData: { weaponId: "Dagger", description: "Close-range multi-hit weapon family. Parry refunds MP (community-reported)." },
   sections: daggerSections,
 });
 

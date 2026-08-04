@@ -13,4 +13,5 @@ export type GuidePageData = {
   heroImage?:string; heroImageAlt?:string; heroImageCaption?:string; heroImageSourceUrl?:string; heroImageWidth?:number; heroImageHeight?:number;
   sections:GuideSection[]; faqs:{question:string;answer:string}[]; related:string[]; sources:GuideSource[];
   contentImages?:ContentImage[]; contentVideos?:ContentVideo[]; guidePath?:GuidePathStep[]; pickerCta?:string; tool?:"build-picker";
+  verifiedData?: { weaponId: string; description?: string | null; relatedSkills?: string[] };
 };

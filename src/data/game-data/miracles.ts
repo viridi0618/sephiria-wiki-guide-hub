@@ -1,0 +1,189 @@
+// Generated from data-extraction/output/miracles.json
+
+export interface MiracleData {
+  id: string;
+  name: string | null;
+  effect: string | null;
+  source_file?: string;
+}
+
+export const miracles: MiracleData[] = [
+  {
+    "id": "AdvancedNegotiation",
+    "name": "Negotiator",
+    "effect": "<tag=Negotiation> {NEGOTIATION} For every point in <tag=Negotiation>, your companion’s damage is increased by 1% ",
+    "source_file": "en-US.json"
+  },
+  {
+    "id": "AegisOfTree",
+    "name": "Attendant",
+    "effect": null,
+    "source_file": "en-US.json"
+  },
+  {
+    "id": "Angler",
+    "name": "Angler",
+    "effect": null,
+    "source_file": "en-US.json"
+  },
+  {
+    "id": "Assassin",
+    "name": "Assassin",
+    "effect": null,
+    "source_file": "en-US.json"
+  },
+  {
+    "id": "Astronomer",
+    "name": "Astronomer",
+    "effect": "Gain the following effects based on the total level of <tag=ItemCategory_Planet> artifacts Lv. 5: Critical Chance +5% Lv. 10: All damage reduced by 6% Lv. 15: Fixed damage +6 Lv. 20: Attacking increases the attack rate of planets ",
+    "source_file": "en-US.json"
+  },
+  {
+    "id": "Berserker",
+    "name": "Berserker",
+    "effect": "All damage {DAMAGE_BONUS}% <tag=Defense> {DEFENSE} ",
+    "source_file": "en-US.json"
+  },
+  {
+    "id": "Chef",
+    "name": "Chef",
+    "effect": null,
+    "source_file": "en-US.json"
+  },
+  {
+    "id": "CriticalHeal",
+    "name": "Fury",
+    "effect": "Reduces max HP by {HP_DECREASE}%, but restores {CRITICAL_HEAL} HP when dealing critical damage with attacks and spells ",
+    "source_file": "en-US.json"
+  },
+  {
+    "id": "Duelist",
+    "name": "Duelist",
+    "effect": null,
+    "source_file": "en-US.json"
+  },
+  {
+    "id": "Electromancer",
+    "name": "Electromancer",
+    "effect": null,
+    "source_file": "en-US.json"
+  },
+  {
+    "id": "Elementalist",
+    "name": "Elementalist",
+    "effect": null,
+    "source_file": "en-US.json"
+  },
+  {
+    "id": "Explorer",
+    "name": "Explorer",
+    "effect": null,
+    "source_file": "en-US.json"
+  },
+  {
+    "id": "FlameSword",
+    "name": "Meteorite Blacksmith",
+    "effect": null,
+    "source_file": "en-US.json"
+  },
+  {
+    "id": "FrostSmith",
+    "name": "Ice Blacksmith",
+    "effect": null,
+    "source_file": "en-US.json"
+  },
+  {
+    "id": "Gambler",
+    "name": "Gambler",
+    "effect": "Acquire {DICE} <tag=Dice> ",
+    "source_file": "en-US.json"
+  },
+  {
+    "id": "General",
+    "name": "General",
+    "effect": null,
+    "source_file": "en-US.json"
+  },
+  {
+    "id": "Guard",
+    "name": "Guard",
+    "effect": null,
+    "source_file": "en-US.json"
+  },
+  {
+    "id": "Hunter",
+    "name": "Hunter",
+    "effect": null,
+    "source_file": "en-US.json"
+  },
+  {
+    "id": "IntelligenceAgent",
+    "name": "Intelligence Agent",
+    "effect": null,
+    "source_file": "en-US.json"
+  },
+  {
+    "id": "Knight",
+    "name": "Knight",
+    "effect": "<tag=FinalWeaponDamage> {DAMAGE}% Can no longer deal critical damage ",
+    "source_file": "en-US.json"
+  },
+  {
+    "id": "MagicCriticalDamage",
+    "name": "Warlock",
+    "effect": null,
+    "source_file": "en-US.json"
+  },
+  {
+    "id": "Meteorologist",
+    "name": "Meteorologist",
+    "effect": "Doubles <tag=DarkCloud> charge gain Can no longer create Blazing Field ",
+    "source_file": "en-US.json"
+  },
+  {
+    "id": "MPShield",
+    "name": "MP Shield",
+    "effect": "Reduces max HP by {HP_DECREASE}%, damage taken is absorbed by <tag=MP> ",
+    "source_file": "en-US.json"
+  },
+  {
+    "id": "Overheat",
+    "name": "Overheat",
+    "effect": "Increases damage received by 10%, but grants an Overheat buff when dealing damage with Blazing Field (Overheat: Grants 2 AP for 6 seconds, max 30 <tag=Stacks>) ",
+    "source_file": "en-US.json"
+  },
+  {
+    "id": "Prologue",
+    "name": "Power of Destiny Alteration",
+    "effect": "Make a <color=yellow>pact</color> with the Tree, granting you the power to change your destiny. ",
+    "source_file": "en-US.json"
+  },
+  {
+    "id": "Rogue",
+    "name": "Rogue",
+    "effect": "<tag=CriticalChance> +15% ",
+    "source_file": "en-US.json"
+  },
+  {
+    "id": "Scholar",
+    "name": "Scholar",
+    "effect": null,
+    "source_file": "en-US.json"
+  },
+  {
+    "id": "SnowSentinel",
+    "name": "Snowfield Sentinel",
+    "effect": null,
+    "source_file": "en-US.json"
+  },
+  {
+    "id": "SpeedUp",
+    "name": "Enhance Speed",
+    "effect": "{MOVE_SPEED}% <tag=MoveSpeed>, {ATTACK_SPEED}% ATKSPD, {COOLDOWN_RESTORE_SPEED}% cooldown recovery speed ",
+    "source_file": "en-US.json"
+  }
+];
+
+export const miracleNames: string[] = miracles
+  .map((m) => m.name)
+  .filter((n) => n !== null);
