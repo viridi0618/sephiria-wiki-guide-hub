@@ -1,0 +1,14 @@
+import { generic,make } from "./content-helpers";
+const buildSections=(weapon:string)=>[
+ {heading:"Who this build is for",paragraphs:[`Choose a ${weapon} approach if its basic rhythm feels readable to you. A good build is one you can execute under pressure, not one that only looks strong in an ideal run.`]},
+ {heading:"Playstyle",paragraphs:["Start by learning spacing, safe attack windows, and a reliable exit. Add complexity only after the core loop feels repeatable."]},
+ {heading:"Core strategy",paragraphs:["Protect consistency first. Pick upgrades that reinforce the same plan, and avoid splitting attention across unrelated ideas."]},
+ {heading:"Strengths",paragraphs:["A focused plan makes decisions faster, preserves practice value between runs, and gives you a clear way to judge each upgrade."]},
+ {heading:"Weaknesses",paragraphs:["Overcommitting to one pattern can make an unfamiliar encounter harder. Keep one flexible option for positioning or recovery."]},
+ {heading:"Early game tips",paragraphs:["Use early encounters to test reach, recovery time, and the safest repeatable sequence. Do not judge a run by one lucky room."]},
+ {heading:"Boss tips",paragraphs:["Spend the first safe cycle observing. Take the smallest reliable punish, then expand it only when you can still evade the response."]},
+ {heading:"Beginner mistakes",paragraphs:["Copying an advanced setup without understanding its purpose, chasing every offered synergy, and trading health for uncertain damage are common traps."]},
+ {heading:"Related guides",paragraphs:["Continue with the Boss Guide for encounter habits, the Progression Guide for priorities, and the Weapons Guide for decision criteria."]},
+];
+export const buildsHub=make({path:"builds",title:"Sephiria Builds",h1:"Sephiria Builds",eyebrow:"BUILD WITH INTENT",description:"Compare playstyles and choose a coherent plan.",answer:"The best build is the one whose strategy you understand and can repeat. These pages explain trade-offs without claiming unverified item or skill data.",category:"Builds",pageType:"category",sections:generic("choosing a build"),related:["beginner-guide","weapons-guide","boss-guide"],pickerCta:"Find the playstyle that fits you — Build Picker coming soon"});
+export const buildPages=[buildsHub,...["sword","bow","magic","spear","fist","scythe"].map(weapon=>make({path:`builds/${weapon}`,title:`${weapon[0].toUpperCase()+weapon.slice(1)} Build`,h1:`${weapon[0].toUpperCase()+weapon.slice(1)} Build`,eyebrow:"PLAYSTYLE GUIDE",description:`A practical ${weapon} build framework focused on decisions, not invented data.`,answer:`This ${weapon} build guide is a decision framework. It does not invent equipment names, skill effects, or exact values.`,warning:"Accuracy note: verify version-specific options in the current game build.",category:"Builds",categoryPath:"builds",sections:buildSections(weapon),related:["builds","beginner-guide","weapons-guide","boss-guide"]}))];

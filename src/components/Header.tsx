@@ -1,0 +1,2 @@
+import Image from "next/image";import Link from "next/link";import SiteNavigation from "./SiteNavigation";import {navigation} from "@/data/navigation";
+export default function Header(){return <header className="site-header"><div className="header-inner"><Link href="/" className="brand" aria-label="Sephiria Wiki home"><span className="brand-logo"><Image src="/favicon.png" alt="Sephiria Wiki rabbit emblem" width={40} height={40} priority/></span><span><strong>Sephiria</strong><small>Wiki</small></span></Link><SiteNavigation groups={navigation}/></div></header>}
