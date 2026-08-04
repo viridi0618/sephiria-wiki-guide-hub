@@ -7,6 +7,13 @@ const steamSource = {
   lastChecked: "2026-08-04",
 };
 
+const steamAnnouncementSource = {
+  label: "TEAM HORAY official Steam announcement (1.0 Update)",
+  url: "https://store.steampowered.com/news/app/2436940/view/692016318956700220",
+  level: "Official" as const,
+  lastChecked: "2026-08-04",
+};
+
 const outdatedSteamGuideSource = {
   label: "Steam Community Guide for Sephiria (outdated, earlier game version)",
   url: "https://steamcommunity.com/sharedfiles/filedetails/?id=3474238982",
@@ -68,7 +75,7 @@ export const guidePages = [
         heading: "Starting in Bunnyville",
         paragraphs: [
           "Bunnyville is your hub — the tower-top village where permanent progression lives. Between runs, you return here to spend the progression currency on Destiny Inscription nodes and prepare for the next descent. Think of Bunnyville as your base of operations: everything permanent happens here, while everything inside the tower is run-specific and resets when you die or complete a run.",
-          "Before entering the tower, check whether your Destiny Inscription has any affordable nodes that improve survivability. You do not need to optimize this immediately, but making at least one small permanent upgrade between runs builds long-term momentum.",
+          "Before entering the tower, review any available permanent upgrades between runs and confirm their effects in the current version. You do not need to optimize this immediately, but making at least one small permanent upgrade between runs builds long-term momentum.",
         ],
       },
       {
@@ -179,7 +186,7 @@ export const guidePages = [
     description:
       "Understand Sephiria's two-layer progression — in-run growth through artifacts, the Anvil, and Enchantment, and permanent growth through the Destiny Inscription.",
     answer:
-      "Sephiria has two progression layers. In-run growth includes character level, artifact and tablet collection, and weapon modifications from the Anvil — all reset after each run. Permanent growth uses progression currency earned from runs to unlock Destiny Inscription nodes in Bunnyville. New players should focus on survival nodes first, then expand build-enabling options.",
+      "Sephiria has two progression layers. In-run growth includes character level, artifact and tablet collection, and weapon modifications from the Anvil — all reset after each run. Permanent growth uses progression currency earned from runs to unlock Destiny Inscription nodes in Bunnyville. Exact permanent upgrade priorities are not officially documented.",
     category: "Guides",
     version,
     platforms,
@@ -196,41 +203,23 @@ export const guidePages = [
         heading: "Two Layers of Progression",
         paragraphs: [
           "Sephiria separates progression into two distinct layers. The in-run layer includes everything you build during a single descent: your character level, the artifacts and tablets you collect, weapon modifications from the Anvil, and artifact enhancement through Enchantment. All of this resets when the run ends.",
-          "The permanent layer persists across runs and lives in Bunnyville. Here you spend the progression currency earned through runs on the Destiny Inscription, Sephiria's permanent progression system. Exact node effects and optimal routes should be checked in the current version.",
-          "Understanding this split is essential: a run that ends in death is not wasted if you earned progression currency and unlocked a useful node. Always balance in-run optimization with long-term investment.",
+          "The permanent layer persists across runs and lives in Bunnyville. Here you spend the progression currency earned through runs on the Destiny Inscription, Sephiria's permanent progression system.",
+          "Exact permanent upgrade priorities are not officially documented and should be checked in the current version.",
         ],
       },
       {
         heading: "In-Run Growth Systems",
         paragraphs: [
-          "During a run, your character grows through several interconnected systems. Character level increases as you defeat enemies, providing baseline stat growth. Artifacts are placed in slots and provide passive bonuses; tablets are placed alongside artifacts for more specialized enhancements.",
-          "The Anvil lets you modify your weapon, choosing from offered upgrade paths. The Steam store confirms each weapon family has more than 50 upgrades, so no two runs will upgrade the same way. Enchantment is used for artifact enhancement.",
-          "Together, these systems create a web of interdependent choices: your artifact picks influence which Anvil modifications are valuable, which in turn affects how you approach Enchantment.",
+          "During a run, your character grows through several interconnected systems. Character level increases as you defeat enemies, providing baseline stat growth. Artifacts and tablets are part of the in-run build system.",
+          "The Anvil is used for weapon modification or weapon upgrades. The Steam store describes each weapon family as having more than 50 upgrades, so no two runs will upgrade the same way. Enchantment is used for artifact enhancement.",
+          "Exact upgrade pools, costs, and interaction details should be checked in the current version.",
         ],
       },
       {
         heading: "Permanent Growth: Destiny Inscription",
         paragraphs: [
           "The Destiny Inscription is Sephiria's permanent progression system. You unlock nodes using the progression currency earned from runs. Each node provides a lasting benefit that carries into future runs.",
-          "Because the tree has limited capacity, unlocking nodes creates meaningful priority decisions. The key insight is that permanent progression rewards repeated play — incremental investments compound into a noticeably stronger starting position over dozens of runs.",
-          "Exact node effects, costs, and optimal routes should be checked in the current version, as official documentation does not publish a full node list.",
-        ],
-      },
-      {
-        heading: "Resource Priority for New Players",
-        paragraphs: [
-          "For your first runs, direct currency toward survival-focused upgrades: maximum health and healing efficiency. These reduce the frequency of early deaths and give you more time per run to learn enemy patterns and weapon mechanics.",
-          "Once you can consistently reach the middle chapters, start expanding your options: more bag capacity and additional starting weapon options. These do not directly increase survivability but they expand the range of strategies you can execute.",
-          "Resist the urge to spread currency thinly. Concentrating on a cluster of related upgrades creates a more noticeable power spike than scattering points across unrelated branches.",
-        ],
-      },
-      {
-        heading: "Recommended Progression Path",
-        paragraphs: [
-          "Phase one — survival foundation: Unlock health and healing nodes in the Destiny Inscription. Focus on learning one weapon family thoroughly. Goal: consistently reach chapter three.",
-          "Phase two — build literacy: Unlock bag and artifact slot expansions. Start experimenting with different artifact and tablet combinations. Goal: consistently reach later chapters with a coherent build.",
-          "Phase three — specialization: Invest in upgrades that support your preferred weapon family and build archetype. Begin tackling the harder chapters and refining boss strategies. Goal: consistent full-run completions.",
-          "Phase four — mastery: Explore alternative weapon families, experiment with advanced build synergies, and push for efficiency in co-op or challenge runs. By this point, your Destiny Inscription should provide a strong, flexible foundation that supports any playstyle.",
+          "Exact node effects, costs, unlock conditions, layout, and optimal routes should be checked in the current version, as official documentation does not publish a full node list.",
         ],
       },
     ],
@@ -354,13 +343,13 @@ export const guidePages = [
     h1: "Sephiria Review",
     eyebrow: "WHO IS IT FOR?",
     description:
-      "A grounded review of Sephiria 1.0 — combat depth, build freedom, pixel art, and co-op against weapon accessibility. Clear recommendation included.",
+      "An editorial review of Sephiria 1.0 — combat depth, build freedom, pixel art, and co-op against weapon accessibility. Clear recommendation included.",
     answer:
-      "Sephiria 1.0 is a strong top-down action Roguelite with deep combat across six weapon families — Sword and Shield, Greatsword, Dagger, Crossbow, Staff, and Grimoire — and excellent pixel art from the Dungreed team. It supports 4-player online co-op and offers substantial build freedom. Downsides include steep learning curves on some weapons. Recommended for action Roguelite fans who value build crafting and replayability.",
+      "Sephiria 1.0 is a strong top-down action Roguelite with deep combat across six weapon families — Sword and Shield, Greatsword, Dagger, Crossbow, Staff, and Grimoire — and excellent pixel art from the Dungreed team. It supports 4-player online co-op and offers substantial build freedom. Downsides include steep learning curves on some weapons. Recommended for action Roguelite fans who value build crafting and replayability. These judgments are editorial opinions; the official feature references below are confirmed store facts.",
     category: "Guides",
     version,
     platforms,
-    informationType,
+    informationType: "Editorial review with official feature references",
     heroImage: "/screenshots/sephiria-weapons.webp",
     heroImageAlt:
       "Official Sephiria screenshot showing grassland combat and a weapon attack arc.",
@@ -372,44 +361,45 @@ export const guidePages = [
       {
         heading: "Overview",
         paragraphs: [
-          "Sephiria is a top-down action Roguelite developed by TEAM HORAY, the studio behind Dungreed. The 1.0 version was released on July 31, 2026, for Windows and macOS. You play as a rabbit warrior descending from the tower-top village of Bunnyville into a high tower filled with enemies, bosses, and treasures across six chapters.",
-          "The game features six weapon families — Sword and Shield, Greatsword, Dagger, Crossbow, Staff, and Grimoire. The Steam store describes each weapon family as having more than 50 upgrades, and the game ships with 12 interface/subtitle languages including Simplified Chinese. The permanent progression system, Destiny Inscription, is funded by progression currency earned in runs.",
+          "Sephiria is a top-down action Roguelite developed by TEAM HORAY, the studio behind Dungreed. The full release was announced for July 31, 2026, for Windows and macOS. You play as a rabbit warrior descending from the tower-top village of Bunnyville into a high tower filled with enemies, bosses, and treasures across six chapters.",
+          "The official store confirms six weapon families — Sword and Shield, Greatsword, Dagger, Crossbow, Staff, and Grimoire — each described as having more than 50 upgrades, six chapters, more than 60 enemies, more than 10 bosses, and online co-op for up to four players. The permanent progression system, Destiny Inscription, is funded by progression currency earned in runs.",
           "This review evaluates combat depth, build freedom, presentation, co-op, and known weaknesses to help you decide whether Sephiria fits your tastes. Check Steam for current regional pricing and review status.",
+          "The judgments about combat quality, accessibility, replayability, and presentation in this review are editorial opinions, not official facts.",
         ],
       },
       {
         heading: "Strengths",
         paragraphs: [
-          "Combat depth is Sephiria's headline strength. Six distinct weapon families each have their own attack rhythm, range, and defensive options, meaning the game effectively offers six different ways to play. The Steam store confirms each family has more than 50 upgrades, so even within a single weapon family, no two runs feel identical. Boss encounters are telegraph-based and reward observation, making victories feel earned rather than lucky.",
-          "Build freedom is exceptional. With artifacts, tablets, and the interplay between the Anvil and Enchantment, the number of viable builds is vast. The Destiny Inscription adds a permanent progression layer that rewards repeated play, creating a satisfying long-term power curve.",
-          "Pixel art presentation is top-tier. TEAM HORAY's experience with Dungreed shows in clean, readable animations, distinct enemy silhouettes, and environments that communicate gameplay information visually.",
-          "Co-op is integrated, not bolted on: up to 4 players can join online, trade items, and revive each other, per the official store. The game also ships with 12 interface/subtitle languages, broadening accessibility.",
+          "Combat depth is Sephiria's headline strength, in this reviewer's view. Six distinct weapon families each have their own attack rhythm, range, and defensive options, meaning the game effectively offers six different ways to play. The official store confirms each family has more than 50 upgrades, so even within a single weapon family, no two runs feel identical.",
+          "Build freedom is a major draw. With artifacts, tablets, and the interplay between the Anvil and Enchantment, the number of viable builds is vast. The Destiny Inscription adds a permanent progression layer that rewards repeated play, creating a satisfying long-term power curve.",
+          "Pixel art presentation is a standout. TEAM HORAY's experience with Dungreed shows in clean, readable animations, distinct enemy silhouettes, and environments that communicate gameplay information visually.",
+          "Co-op is a genuine part of the game: the official store confirms up to 4 players can join online, trade items, and revive each other.",
         ],
       },
       {
         heading: "Weaknesses",
         paragraphs: [
           "Some weapon families have steep accessibility curves. The Staff and Grimoire, in particular, require understanding projectile behavior, cooldown management, and positioning in ways that melee weapons do not. New players who pick these weapons first may struggle more than necessary.",
-          "The sheer volume of content — hundreds of artifacts, tablets, and weapon upgrades — can be overwhelming for players who prefer curated, focused experiences. If you dislike reading item descriptions or experimenting with combinations, the build-crafting layer may feel like busywork rather than engagement.",
+          "The sheer volume of content — artifacts, tablets, and weapon upgrades — can be overwhelming for players who prefer curated, focused experiences. If you dislike reading item descriptions or experimenting with combinations, the build-crafting layer may feel like busywork rather than engagement.",
         ],
       },
       {
         heading: "Who Should Play It",
         paragraphs: [
-          "Sephiria is recommended for players who enjoy action Roguelites with meaningful build decisions — fans of games like Hades, Dead Cells, or Dungreed itself will find familiar satisfaction here. If you value replayability, co-op gaming with friends, and pixel art aesthetics, Sephiria delivers on all three.",
+          "Sephiria is recommended, editorially, for players who enjoy action Roguelites with meaningful build decisions — fans of games like Hades, Dead Cells, or Dungreed itself will find familiar satisfaction here. If you value replayability, co-op gaming with friends, and pixel art aesthetics, Sephiria delivers on all three.",
           "Players who prefer linear, story-driven experiences or who dislike repeated runs and permadeath mechanics may find the Roguelite structure frustrating. Similarly, players who want a curated, guided experience with minimal decision load may find the open-ended build system more burdensome than liberating.",
-          "If you enjoyed Dungreed, Sephiria is an easy recommendation — it refines and expands on the same design philosophy with a larger scope, more weapon variety, and full co-op support.",
+          "If you enjoyed Dungreed, Sephiria is an easy recommendation, editorially — it refines and expands on the same design philosophy with a larger scope and more weapon variety.",
         ],
       },
       {
         heading: "Verdict",
         paragraphs: [
-          "Sephiria 1.0 is a confidently crafted action Roguelite that earns its place in the genre. The combat is deep and readable, the build space is vast without being arbitrary, the pixel art is excellent, and the co-op integration is genuine rather than superficial. Some weapon accessibility issues are real but do not undermine the core experience.",
+          "In this reviewer's opinion, Sephiria 1.0 is a confidently crafted action Roguelite that earns its place in the genre. The combat is deep and readable, the build space is vast without being arbitrary, the pixel art is excellent, and the co-op integration is genuine rather than superficial. Some weapon accessibility issues are real but do not undermine the core experience.",
           "For action Roguelite fans — especially those who enjoyed Dungreed — Sephiria is recommended. The combination of six weapon families, permanent meta-progression, and 4-player co-op provides enough content and variety to justify checking out for anyone who finds the core loop appealing. Start with the Sword and Shield, follow the Beginner Guide, and let the game teach you one system at a time.",
         ],
       },
     ],
-    sources: [steamSource, v1AnnouncementSource, releaseAnnouncementSource],
+    sources: [steamSource, steamAnnouncementSource, v1AnnouncementSource],
     related: ["beginner-guide", "is-sephiria-worth-playing", "co-op", "weapons-guide"],
   }),
 ];

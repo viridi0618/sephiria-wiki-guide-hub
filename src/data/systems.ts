@@ -36,7 +36,7 @@ export const systemPages = [
     description:
       "Compare Sephiria's six weapon families — Sword and Shield, Greatsword, Dagger, Crossbow, Staff, and Grimoire — by range, rhythm, and survival.",
     answer:
-      "Sephiria has six weapon families: Sword and Shield (defensive), Greatsword (slow, heavy hits), Dagger (fast, close-range), Crossbow (ranged), Staff (magic projectiles), and Grimoire (spell rotation). The Steam store confirms each has more than 50 upgrades. Choose by the combat rhythm you enjoy and the distance you prefer to fight at.",
+      "Sephiria has six weapon families: Sword and Shield (defensive), Greatsword (slow, heavy hits), Dagger (fast, close-range), Crossbow (ranged), Staff (magic projectiles), and Grimoire (spell rotation). The Steam store describes each weapon family as having more than 50 upgrades. Choose by the combat rhythm you enjoy and the distance you prefer to fight at.",
     category: "Gameplay",
     version,
     platforms,
@@ -85,9 +85,9 @@ export const systemPages = [
       {
         heading: "Weapon Upgrade Paths",
         paragraphs: [
-          "Each weapon family has more than 50 possible upgrades, offered through the Anvil during runs. The Anvil presents a selection of upgrades when you interact with it, and you choose which to apply. The Steam store describes each weapon family as having more than 50 upgrades.",
-          "Because the offerings vary, you will not see the same upgrade sequence every run. The key is to identify an upgrade direction early — for example, prioritizing attack speed on the Dagger, or heavy single-hit damage and reach on the Greatsword — and then take upgrades that reinforce that direction.",
-          "Enchantment is used for artifact enhancement, complementing the Anvil's weapon modifications. Prioritize a clear weapon direction first, then use Enchantment to amplify the build you have committed to.",
+          "The Anvil provides weapon-family upgrade choices during runs. Exact effects vary and should be checked in the current version. The Steam store describes each weapon family as having more than 50 upgrades, so the offerings vary significantly from run to run.",
+          "Because the offerings vary, you will not see the same upgrade sequence every run. The key is to identify an upgrade direction early and then take upgrades that reinforce that direction.",
+          "Enchantment is used for artifact enhancement, complementing the Anvil's weapon modifications.",
         ],
       },
     ],
@@ -101,9 +101,9 @@ export const systemPages = [
     h1: "Sephiria Destiny Inscription Guide",
     eyebrow: "PRIORITIZE THE PATH",
     description:
-      "Understand Sephiria's Destiny Inscription — the permanent progression system — and what to verify in the current version.",
+      "Understand Sephiria's Destiny Inscription — the permanent progression system — and what is not officially documented.",
     answer:
-      "The Destiny Inscription is Sephiria's permanent progression system, unlocked with the progression currency earned from runs. Nodes provide permanent bonuses that carry into future runs. Exact node effects and optimal routes should be checked in the current version. Prioritize survival upgrades first, then build-enabling options.",
+      "The Destiny Inscription is Sephiria's permanent progression system, unlocked with the progression currency earned from runs. Nodes provide permanent bonuses that carry into future runs. Exact node effects, costs, unlock conditions, layout, and optimal routes should be checked in the current version.",
     category: "Systems",
     version,
     platforms,
@@ -121,28 +121,27 @@ export const systemPages = [
         paragraphs: [
           "The Destiny Inscription is Sephiria's permanent progression system. Unlike in-run upgrades that reset when a run ends, Destiny Inscription nodes provide permanent bonuses that apply to every subsequent run. This is where your long-term power growth lives.",
           "The system is accessed from Bunnyville between runs. Every visit is an opportunity to assess your current state, decide on the next node, and spend accumulated progression currency.",
-          "Exact node effects, costs, and optimal routes should be checked in the current version, as official documentation does not publish a full node list.",
         ],
       },
       {
-        heading: "Earning Progression Currency",
+        heading: "What Is Confirmed?",
         paragraphs: [
-          "Progression currency is used to unlock Destiny Inscription nodes and is earned through runs. Exact rules for how much is awarded per boss, per run, or in co-op are not published in official materials and should be verified in the current version.",
-          "Do not assume failed runs always grant currency or that specific sources award fixed amounts. Treat any specific economy figures as unverified until confirmed in-game.",
+          "The Destiny Inscription is Sephiria's permanent progression system.",
+          "Progression currency is used within the Destiny Inscription.",
+          "Nodes are unlocked using progression currency earned from runs.",
         ],
       },
       {
-        heading: "Prioritizing Upgrades",
+        heading: "What Is Not Officially Documented?",
         paragraphs: [
-          "For your first runs, direct currency toward survivability-focused upgrades: maximum health and healing efficiency. These reduce the frequency of early deaths and give you more time per run to learn enemy patterns and weapon mechanics.",
-          "Once you can consistently reach the middle chapters, start expanding your options: more bag capacity and additional starting weapon options. These do not directly increase survivability but they expand the range of strategies you can execute.",
-          "Resist the urge to spread currency thinly across the system. Concentrating on a cluster of related upgrades creates a more noticeable power spike than scattering points across unrelated branches.",
+          "Exact node effects, costs, unlock conditions, layout, and optimal routes are not published in official materials.",
+          "Official documentation does not publish a full node list, so specific node categories, vendor unlocks, and starting-weapon options are not stated here.",
         ],
       },
       {
-        heading: "What to Verify in the Current Version",
+        heading: "How to Verify It in the Current Version",
         paragraphs: [
-          "Specific node categories, unlock conditions, vendor unlocks, and side-bag recommendations are not published in official materials. Confirm them in the current version before treating them as fact.",
+          "Because the details are not officially documented, confirm node effects, costs, and routes in the current version before treating them as fact.",
           "The core system is confirmed: the Destiny Inscription is the permanent progression system, and progression currency is used within it. Beyond that, check the current version.",
         ],
       },
@@ -157,9 +156,9 @@ export const systemPages = [
     h1: "Sephiria In-Run Upgrade Guide",
     eyebrow: "INVEST WITH A REASON",
     description:
-      "Master Sephiria's in-run upgrade flow: artifact acquisition, tablet reinforcement, Anvil weapon modification, and Enchantment artifact enhancement.",
+      "Understand Sephiria's in-run upgrade systems: artifacts, tablets, the Anvil for weapon modification, and Enchantment for artifact enhancement.",
     answer:
-      "Sephiria's in-run upgrade flow includes acquiring artifacts from rooms and enemies, reinforcing with tablets, modifying weapons at the Anvil, and enhancing artifacts through Enchantment. Each stage reinforces the others — your artifact picks shape Anvil priorities. Always choose upgrades that reinforce a single coherent direction.",
+      "Sephiria's in-run upgrade systems include artifacts and tablets, weapon modification at the Anvil, and artifact enhancement through Enchantment. Exact upgrade pools, costs, timing priorities, slot rules, and interaction details should be checked in the current version. Always choose upgrades that reinforce a single coherent direction.",
     category: "Systems",
     version,
     platforms,
@@ -173,50 +172,39 @@ export const systemPages = [
     heroImageHeight: 720,
     sections: [
       {
-        heading: "The In-Run Upgrade Flow",
+        heading: "The In-Run Upgrade Systems",
         paragraphs: [
-          "During a single run in Sephiria, your character grows through a sequence of interconnected upgrade systems. The main confirmed systems are: artifact acquisition, tablet reinforcement, Anvil weapon modification, and Enchantment artifact enhancement.",
-          "Each stage is not strictly sequential — you encounter them organically as you progress through the tower. However, the order in which you engage with them matters. Artifacts and tablets form the foundation of your build; the Anvil and Enchantment amplify it.",
+          "During a single run in Sephiria, your character grows through interconnected upgrade systems. The confirmed systems are: artifacts and tablets as part of the in-run build system, the Anvil for weapon modification or weapon upgrades, and Enchantment for artifact enhancement.",
+          "Each system is encountered organically as you progress through the tower. The order in which you engage with them matters, but exact timing priorities are not officially documented.",
           "The guiding principle throughout is coherence: every upgrade should either reinforce your current direction or fix a specific weakness. Avoid taking an upgrade simply because it is available.",
         ],
       },
       {
-        heading: "Artifacts: Acquisition and Placement",
+        heading: "Artifacts and Tablets",
         paragraphs: [
-          "Artifacts are passive bonuses acquired from rooms, enemies, and chests during a run. Each artifact provides a specific passive effect — increased damage, health, movement speed, cooldown reduction, or more specialized bonuses.",
-          "Artifacts are placed in artifact slots, and the number of available slots can be increased through Destiny Inscription permanent upgrades. This means your meta-progression directly affects how many artifacts you can equip in a run.",
-          "When choosing between artifact offerings, prioritize foundational stats early — health, defense, and damage — before chasing specialized synergies.",
-        ],
-      },
-      {
-        heading: "Tablets: Reinforcement",
-        paragraphs: [
-          "Tablets are the second layer of passive upgrades, placed alongside artifacts. They tend to offer more specialized or conditional enhancements. A tablet might boost a specific damage type, enhance a particular weapon family, or provide bonuses under specific conditions.",
-          "Tablets are best chosen after you have a clear build direction. Early in a run, when your artifact picks are still forming your identity, tablet choices are harder to evaluate.",
-          "Do not feel obligated to fill every tablet slot immediately. An empty slot costs nothing; a wasted slot that provides a bonus you cannot use is an opportunity cost.",
+          "Artifacts and tablets are part of the in-run build system. They provide passive and specialized enhancements that shape your run.",
+          "Exact acquisition sources, slot rules, and interaction details should be checked in the current version.",
         ],
       },
       {
         heading: "Anvil: Weapon Modification",
         paragraphs: [
-          "The Anvil is where you modify your weapon during a run. When you interact with an Anvil, you are presented with a selection of upgrade options specific to your current weapon family. The Steam store confirms each weapon family has more than 50 upgrades, so the offerings vary significantly from run to run.",
-          "Anvil upgrades can change attack speed, add elemental effects, introduce new attack patterns, extend range, or enhance defensive properties. The key decision at each Anvil visit is whether the offered upgrades reinforce your current build direction.",
-          "Prioritize Anvil upgrades that create synergy with your artifacts and tablets. Think of the Anvil as the point where your passive build (artifacts and tablets) meets your active combat style (weapon upgrades).",
+          "The Anvil is used for weapon modification or weapon upgrades during a run. The Steam store describes each weapon family as having more than 50 upgrades, so the offerings vary significantly from run to run.",
+          "The key decision at each Anvil visit is whether the offered upgrades reinforce your current build direction. Exact effects and costs should be checked in the current version.",
         ],
       },
       {
         heading: "Enchantment: Artifact Enhancement",
         paragraphs: [
           "Enchantment is used for artifact enhancement. It complements the Anvil's weapon modifications by strengthening the artifacts that support your build.",
-          "Because artifact enhancement amplifies everything else, it is best used after you have committed to a build direction. Wait until you are confident in your weapon and artifact loadout before spending resources on Enchantment.",
-          "If you have a choice between an Anvil upgrade and Enchantment, consider the state of your build. Early in a run, Anvil upgrades that shape your direction are often more valuable. Later, when your build is established, artifact enhancement provides a larger effective power increase.",
+          "Exact upgrade pools, costs, and timing priorities should be checked in the current version.",
         ],
       },
       {
         heading: "Additional Options",
         paragraphs: [
-          "Community guides describe additional run systems such as item conversion and special room bonuses, but their exact rules are not published in official materials. Use them as reported by community players and confirm the behavior in the current version.",
-          "The confirmed core is: artifacts, tablets, the Anvil for weapon modification, and Enchantment for artifact enhancement. Anything beyond that should be verified in-game.",
+          "Community guides describe additional run systems, but their exact rules are not published in official materials. Use them as reported by community players and confirm the behavior in the current version.",
+          "The confirmed core is: artifacts and tablets as part of the in-run build system, the Anvil for weapon modification, and Enchantment for artifact enhancement. Anything beyond that should be verified in-game.",
         ],
       },
     ],

@@ -9,7 +9,10 @@ const steamSource = {
 
 const version = "1.0";
 const platforms = "PC (Windows, macOS)";
-const informationType = "Official feature verification";
+const informationTypeMultiplayer = "Official feature verification";
+const informationTypeController = "Feature verification with compatibility caveat";
+const informationTypeWorthPlaying = "Editorial fit assessment";
+const informationTypeHard = "Editorial difficulty assessment";
 
 export const faqPages = [
   make({
@@ -18,13 +21,13 @@ export const faqPages = [
     h1: "Is Sephiria Worth Playing?",
     eyebrow: "QUICK ANSWER",
     description:
-      "A direct fit check for action roguelite fans considering Sephiria after its 1.0 launch.",
+      "An editorial fit check for action roguelite fans considering Sephiria after its 1.0 launch.",
     answer:
       "Sephiria is worth considering if you enjoy action roguelites with deep build crafting. Check Steam for current regional pricing and review status before deciding.",
     category: "FAQ",
     version,
     platforms,
-    informationType,
+    informationType: informationTypeWorthPlaying,
     sources: [steamSource],
     sections: [
       {
@@ -37,7 +40,7 @@ export const faqPages = [
       {
         heading: "Current state and value",
         paragraphs: [
-          "Sephiria left Early Access and launched its 1.0 release on 2026-07-31, after an EA period that ran from 2025-04-03. The shipped version spans six chapters and more than 10 bosses, with Simplified Chinese interface and subtitles among 12 interface/subtitle languages.",
+          "TEAM HORAY announced July 31, 2026 as the full-release date for Sephiria, after an EA period that ran from 2025-04-03. The shipped version spans six chapters and more than 10 bosses, with Simplified Chinese interface and subtitles supported.",
           "Check Steam for current regional pricing, discounts, and review status — these change over time and vary by region.",
         ],
       },
@@ -64,7 +67,7 @@ export const faqPages = [
     category: "FAQ",
     version,
     platforms,
-    informationType,
+    informationType: informationTypeMultiplayer,
     sources: [steamSource],
     sections: [
       {
@@ -98,19 +101,19 @@ export const faqPages = [
     h1: "Is Sephiria Hard?",
     eyebrow: "QUICK ANSWER",
     description:
-      "Where Sephiria's difficulty comes from and which weapons ease the learning curve.",
+      "An editorial assessment of where Sephiria's difficulty comes from and which weapons ease the learning curve.",
     answer:
-      "Sephiria is moderately challenging — harder than most casual roguelites, but fair once you learn enemy patterns.",
+      "Sephiria's difficulty is subjective. It emphasizes repeated runs, enemy-pattern learning, build decisions, and familiarity with weapon timing.",
     category: "FAQ",
     version,
     platforms,
-    informationType,
+    informationType: informationTypeHard,
     sources: [steamSource],
     sections: [
       {
         heading: "Where the difficulty comes from",
         paragraphs: [
-          "Sephiria's challenge comes from pattern recognition and decision load rather than raw reaction speed. Early encounters are approachable, but enemy telegraphs get faster and more layered as you push deeper into the six chapters and toward the more than 10 bosses.",
+          "Sephiria's challenge, in most players' experience, comes from pattern recognition and decision load rather than raw reaction speed. Early encounters are approachable, but enemy telegraphs get faster and more layered as you push deeper into the six chapters and toward the more than 10 bosses.",
           "The game also does not explain every system explicitly. You learn enemy patterns, upgrade synergies, and weapon mechanics through play, which can feel opaque during your first few runs.",
         ],
       },
@@ -118,7 +121,7 @@ export const faqPages = [
         heading: "The learning curve",
         paragraphs: [
           "If you have played other action roguelites, the curve will feel familiar. Newcomers to the genre should expect several runs to internalize the basic combat rhythm before runs start clicking.",
-          "Boss encounters are the main difficulty spikes. They demand observation, positioning discipline, and a willingness to learn from repeated attempts — but their attacks are telegraphed, so deaths feel earned rather than random.",
+          "Boss encounters are commonly cited as the main difficulty spikes. They demand observation, positioning discipline, and a willingness to learn from repeated attempts.",
         ],
       },
       {
@@ -144,7 +147,7 @@ export const faqPages = [
     category: "FAQ",
     version,
     platforms,
-    informationType,
+    informationType: informationTypeController,
     sources: [steamSource],
     sections: [
       {
