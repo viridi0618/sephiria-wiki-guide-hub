@@ -1,19 +1,22 @@
-// Sephiria version metadata — single source of truth for the game version.
+// Sephiria version metadata — single source of truth.
 // Used by: VerifiedDataCard, future Patch Impact Checker, guide page freshness.
 
 export const gameVersion = {
+  /** Shipped game version */
   version: "1.0",
-  source: "TEAM HORAY official full-release announcement",
+  /** Source of the version information */
+  source: "TEAM HORAY official full-release announcement on Steam",
+  /** Official full-release date */
   date: "2026-07-31",
+  /** Early access start date */
   earlyAccessDate: "2025-04-03",
 } as const;
 
-/** Returns a human-readable patch freshness indicator. */
-export function versionFreshness(): string {
-  const now = new Date();
-  const release = new Date(gameVersion.date);
-  const daysSince = Math.floor((now.getTime() - release.getTime()) / 86400000);
-  if (daysSince <= 14) return "Recent release — data is current.";
-  if (daysSince <= 90) return "Data reflects the shipped 1.0 version. Check Steam news for patches.";
-  return "Data may not reflect post-launch patches. Verify in-game for the latest changes.";
-}
+export const dataSource = {
+  /** Version of the data extraction pipeline */
+  dataSourceVersion: "1.0.0",
+  /** Sources used for data extraction */
+  sources: ["en-US.json", "Steam store page", "Steam 1.0 update announcement"],
+  /** When the data was last verified against live game files */
+  lastVerified: "2026-08-04",
+} as const;
