@@ -1,6 +1,35 @@
 {
-  "name":"sephiria-wiki-guide-hub","version":"0.2.0","private":true,"type":"module","engines":{"node":">=24"},
-  "scripts":{"dev":"next dev","build":"next build","lint":"eslint","typecheck":"tsc --noEmit","check:site":"node scripts/check-site.mjs","check:navigation":"node scripts/check-navigation.mjs","check:english-seo":"node scripts/check-english-seo.mjs","verify":"npm run lint && npm run typecheck && npm run build && npm run check:site && npm run check:navigation && npm run check:english-seo"},
-  "dependencies":{"next":"16.2.12","react":"19.2.4","react-dom":"19.2.4"},
-  "devDependencies":{"@tailwindcss/postcss":"^4","@types/node":"^20","@types/react":"^19","@types/react-dom":"^19","eslint":"^9","eslint-config-next":"16.2.12","tailwindcss":"^4","typescript":"^5"}
+  "name": "sephiria-wiki-guide-hub",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit",
+    "check:site": "node scripts/check-site.mjs",
+    "check:navigation": "node scripts/check-navigation.mjs",
+    "check:english-seo": "node scripts/check-english-seo.mjs",
+    "verify": "node scripts/check-site.mjs && node scripts/check-navigation.mjs && node scripts/check-english-seo.mjs && node scripts/check-build-data.mjs",
+    "check:build-data": "node scripts/check-build-data.mjs"
+  },
+  "dependencies": {
+    "next": "16.2.12",
+    "react": "19.2.4",
+    "react-dom": "19.2.4"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.12",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
 }

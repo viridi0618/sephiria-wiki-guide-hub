@@ -8,6 +8,7 @@ type AnswerKey = "range" | "priority" | "speed" | "risk" | "mode";
 type Answers = Partial<Record<AnswerKey, string>>;
 
 type WeaponId = "swordShield" | "greatsword" | "dagger" | "crossbow" | "staff" | "grimoire";
+import { weaponProfiles } from "@/data/game-data/weapon-profiles";
 
 interface Option {
   value: string;
@@ -25,7 +26,7 @@ interface BuildInfo {
   id: WeaponId;
   name: string;
   href: string;
-  reason: string;
+  reason?: string;
   rhythm: string;
   strengths: string[];
   risks: string[];
@@ -134,8 +135,6 @@ const BUILDS: Record<WeaponId, BuildInfo> = {
     id: "swordShield",
     name: "Sword and Shield Build",
     href: "/builds/sword-and-shield/",
-    reason:
-      "Your preferences point to a defensive, deliberate playstyle. Sword and Shield's block-while-move identity fits players who survive first and punish second, with a perfect guard converting defense into a counter window.",
     rhythm: "Slow and reactive — approach under shield, perfect-guard, counter, reset.",
     strengths: [
       "Defensive option; block-while-move",
@@ -152,8 +151,6 @@ const BUILDS: Record<WeaponId, BuildInfo> = {
     id: "greatsword",
     name: "Greatsword Build",
     href: "/builds/greatsword/",
-    reason:
-      "You want melee damage with deliberate timing. Greatsword trades speed for a wide-arc hit area, strong interrupts, and high floor damage — each swing is a commitment, but a well-placed one clears groups.",
     rhythm: "Commit and reposition — wait for an opening, swing wide, reposition during recovery.",
     strengths: [
       "Large hit area clears groups in one swing",
@@ -170,8 +167,6 @@ const BUILDS: Record<WeaponId, BuildInfo> = {
     id: "dagger",
     name: "Dagger Build",
     href: "/builds/dagger/",
-    reason:
-      "You want fast melee with high risk tolerance. Dagger is presented by community players as a high-output, close-range option — no official cross-weapon DPS ranking is published. The parry refunds MP (community-reported), turning defense into a resource engine.",
     rhythm: "Fast and unforgiving — stick, multi-hit, parry to refund MP, reposition sharply.",
     strengths: [
       "Multi-hit strings reward fast, aggressive play",
@@ -188,8 +183,6 @@ const BUILDS: Record<WeaponId, BuildInfo> = {
     id: "crossbow",
     name: "Crossbow Build",
     href: "/builds/crossbow/",
-    reason:
-      "You want ranged safety. Crossbow keeps threats at distance and rewards magazine management — plan reloads in safe windows and commit to a branch identity.",
     rhythm: "Kite and reload — fire at range, plan reloads during safe windows.",
     strengths: [
       "Ranged safety; answer threats before they reach you",
@@ -206,8 +199,6 @@ const BUILDS: Record<WeaponId, BuildInfo> = {
     id: "staff",
     name: "Staff Build",
     href: "/builds/staff/",
-    reason:
-      "You want magic damage. Staff is the ranged caster family — specials cost MP and carry cooldowns, so the loop is cast, fill with basics, and reposition at range. It rewards cooldown and MP management over twitch reactions.",
     rhythm: "Cast and fill — special at range, fill with basics, track MP and cooldowns.",
     strengths: [
       "Ranged magic safety; answer threats before they close",
@@ -224,8 +215,6 @@ const BUILDS: Record<WeaponId, BuildInfo> = {
     id: "grimoire",
     name: "Grimoire Build",
     href: "/builds/grimoire/",
-    reason:
-      "You want magic control. Grimoire's spell rotation gives flexible pack control — stack cooldown reduction to keep your rotation active and time your highest-value spell at the right moment.",
     rhythm: "Cast and rotate — cast, track cooldowns, time your best spell at the right moment.",
     strengths: [
       "Flexible spell rotation adapts to different pack shapes",
@@ -240,77 +229,97 @@ const BUILDS: Record<WeaponId, BuildInfo> = {
   },
 };
 
+
+/** Generate a data-driven recommendation reason from weapon-profile tags. */
+function buildReason(weaponId: WeaponId): string {
+  const profile = weaponProfiles.find((p) => p.id === weaponId);
+  if (!profile) return "This weapon matches your preferred playstyle.";
+  const tags = profile.tags.slice(0, 4);
+  const lines = tags.map((t) => formatTag(t));
+  if (profile.playstyles.length) {
+    lines.push("Fits " + profile.playstyles.join(", ") + " playstyle.");
+  }
+  return lines.join(" ");
+}
+
+function formatTag(tag: string): string {
+  // Map internal tag keys to human-readable phrases
+  const map: Record<string, string> = {
+    "defensive": "Defensive combat style.",
+    "block": "Can block while moving.",
+    "perfect-guard": "Perfect guard converts defense into a counter.",
+    "short-range": "Short-range engagement.",
+    "counter": "Counter-attack windows after successful blocks.",
+    "slow-heavy": "Slow, heavy strikes.",
+    "wide-arc": "Wide-arc swings clear groups.",
+    "interrupt": "Strong interrupts stop enemy attacks.",
+    "mid-range-melee": "Mid-range melee reach.",
+    "committed-swings": "Each swing is a commitment with recovery.",
+    "fast": "Fast attack style.",
+    "close-range": "Close-range combat.",
+    "parry": "Parry timing rewards skilled defense.",
+    "multi-hit": "Multi-hit attack strings.",
+    "mp-refund": "Parry refunds MP.",
+    "high-mobility": "High mobility options.",
+    "ranged": "Ranged combat from safe distance.",
+    "magazine-based": "Magazine-based combat rhythm.",
+    "safe-distance": "Safety through distance.",
+    "reload-management": "Reload management under pressure.",
+    "sustained-or-burst": "Branch choices for sustained or burst damage.",
+    "magic-ranged": "Ranged magic projectiles.",
+    "mp-and-cooldown": "MP and cooldown-gated specials.",
+    "burst": "Burst damage via specials.",
+    "projectile": "Projectile-based combat.",
+    "caster": "Caster playstyle.",
+    "magic-control": "Magic-based crowd control.",
+    "spell-rotation": "Spell rotation management.",
+    "mp-hungry": "MP-intensive.",
+    "cooldown-reduction": "Benefits from cooldown reduction.",
+    "control": "Control-oriented approach.",
+  };
+  return map[tag] || tag.charAt(0).toUpperCase() + tag.slice(1).replace(/-/g, " ") + ".";
+}
+
 function buildScores(): Record<WeaponId, number> {
   return { swordShield: 0, greatsword: 0, dagger: 0, crossbow: 0, staff: 0, grimoire: 0 };
+}
+
+/** Match user answers against weapon-profile tags from extracted game data. */
+function matchProfile(scores: Record<WeaponId, number>, tags: string[], weight: number) {
+  const profileMap: Record<string, WeaponId> = { swordShield: "swordShield", greatsword: "greatsword", dagger: "dagger", crossbow: "crossbow", staff: "staff", grimoire: "grimoire" };
+  for (const id of Object.keys(profileMap)) {
+    const profile = weaponProfiles.find((p) => p.id === id);
+    if (!profile) continue;
+    const matchCount = profile.tags.filter((t) => tags.includes(t)).length;
+    scores[profileMap[id]] += matchCount * weight;
+  }
 }
 
 function recommend(answers: Answers): RecommendationResult {
   const scores = buildScores();
   const { range, priority, speed, risk, mode } = answers;
 
-  // Range weights
-  if (range === "melee") {
-    scores.swordShield += 2;
-    scores.greatsword += 2;
-    scores.dagger += 2;
-  } else if (range === "ranged") {
-    scores.crossbow += 3;
-    scores.swordShield += 1;
-    scores.staff += 1;
-  } else if (range === "magic") {
-    scores.staff += 3;
-    scores.grimoire += 3;
-    scores.crossbow += 1;
-  }
+  // Range: match weapon-profile tags
+  if (range === "melee")    matchProfile(scores, ["short-range", "close-range", "mid-range-melee"], 2);
+  if (range === "ranged")   matchProfile(scores, ["ranged", "safe-distance"], 3);
+  if (range === "magic")    matchProfile(scores, ["magic-ranged", "magic-control", "caster", "projectile"], 3);
 
-  // Priority weights
-  if (priority === "safety") {
-    scores.swordShield += 3;
-    scores.crossbow += 2;
-    scores.greatsword += 1;
-  } else if (priority === "damage") {
-    scores.greatsword += 2;
-    scores.dagger += 2;
-    scores.staff += 1;
-    scores.crossbow += 1;
-  } else if (priority === "control") {
-    scores.grimoire += 2;
-    scores.staff += 2;
-    scores.swordShield += 1;
-    scores.crossbow += 1;
-  }
+  // Priority
+  if (priority === "safety")  matchProfile(scores, ["defensive", "block", "safe-distance"], 2);
+  if (priority === "damage")  matchProfile(scores, ["fast", "multi-hit", "burst", "slow-heavy"], 2);
+  if (priority === "control") matchProfile(scores, ["control", "magic-control", "spell-rotation", "interrupt"], 2);
 
-  // Attack speed weights
-  if (speed === "fast") {
-    scores.dagger += 3;
-    scores.crossbow += 1;
-    scores.grimoire += 1;
-  } else if (speed === "slow") {
-    scores.greatsword += 3;
-    scores.swordShield += 2;
-  }
+  // Attack speed
+  if (speed === "fast") matchProfile(scores, ["fast", "multi-hit", "high-mobility"], 3);
+  if (speed === "slow") matchProfile(scores, ["slow-heavy", "committed-swings"], 3);
 
-  // Risk tolerance weights
-  if (risk === "high") {
-    scores.dagger += 3;
-    scores.greatsword += 1;
-    scores.grimoire += 1;
-  } else if (risk === "distance") {
-    scores.crossbow += 2;
-    scores.staff += 2;
-    scores.grimoire += 1;
-    scores.swordShield += 1;
-  }
+  // Risk
+  if (risk === "high")     matchProfile(scores, ["close-range", "parry", "high-mobility"], 2);
+  if (risk === "distance") matchProfile(scores, ["ranged", "safe-distance", "spacing", "caster"], 2);
 
-  // Play mode: light influence only
-  if (mode === "solo") {
-    scores.swordShield += 1;
-    scores.crossbow += 1;
-  } else if (mode === "coop") {
-    scores.staff += 1;
-    scores.grimoire += 1;
-    scores.crossbow += 1;
-  }
+  // Mode: light influence
+  if (mode === "solo") matchProfile(scores, ["defensive", "tactical"], 1);
+  if (mode === "coop") matchProfile(scores, ["control", "caster", "ranged"], 1);
 
   const ranked = (Object.keys(scores) as WeaponId[]).sort((a, b) => scores[b] - scores[a]);
   const [first, second, third] = ranked;
@@ -393,7 +402,7 @@ export default function BuildPicker() {
           <h3>
             <Link href={result.primary.href}>{result.primary.name}</Link>
           </h3>
-          <p className="build-picker-card-reason">{result.primary.reason}</p>
+          <p className="build-picker-card-reason">{buildReason(result.primary.id)}</p>
 
           <dl className="build-picker-card-grid">
             <div>
@@ -446,7 +455,7 @@ export default function BuildPicker() {
                 <h3>
                   <Link href={alt.href}>{alt.name}</Link>
                 </h3>
-                <p className="build-picker-card-reason">{alt.reason}</p>
+                <p className="build-picker-card-reason">{buildReason(alt.id)}</p>
                 <Link className="build-picker-card-link" href={alt.href}>
                   Read more
                 </Link>
