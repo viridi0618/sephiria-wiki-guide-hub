@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState } from "react";
 import Image from "next/image";
@@ -29,7 +29,7 @@ export default function ArticleVideo({ video }: { video: ContentVideo }) {
               src={`https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`}
               title={video.title}
               loading="lazy"
-              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
             />
           ) : (
@@ -74,3 +74,4 @@ export default function ArticleVideo({ video }: { video: ContentVideo }) {
     </figure>
   );
 }
+
