@@ -41,7 +41,7 @@ export const guidePages = [
     h1: "Sephiria Beginner Guide",
     eyebrow: "START WITH CLARITY",
     description:
-      "Learn Sephiria's core loop — from Bunnyville into the tower, through combat, artifacts, weapon modifications, bosses, and the permanent Destiny Inscription progression system.",
+      "New to Sephiria? Here's the loop — descend from Bunnyville into the tower, fight through rooms, grab artifacts, and grow via the permanent Destiny Inscription.",
     answer:
       "Sephiria's core loop: descend from the tower-top village Bunnyville into the tower, fight through rooms, collect artifacts and tablets, modify your weapon at the Anvil, enhance artifacts through Enchantment, defeat bosses, and spend the progression currency on the Destiny Inscription for permanent upgrades. Start by mastering one weapon family, prioritizing survival over damage, and learning enemy patterns before committing to aggressive plays.",
     category: "Guides",
@@ -186,7 +186,7 @@ export const guidePages = [
     h1: "Sephiria Progression Guide",
     eyebrow: "MOVE WITH PURPOSE",
     description:
-      "Understand Sephiria's two-layer progression — in-run growth through artifacts, the Anvil, and Enchantment, and permanent growth through the Destiny Inscription.",
+      "How Sephiria progression really works — in-run growth through artifacts, the Anvil, and Enchantment, plus permanent growth through the Destiny Inscription.",
     answer:
       "Sephiria has two progression layers. In-run growth includes character level, artifact and tablet collection, and weapon modifications from the Anvil — all reset after each run. Permanent growth uses progression currency earned from runs to unlock Destiny Inscription nodes in Bunnyville. Exact permanent upgrade priorities are not officially documented.",
     category: "Guides",
@@ -235,7 +235,7 @@ export const guidePages = [
     h1: "Sephiria Boss Guide",
     eyebrow: "READ THE FIGHT",
     description:
-      "A framework for learning Sephiria bosses — attack recognition, safe positioning, and punish-window discipline. The official boss list and specific mechanics are not published.",
+      "The smart way to beat Sephiria bosses — learn attack tells, find safe positions, and time your punishes. Note: exact boss mechanics aren't published yet.",
     answer:
       "The Steam store confirms Sephiria features more than 10 bosses across six chapters, but TEAM HORAY has not published an official boss list or detailed mechanics. Use a universal method: spend the first cycle observing telegraphs, identify safe punish windows, then commit to damage. This guide covers that method without inventing specific boss patterns.",
     category: "Guides",

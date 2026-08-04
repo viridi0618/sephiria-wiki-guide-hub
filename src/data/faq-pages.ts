@@ -21,7 +21,7 @@ export const faqPages = [
     h1: "Is Sephiria Worth Playing?",
     eyebrow: "QUICK ANSWER",
     description:
-      "An editorial fit check for action roguelite fans considering Sephiria after its 1.0 launch.",
+      "Is Sephiria worth playing after 1.0? An editorial fit check for action-roguelite fans covering combat depth, build freedom, co-op, and the game's grind.",
     answer:
       "Sephiria is worth considering if you enjoy action roguelites with deep build crafting. Check Steam for current regional pricing and review status before deciding.",
     category: "FAQ",
@@ -61,7 +61,7 @@ export const faqPages = [
     h1: "Is Sephiria Multiplayer?",
     eyebrow: "QUICK ANSWER",
     description:
-      "What the official store confirms about Sephiria's 4-player online co-op — item exchange and teammate revival — and what to verify in the current version.",
+      "What the official store confirms about Sephiria's 4-player online co-op — item exchange and teammate revival — plus what still needs in-game verification.",
     answer:
       "Yes, the official store confirms Sephiria supports online co-op for up to 4 players, with item exchange and teammate revival.",
     category: "FAQ",
@@ -101,7 +101,7 @@ export const faqPages = [
     h1: "Is Sephiria Hard?",
     eyebrow: "QUICK ANSWER",
     description:
-      "An editorial assessment of where Sephiria's difficulty comes from and which weapons ease the learning curve.",
+      "An editorial take on how hard Sephiria gets and where the difficulty comes from — plus which weapons cut the learning curve for new players.",
     answer:
       "Sephiria's difficulty is subjective. It emphasizes repeated runs, enemy-pattern learning, build decisions, and familiarity with weapon timing.",
     category: "FAQ",

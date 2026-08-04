@@ -106,7 +106,7 @@ export const buildsHub = make({
   title: "Sephiria Builds",
   h1: "Sephiria Builds",
   eyebrow: "BUILD WITH INTENT",
-  description: "Compare the six weapon-family playstyles and choose a coherent plan.",
+  description: "Six Sephiria weapon families, one plan — compare Sword and Shield, Greatsword, Dagger, Crossbow, Staff, and Grimoire, then pick the build that fits your run.",
   answer:
     "Sephiria has six weapon families, each with its own range, pace, and trade-offs. These pages explain each one's loop without inventing stats or official rankings.",
   category: "Builds",
@@ -620,7 +620,7 @@ const swordShieldReal = buildPage({
   h1: "Sword and Shield Build",
   eyebrow: "GUARD AND COUNTER",
   description:
-    "A defensive Sword and Shield build framework: block-while-move, perfect-guard counters, and short-range punish.",
+    "A defensive Sword and Shield build that lets you block while moving, land perfect-guard counters, and punish up close — a forgiving pick for new players.",
   answer:
     "Sword and Shield is Sephiria's defensive weapon family. Hold the shield to block while moving, perfect-guard to open a counter, and punish at short range. This guide covers the loop and trade-offs without inventing stats.",
   warning:
@@ -634,7 +634,7 @@ const crossbowReal = buildPage({
   h1: "Crossbow Build",
   eyebrow: "RANGE AND RHYTHM",
   description:
-    "A ranged Crossbow build framework: magazine management, safe reload timing, and branch identity.",
+    "A ranged Crossbow build that keeps you safe at range — manage your magazine, reload only when it's clear, and lean into the family's branch identity.",
   answer:
     "Crossbow is Sephiria's ranged weapon family. Safety comes from distance, and the skill is magazine management — plan reloads in safe windows and commit to a branch identity. This guide covers the loop without inventing exact values.",
   warning:
@@ -648,7 +648,7 @@ const staffReal = buildPage({
   h1: "Staff Build",
   eyebrow: "SPELL AND COOLDOWN",
   description:
-    "A ranged caster Staff build framework: MP and cooldown management for the magic weapon line.",
+    "A Staff build for ranged casters — manage mana and cooldowns to keep the magic weapon line firing through Sephiria's tougher rooms.",
   answer:
     "Staff is Sephiria's ranged caster family. Specials cost MP and carry cooldowns, so the loop is cast, fill with basics, and reposition at range. Spell effects are sparse in documentation, so confirm specifics in-game.",
   warning:
@@ -662,7 +662,7 @@ const greatswordReal = buildPage({
   h1: "Greatsword Build",
   eyebrow: "COMMIT AND INTERRUPT",
   description:
-    "A heavy-melee Greatsword build framework: wide-arc swings, interrupts, and attack-speed investment.",
+    "A heavy-melee Greatsword build built around wide-arc swings and interrupts — invest in attack speed to turn strength into survivability.",
   answer:
     "Greatsword is Sephiria's slow heavy melee family. A large hit area and strong interrupts trade for long recovery. Community builds recommend substantial attack-speed investment. This guide covers the commit-and-reposition loop without inventing stats.",
   warning:
@@ -676,7 +676,7 @@ const daggerReal = buildPage({
   h1: "Dagger Build",
   eyebrow: "STICK AND PARRY",
   description:
-    "A close-range Dagger build framework: multi-hit strings, parry refunds, and high-risk melee play.",
+    "A close-range Dagger build for high-risk play — chain multi-hit strings, refund via party, and stay mobile in tight Sephiria crowds.",
   answer:
     "Dagger is Sephiria's close-range multi-hit family, presented by community players as high-output with the most dangerous output range. The parry refunds MP (community-reported). This guide covers the loop without inventing exact values.",
   warning:
@@ -690,7 +690,7 @@ const grimoireReal = buildPage({
   h1: "Grimoire Build",
   eyebrow: "CAST AND ROTATE",
   description:
-    "A mid-range Grimoire build framework: MP-cost rotations and cooldown timing for the magic projectile family.",
+    "A mid-range Grimoire build for the magic projectile family — manage MP-cost rotations and cooldown timing to keep pressure from a safe distance.",
   answer:
     "Grimoire is Sephiria's mid-range magic projectile family. Spells cost MP and cooldowns gate the rotation. The family is not yet well documented, so confirm interactions in-game.",
   warning:

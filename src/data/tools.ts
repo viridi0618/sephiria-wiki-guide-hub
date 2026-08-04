@@ -11,7 +11,7 @@ export const toolPages = [
     h1: "Build Picker",
     eyebrow: "PLAYSTYLE TOOL",
     description:
-      "An interactive tool that matches your playstyle to a Sephiria weapon build guide in five questions.",
+      "Not sure which Sephiria weapon fits your playstyle? Answer five quick questions and the Build Picker matches you to a weapon build guide.",
     answer:
       "Answer five questions about how you like to play, and get a Build recommendation tailored to your playstyle.",
     category: "Tools",

@@ -99,7 +99,7 @@ export const systemPages = [
     h1: "Sephiria Destiny Inscription Guide",
     eyebrow: "PRIORITIZE THE PATH",
     description:
-      "Understand Sephiria's Destiny Inscription — the permanent progression system — and what is not officially documented.",
+      "Understand Sephiria's Destiny Inscription — the permanent progression tree that carries power between runs — and what the game doesn't officially document.",
     answer:
       "The Destiny Inscription is Sephiria's permanent progression system, unlocked with the progression currency earned from runs. Nodes provide permanent bonuses that carry into future runs. Exact node effects, costs, unlock conditions, layout, and optimal routes should be checked in the current version.",
     category: "Systems",
