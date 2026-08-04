@@ -1,0 +1,119 @@
+[
+  {
+    "name": "Askard",
+    "type": "boss",
+    "hp": null,
+    "attack": [],
+    "drops": [],
+    "description": null,
+    "source_file": "en-US.json"
+  },
+  {
+    "name": "BirdDemon",
+    "type": "boss",
+    "hp": null,
+    "attack": [],
+    "drops": [],
+    "description": null,
+    "source_file": "en-US.json"
+  },
+  {
+    "name": "Larid",
+    "type": "boss",
+    "hp": null,
+    "attack": [],
+    "drops": [],
+    "description": null,
+    "source_file": "en-US.json"
+  },
+  {
+    "name": "MadArmadillo",
+    "type": "boss",
+    "hp": null,
+    "attack": [],
+    "drops": [],
+    "description": null,
+    "source_file": "en-US.json"
+  },
+  {
+    "name": "MoleBigBomb",
+    "type": "boss",
+    "hp": null,
+    "attack": [],
+    "drops": [],
+    "description": null,
+    "source_file": "en-US.json"
+  },
+  {
+    "name": "MoleElite",
+    "type": "boss",
+    "hp": null,
+    "attack": [],
+    "drops": [],
+    "description": null,
+    "source_file": "en-US.json"
+  },
+  {
+    "name": "OinkKing",
+    "type": "boss",
+    "hp": null,
+    "attack": [],
+    "drops": [],
+    "description": null,
+    "source_file": "en-US.json"
+  },
+  {
+    "name": "QBoss",
+    "type": "boss",
+    "hp": null,
+    "attack": [],
+    "drops": [],
+    "description": null,
+    "source_file": "en-US.json"
+  },
+  {
+    "name": "QBossAdv",
+    "type": "boss",
+    "hp": null,
+    "attack": [],
+    "drops": [],
+    "description": null,
+    "source_file": "en-US.json"
+  },
+  {
+    "name": "QBossChapte6",
+    "type": "boss",
+    "hp": null,
+    "attack": [],
+    "drops": [],
+    "description": null,
+    "source_file": "en-US.json"
+  },
+  {
+    "name": "QQBoss",
+    "type": "boss",
+    "hp": null,
+    "attack": [],
+    "drops": [],
+    "description": null,
+    "source_file": "en-US.json"
+  },
+  {
+    "name": "QQBossNormal",
+    "type": "boss",
+    "hp": null,
+    "attack": [],
+    "drops": [],
+    "description": null,
+    "source_file": "en-US.json"
+  },
+  {
+    "name": "QQQBoss",
+    "type": "boss",
+    "hp": null,
+    "attack": [],
+    "drops": [],
+    "description": null,
+    "source_file": "en-US.json"
+  }
+]

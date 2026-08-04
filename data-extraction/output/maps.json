@@ -1,0 +1,93 @@
+[
+  {
+    "name": "Prologue",
+    "id": "Chapter_0",
+    "description": null,
+    "areas": [],
+    "images": []
+  },
+  {
+    "name": "Chapter 1: The Cult Leader",
+    "id": "Chapter_1",
+    "description": null,
+    "areas": [],
+    "images": []
+  },
+  {
+    "name": "Chapter 2: The Seed",
+    "id": "Chapter_2",
+    "description": null,
+    "areas": [],
+    "images": []
+  },
+  {
+    "name": "Chapter 3: The Tree",
+    "id": "Chapter_3",
+    "description": null,
+    "areas": [],
+    "images": []
+  },
+  {
+    "name": "Chapter 4: Fragment",
+    "id": "Chapter_4",
+    "description": null,
+    "areas": [],
+    "images": []
+  },
+  {
+    "name": "Chapter 5",
+    "id": "Chapter_5",
+    "description": null,
+    "areas": [],
+    "images": []
+  },
+  {
+    "name": "Reconstruction",
+    "id": "Chapter_5_2",
+    "description": null,
+    "areas": [],
+    "images": []
+  },
+  {
+    "name": "Chapter 5: Illusion",
+    "id": "Chapter_5_3",
+    "description": null,
+    "areas": [],
+    "images": []
+  },
+  {
+    "name": "Chapter 6: Final Battle",
+    "id": "Chapter_6",
+    "description": null,
+    "areas": [],
+    "images": []
+  },
+  {
+    "name": "Escape",
+    "id": "Chapter_Last",
+    "description": null,
+    "areas": [],
+    "images": []
+  },
+  {
+    "name": "Chapter 6",
+    "id": "Chapter_Prepare",
+    "description": null,
+    "areas": [],
+    "images": []
+  },
+  {
+    "name": "Qliphoth Seal",
+    "id": "Chapter_Seal",
+    "description": null,
+    "areas": [],
+    "images": []
+  },
+  {
+    "name": "Return",
+    "id": "Chapter_Victory",
+    "description": null,
+    "areas": [],
+    "images": []
+  }
+]

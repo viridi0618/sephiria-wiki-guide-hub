@@ -1,0 +1,230 @@
+[
+  {
+    "id": "skill_0001",
+    "name": "Call Lightning",
+    "description": null,
+    "source_file": "en-US.json"
+  },
+  {
+    "id": "skill_0002",
+    "name": "Fire Circus",
+    "description": null,
+    "source_file": "en-US.json"
+  },
+  {
+    "id": "skill_0003",
+    "name": "Lightning Arrow",
+    "description": null,
+    "source_file": "en-US.json"
+  },
+  {
+    "id": "skill_0004",
+    "name": "Lightning Boomerang",
+    "description": null,
+    "source_file": "en-US.json"
+  },
+  {
+    "id": "skill_0005",
+    "name": "Water Bolt",
+    "description": null,
+    "source_file": "en-US.json"
+  },
+  {
+    "id": "skill_0006",
+    "name": "Fire Bolt",
+    "description": null,
+    "source_file": "en-US.json"
+  },
+  {
+    "id": "skill_0007",
+    "name": "Air Bolt",
+    "description": null,
+    "source_file": "en-US.json"
+  },
+  {
+    "id": "skill_0008",
+    "name": "Telekinetic Blow",
+    "description": null,
+    "source_file": "en-US.json"
+  },
+  {
+    "id": "skill_0009",
+    "name": "Light Arrow",
+    "description": null,
+    "source_file": "en-US.json"
+  },
+  {
+    "id": "skill_0010",
+    "name": "Raise Skeleton",
+    "description": null,
+    "source_file": "en-US.json"
+  },
+  {
+    "id": "skill_0011",
+    "name": "Healing Stream",
+    "description": null,
+    "source_file": "en-US.json"
+  },
+  {
+    "id": "skill_0012",
+    "name": "Rock Bunny",
+    "description": null,
+    "source_file": "en-US.json"
+  },
+  {
+    "id": "skill_0013",
+    "name": "Shield",
+    "description": null,
+    "source_file": "en-US.json"
+  },
+  {
+    "id": "skill_0014",
+    "name": "Summon Thorn Ball",
+    "description": null,
+    "source_file": "en-US.json"
+  },
+  {
+    "id": "skill_0015",
+    "name": "Stone Wave",
+    "description": null,
+    "source_file": "en-US.json"
+  },
+  {
+    "id": "skill_0016",
+    "name": "Tempest",
+    "description": null,
+    "source_file": "en-US.json"
+  },
+  {
+    "id": "skill_0017",
+    "name": "ATK Boost Buff",
+    "description": null,
+    "source_file": "en-US.json"
+  },
+  {
+    "id": "skill_0018",
+    "name": "Earth Bolt",
+    "description": null,
+    "source_file": "en-US.json"
+  },
+  {
+    "id": "skill_0019",
+    "name": "Lightning Bolt",
+    "description": null,
+    "source_file": "en-US.json"
+  },
+  {
+    "id": "skill_0020",
+    "name": "Fire Arrow",
+    "description": null,
+    "source_file": "en-US.json"
+  },
+  {
+    "id": "skill_0021",
+    "name": "Rock Oink",
+    "description": null,
+    "source_file": "en-US.json"
+  },
+  {
+    "id": "skill_0023",
+    "name": "Sharp Eye",
+    "description": null,
+    "source_file": "en-US.json"
+  },
+  {
+    "id": "skill_0024",
+    "name": "Haste",
+    "description": null,
+    "source_file": "en-US.json"
+  },
+  {
+    "id": "skill_0025",
+    "name": "Frost Dagger",
+    "description": null,
+    "source_file": "en-US.json"
+  },
+  {
+    "id": "skill_0026",
+    "name": "Tornado",
+    "description": null,
+    "source_file": "en-US.json"
+  },
+  {
+    "id": "skill_0027",
+    "name": "Meteor Shower",
+    "description": null,
+    "source_file": "en-US.json"
+  },
+  {
+    "id": "skill_0028",
+    "name": "Rain of Arrows",
+    "description": null,
+    "source_file": "en-US.json"
+  },
+  {
+    "id": "skill_0029",
+    "name": "Ice Bolt",
+    "description": null,
+    "source_file": "en-US.json"
+  },
+  {
+    "id": "skill_0030",
+    "name": "Thunder Armor",
+    "description": null,
+    "source_file": "en-US.json"
+  },
+  {
+    "id": "skill_0031",
+    "name": "Spirit Rabbit Warrior",
+    "description": null,
+    "source_file": "en-US.json"
+  },
+  {
+    "id": "skill_0032",
+    "name": "Smoke Screen",
+    "description": null,
+    "source_file": "en-US.json"
+  },
+  {
+    "id": "skill_0033",
+    "name": "Blessing",
+    "description": null,
+    "source_file": "en-US.json"
+  },
+  {
+    "id": "skill_0034",
+    "name": "Great Blessing",
+    "description": null,
+    "source_file": "en-US.json"
+  },
+  {
+    "id": "skill_0035",
+    "name": "Shield",
+    "description": null,
+    "source_file": "en-US.json"
+  },
+  {
+    "id": "skill_0037",
+    "name": "Judgment of Thunder",
+    "description": null,
+    "source_file": "en-US.json"
+  },
+  {
+    "id": "skill_2000",
+    "name": "Lightning Needle",
+    "description": null,
+    "source_file": "en-US.json"
+  },
+  {
+    "id": "skill_2001",
+    "name": "Fire Needle",
+    "description": null,
+    "source_file": "en-US.json"
+  },
+  {
+    "id": "skill_2002",
+    "name": "Ice Needle",
+    "description": null,
+    "source_file": "en-US.json"
+  }
+]
