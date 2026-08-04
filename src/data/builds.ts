@@ -96,7 +96,7 @@ const buildsHubSections: GuideSection[] = [
   {
     heading: "Accuracy and sources",
     paragraphs: [
-      "Official facts (six weapon families, more than 50 upgrades per family, platforms, release) come from the Steam store page. Weapon-specific traits and preferences are unverified community descriptions — no verified English-language build source is currently available. Confirm any mechanic in your current patch before committing a run to it.",
+      "Official facts (six weapon families, more than 50 upgrades per family, platforms, release) come from the Steam store page. Weapon-specific traits and preferences are unverified community descriptions — We have not identified a verified English-language source for these weapon-specific descriptions. Confirm any mechanic in your current patch before committing a run to it.",
     ],
   },
 ];

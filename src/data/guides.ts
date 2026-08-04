@@ -391,7 +391,7 @@ export const guidePages = [
         ],
       },
     ],
-    sources: [steamSource, boilingSteamSource],
+    sources: [steamSource, steamAnnouncementSource, boilingSteamSource],
     related: ["beginner-guide", "is-sephiria-worth-playing", "co-op", "weapons-guide"],
   }),
 ];
