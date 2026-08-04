@@ -7,9 +7,9 @@ import JsonLd from "@/components/JsonLd";
 import { getPage, pages } from "@/data/pages";
 import { absoluteUrl, siteConfig } from "@/lib/site-config";
 
-const title = "Sephiria Wiki - Builds, Guides & Tips";
+const title = "Sephiria Wiki - Builds, Weapons, Guides & Gameplay";
 const description =
-  "Sephiria Wiki for beginner guides, builds, weapon tips, progression strategies, and gameplay help.";
+  "Sephiria Wiki featuring weapon builds, beginner guides, boss strategies, progression tips, co-op guides, and tools to help players master the tower.";
 
 export const metadata: Metadata = {
   title: { absolute: title },
