@@ -8,6 +8,7 @@ type AnswerKey = "range" | "priority" | "speed" | "risk" | "mode";
 type Answers = Partial<Record<AnswerKey, string>>;
 
 type WeaponId = "swordShield" | "greatsword" | "dagger" | "crossbow" | "staff" | "grimoire";
+import { weaponProfiles } from "@/data/game-data/weapon-profiles";
 
 interface Option {
   value: string;
@@ -244,73 +245,42 @@ function buildScores(): Record<WeaponId, number> {
   return { swordShield: 0, greatsword: 0, dagger: 0, crossbow: 0, staff: 0, grimoire: 0 };
 }
 
+/** Match user answers against weapon-profile tags from extracted game data. */
+function matchProfile(scores: Record<WeaponId, number>, tags: string[], weight: number) {
+  const profileMap: Record<string, WeaponId> = { swordShield: "swordShield", greatsword: "greatsword", dagger: "dagger", crossbow: "crossbow", staff: "staff", grimoire: "grimoire" };
+  for (const id of Object.keys(profileMap)) {
+    const profile = weaponProfiles.find((p) => p.id === id);
+    if (!profile) continue;
+    const matchCount = profile.tags.filter((t) => tags.includes(t)).length;
+    scores[profileMap[id]] += matchCount * weight;
+  }
+}
+
 function recommend(answers: Answers): RecommendationResult {
   const scores = buildScores();
   const { range, priority, speed, risk, mode } = answers;
 
-  // Range weights
-  if (range === "melee") {
-    scores.swordShield += 2;
-    scores.greatsword += 2;
-    scores.dagger += 2;
-  } else if (range === "ranged") {
-    scores.crossbow += 3;
-    scores.swordShield += 1;
-    scores.staff += 1;
-  } else if (range === "magic") {
-    scores.staff += 3;
-    scores.grimoire += 3;
-    scores.crossbow += 1;
-  }
+  // Range: match weapon-profile tags
+  if (range === "melee")    matchProfile(scores, ["short-range", "close-range", "mid-range-melee"], 2);
+  if (range === "ranged")   matchProfile(scores, ["ranged", "safe-distance"], 3);
+  if (range === "magic")    matchProfile(scores, ["magic-ranged", "magic-control", "caster", "projectile"], 3);
 
-  // Priority weights
-  if (priority === "safety") {
-    scores.swordShield += 3;
-    scores.crossbow += 2;
-    scores.greatsword += 1;
-  } else if (priority === "damage") {
-    scores.greatsword += 2;
-    scores.dagger += 2;
-    scores.staff += 1;
-    scores.crossbow += 1;
-  } else if (priority === "control") {
-    scores.grimoire += 2;
-    scores.staff += 2;
-    scores.swordShield += 1;
-    scores.crossbow += 1;
-  }
+  // Priority
+  if (priority === "safety")  matchProfile(scores, ["defensive", "block", "safe-distance"], 2);
+  if (priority === "damage")  matchProfile(scores, ["fast", "multi-hit", "burst", "slow-heavy"], 2);
+  if (priority === "control") matchProfile(scores, ["control", "magic-control", "spell-rotation", "interrupt"], 2);
 
-  // Attack speed weights
-  if (speed === "fast") {
-    scores.dagger += 3;
-    scores.crossbow += 1;
-    scores.grimoire += 1;
-  } else if (speed === "slow") {
-    scores.greatsword += 3;
-    scores.swordShield += 2;
-  }
+  // Attack speed
+  if (speed === "fast") matchProfile(scores, ["fast", "multi-hit", "high-mobility"], 3);
+  if (speed === "slow") matchProfile(scores, ["slow-heavy", "committed-swings"], 3);
 
-  // Risk tolerance weights
-  if (risk === "high") {
-    scores.dagger += 3;
-    scores.greatsword += 1;
-    scores.grimoire += 1;
-  } else if (risk === "distance") {
-    scores.crossbow += 2;
-    scores.staff += 2;
-    scores.grimoire += 1;
-    scores.swordShield += 1;
-  }
+  // Risk
+  if (risk === "high")     matchProfile(scores, ["close-range", "parry", "high-mobility"], 2);
+  if (risk === "distance") matchProfile(scores, ["ranged", "safe-distance", "spacing", "caster"], 2);
 
-  // Play mode: light influence only
-  if (mode === "solo") {
-    scores.swordShield += 1;
-    scores.crossbow += 1;
-  } else if (mode === "coop") {
-    scores.staff += 1;
-    scores.grimoire += 1;
-    scores.crossbow += 1;
-  }
+  // Mode: light influence
+  if (mode === "solo") matchProfile(scores, ["defensive", "tactical"], 1);
+  if (mode === "coop") matchProfile(scores, ["control", "caster", "ranged"], 1);
 
   const ranked = (Object.keys(scores) as WeaponId[]).sort((a, b) => scores[b] - scores[a]);
   const [first, second, third] = ranked;

@@ -641,6 +641,7 @@ const crossbowReal = buildPage({
     "Crossbow is Sephiria's ranged weapon family. Safety comes from distance, and the skill is magazine management — plan reloads in safe windows and commit to a branch identity. This guide covers the loop without inventing exact values.",
   warning:
     "Accuracy note: branch details and any specific fire-rate numbers come from community testing; verify in the current patch.",
+  verifiedData: { weaponId: "Crossbow", description: "Ranged weapon family with magazine-based combat. Branch choices split into sustained fire-rate or slow high-damage single-shot builds." },
   sections: crossbowSections,
 });
 
@@ -655,6 +656,7 @@ const staffReal = buildPage({
     "Staff is Sephiria's ranged caster family. Specials cost MP and carry cooldowns, so the loop is cast, fill with basics, and reposition at range. Spell effects are sparse in documentation, so confirm specifics in-game.",
   warning:
     "Accuracy note: spell effects, cooldowns, and MP costs are sparsely documented; confirm in-game.",
+  verifiedData: { weaponId: "Staff", description: "Ranged caster family using MP and cooldown-gated specials. Combines mana management with projectile-based combat." },
   sections: staffSections,
 });
 
@@ -669,6 +671,7 @@ const greatswordReal = buildPage({
     "Greatsword is Sephiria's slow heavy melee family. A large hit area and strong interrupts trade for long recovery. Community builds recommend substantial attack-speed investment. This guide covers the commit-and-reposition loop without inventing stats.",
   warning:
     "Accuracy note: any specific attack-speed figure and branch details are community-reported; verify in your current patch.",
+  verifiedData: { weaponId: "Greatsword", description: "Slow heavy melee family with wide-arc swings and strong interrupts. Each swing is a commitment with long recovery." },
   sections: greatswordSections,
 });
 
@@ -698,6 +701,7 @@ const grimoireReal = buildPage({
     "Grimoire is Sephiria's mid-range magic projectile family. Spells cost MP and cooldowns gate the rotation. The family is not yet well documented, so confirm interactions in-game.",
   warning:
     "Accuracy note: the Grimoire system is not yet well documented and its difficulty is unverified; confirm spell interactions in-game.",
+  verifiedData: { weaponId: "Grimoire", description: "Mid-range magic projectile family built around spell rotations and cooldown reduction. An MP-cost caster whose mechanics are sparsely documented." },
   sections: grimoireSections,
 });
 

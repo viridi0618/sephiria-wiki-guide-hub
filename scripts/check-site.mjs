@@ -24,7 +24,7 @@ for (const route of routes) {
   const html = fs.readFileSync(file, "utf8");
   if ((html.match(/<h1\b/g) ?? []).length !== 1) errors.push(`/${route} must have exactly one H1.`);
   const canonical = [...html.matchAll(/<link\b[^>]*rel="canonical"[^>]*href="([^"]+)"/g)];
-  const expectedCanonical = route ? `https://sephiria.wiki/${route}/` : "https://sephiria.wiki/";
+  const expectedCanonical = route ? `https://sephiriaguide.wiki/${route}/` : "https://sephiriaguide.wiki/";
   if (canonical.length !== 1 || decode(canonical[0]?.[1] ?? "") !== expectedCanonical) errors.push(`Canonical mismatch on /${route}.`);
   for (const match of html.matchAll(/<img\b([^>]*)>/g)) if (!/\balt="[^"]+"/.test(match[1])) errors.push(`Empty or missing image alt on /${route}.`);
   for (const match of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) { try { JSON.parse(decode(match[1])); } catch { errors.push(`Invalid JSON-LD on /${route}.`); } }
@@ -43,20 +43,20 @@ for (const [legacyRoute, realRoute] of Object.entries(legacy)) {
   if (!fs.existsSync(file)) { errors.push(`Missing legacy route /${legacyRoute}`); continue; }
   const html = fs.readFileSync(file, "utf8");
   const canonical = [...html.matchAll(/<link\b[^>]*rel="canonical"[^>]*href="([^"]+)"/g)];
-  const expectedCanonical = `https://sephiria.wiki/${realRoute}/`;
+  const expectedCanonical = `https://sephiriaguide.wiki/${realRoute}/`;
   if (canonical.length !== 1 || decode(canonical[0]?.[1] ?? "") !== expectedCanonical) errors.push(`Legacy /${legacyRoute} canonical must point to /${realRoute}.`);
   const sitemap = fs.existsSync(path.join(out, "sitemap.xml")) ? fs.readFileSync(path.join(out, "sitemap.xml"), "utf8") : "";
-  if (sitemap.includes(`https://sephiria.wiki/${legacyRoute}/`)) errors.push(`Legacy /${legacyRoute} must not appear in sitemap.`);
+  if (sitemap.includes(`https://sephiriaguide.wiki/${legacyRoute}/`)) errors.push(`Legacy /${legacyRoute} must not appear in sitemap.`);
 }
 
 for (const required of ["sitemap.xml", "robots.txt", "manifest.webmanifest", "404.html"]) if (!fs.existsSync(path.join(out, required))) errors.push(`Missing ${required}.`);
 const sitemap = fs.existsSync(path.join(out, "sitemap.xml")) ? fs.readFileSync(path.join(out, "sitemap.xml"), "utf8") : "";
 for (const route of routes) {
-  const url = route ? `https://sephiria.wiki/${route}/` : "https://sephiria.wiki/";
+  const url = route ? `https://sephiriaguide.wiki/${route}/` : "https://sephiriaguide.wiki/";
   if (!sitemap.includes(`<loc>${url}</loc>`)) errors.push(`Sitemap missing ${url}.`);
 }
 const robots = fs.existsSync(path.join(out, "robots.txt")) ? fs.readFileSync(path.join(out, "robots.txt"), "utf8") : "";
-if (!robots.includes("Allow: /") || !robots.includes("https://sephiria.wiki/sitemap.xml")) errors.push("Robots output is incorrect.");
+if (!robots.includes("Allow: /") || !robots.includes("https://sephiriaguide.wiki/sitemap.xml")) errors.push("Robots output is incorrect.");
 // Content quality checks: reject template boilerplate and unsupported claims in production pages
 const banned = [
   "Build Picker is not available yet",
