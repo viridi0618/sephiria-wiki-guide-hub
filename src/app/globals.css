@@ -2842,7 +2842,7 @@ tbody tr:nth-child(even) td {
   display: none;
 }
 
-/* Contextual sidebar 鈥?sibling/category navigation */
+/* Contextual sidebar sibling/category navigation */
 .article-rail .wiki-contextual {
   margin-top: 0;
 }
