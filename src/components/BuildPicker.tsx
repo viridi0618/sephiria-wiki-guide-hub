@@ -7,6 +7,8 @@ type AnswerKey = "range" | "priority" | "speed" | "risk" | "mode";
 
 type Answers = Partial<Record<AnswerKey, string>>;
 
+type WeaponId = "swordShield" | "greatsword" | "dagger" | "crossbow" | "staff" | "grimoire";
+
 interface Option {
   value: string;
   label: string;
@@ -20,6 +22,7 @@ interface Question {
 }
 
 interface BuildInfo {
+  id: WeaponId;
   name: string;
   href: string;
   reason: string;
@@ -126,29 +129,31 @@ const QUESTIONS: Question[] = [
   },
 ];
 
-const BUILDS: Record<string, BuildInfo> = {
-  sword: {
-    name: "Sword & Shield Build",
-    href: "/builds/sword/",
+const BUILDS: Record<WeaponId, BuildInfo> = {
+  swordShield: {
+    id: "swordShield",
+    name: "Sword and Shield Build",
+    href: "/builds/sword-and-shield/",
     reason:
-      "Your preference for melee safety with a deliberate pace matches Sword & Shield's block-while-move identity. You survive first and punish second, and a perfect guard converts defense directly into a counter window.",
+      "Your preferences point to a defensive, deliberate playstyle. Sword and Shield's block-while-move identity fits players who survive first and punish second, with a perfect guard converting defense into a counter window.",
     rhythm: "Slow and reactive — approach under shield, perfect-guard, counter, reset.",
     strengths: [
-      "Highest survivability; unique block-while-move",
+      "Defensive option; block-while-move",
       "Perfect guard converts defense into punish",
-      "Low-to-mid difficulty, very forgiving",
+      "Community players rate it forgiving for new players",
     ],
     risks: [
       "Very short range; counter barely moves forward",
-      "Slow damage output; 横扫 costs MP",
+      "Damage output is slow relative to faster families",
       "Mobile bosses can walk out of punish range",
     ],
   },
   greatsword: {
-    name: "Great Sword Build",
-    href: "/builds/spear/",
+    id: "greatsword",
+    name: "Greatsword Build",
+    href: "/builds/greatsword/",
     reason:
-      "You want melee damage with deliberate timing. Great Sword trades speed for a wide-arc hit area, strong interrupts, and high floor damage — each swing is a commitment, but a well-placed one clears groups.",
+      "You want melee damage with deliberate timing. Greatsword trades speed for a wide-arc hit area, strong interrupts, and high floor damage — each swing is a commitment, but a well-placed one clears groups.",
     rhythm: "Commit and reposition — wait for an opening, swing wide, reposition during recovery.",
     strengths: [
       "Large hit area clears groups in one swing",
@@ -156,20 +161,21 @@ const BUILDS: Record<string, BuildInfo> = {
       "High floor damage; reliable without a perfect build",
     ],
     risks: [
-      "Sluggish until attack speed reaches ~140%",
+      "Feels slow until you invest in attack speed",
       "Long recovery on every swing",
       "Fast, mobile bosses are frustrating",
     ],
   },
   dagger: {
+    id: "dagger",
     name: "Dagger Build",
-    href: "/builds/fist/",
+    href: "/builds/dagger/",
     reason:
-      "You want fast melee with high risk tolerance. Dagger has the highest base output of any weapon family, earned in the most dangerous output range. The parry refunds MP, turning defense into your resource engine.",
+      "You want fast melee with high risk tolerance. Dagger is presented by community players as a high-output, close-range option — no official cross-weapon DPS ranking is published. The parry refunds MP (community-reported), turning defense into a resource engine.",
     rhythm: "Fast and unforgiving — stick, multi-hit, parry to refund MP, reposition sharply.",
     strengths: [
-      "Highest base DPS of any weapon family",
-      "Parry refunds MP, converting defense to resource",
+      "Multi-hit strings reward fast, aggressive play",
+      "Parry refunds MP, converting defense to resource (community-reported)",
       "Fast pace rewards mechanical players",
     ],
     risks: [
@@ -179,25 +185,27 @@ const BUILDS: Record<string, BuildInfo> = {
     ],
   },
   crossbow: {
+    id: "crossbow",
     name: "Crossbow Build",
-    href: "/builds/bow/",
+    href: "/builds/crossbow/",
     reason:
-      "You want ranged safety. Crossbow keeps threats at distance and rewards magazine management — track your shot count, reload in safe windows, and exploit the final-shot bonus on a priority target.",
-    rhythm: "Kite and reload — fire at range, track shot count, reload during safe windows.",
+      "You want ranged safety. Crossbow keeps threats at distance and rewards magazine management — plan reloads in safe windows and commit to a branch identity.",
+    rhythm: "Kite and reload — fire at range, plan reloads during safe windows.",
     strengths: [
       "Ranged safety; answer threats before they reach you",
-      "High fire-rate ceiling via 加速核心 (~10.6 shots/sec)",
-      "XRA-9 offers single-shot burst for break windows",
+      "Magazine-based pace gives clear decision points",
+      "Branch options let you pick sustained output or burst",
     ],
     risks: [
       "Reload downtime is exploitable under melee pressure",
-      "Final-shot bonus requires shot-counting",
-      "Branches play very differently — builds don't always transfer",
+      "Positioning mistakes are punished harder than for melee",
+      "Branch builds don't always transfer",
     ],
   },
   staff: {
+    id: "staff",
     name: "Staff Build",
-    href: "/builds/magic/",
+    href: "/builds/staff/",
     reason:
       "You want magic damage. Staff is the ranged caster family — specials cost MP and carry cooldowns, so the loop is cast, fill with basics, and reposition at range. It rewards cooldown and MP management over twitch reactions.",
     rhythm: "Cast and fill — special at range, fill with basics, track MP and cooldowns.",
@@ -209,93 +217,107 @@ const BUILDS: Record<string, BuildInfo> = {
     risks: [
       "Cooldown lockout leaves only basics if mistimed",
       "MP dependency; a dry bar drops output sharply",
-      "Newer weapon; effects sparsely documented",
+      "Effects sparsely documented; verify in-game",
     ],
   },
-  tome: {
-    name: "Magic Tome Build",
-    href: "/builds/scythe/",
+  grimoire: {
+    id: "grimoire",
+    name: "Grimoire Build",
+    href: "/builds/grimoire/",
     reason:
-      "You want magic control. Magic Tome's spell rotation and 模仿之书 duplication give flexible pack control — stack 魔导书急速 to shrink cooldowns and duplicate your highest-value spell at the right moment.",
-    rhythm: "Rotate and duplicate — cast, stack haste, duplicate your best spell at the right moment.",
+      "You want magic control. Grimoire's spell rotation gives flexible pack control — stack cooldown reduction to keep your rotation active and time your highest-value spell at the right moment.",
+    rhythm: "Cast and rotate — cast, track cooldowns, time your best spell at the right moment.",
     strengths: [
       "Flexible spell rotation adapts to different pack shapes",
-      "模仿之书 duplicates your best spell for burst windows",
-      "魔导书急速 scales cooldowns, rewarding investment",
+      "Ranged magic safety; answer threats before they close",
+      "Cooldown management rewards planning",
     ],
     risks: [
       "MP-hungry; a dry bar stalls the whole rotation",
-      "Newer system; difficulty and interactions unverified",
+      "Newer to documentation; difficulty and interactions unverified",
       "Rotation complexity raises the execution floor",
     ],
   },
 };
 
+function buildScores(): Record<WeaponId, number> {
+  return { swordShield: 0, greatsword: 0, dagger: 0, crossbow: 0, staff: 0, grimoire: 0 };
+}
+
 function recommend(answers: Answers): RecommendationResult {
-  const { range, priority, speed, risk } = answers;
+  const scores = buildScores();
+  const { range, priority, speed, risk, mode } = answers;
 
-  // Specific combinations from the spec
-  if (range === "melee" && priority === "safety" && speed === "slow") {
-    return {
-      primary: BUILDS.sword,
-      alternatives: [BUILDS.greatsword, BUILDS.crossbow],
-    };
-  }
-  if (range === "melee" && priority === "damage" && speed === "slow") {
-    return {
-      primary: BUILDS.greatsword,
-      alternatives: [BUILDS.dagger, BUILDS.sword],
-    };
-  }
-  if (range === "melee" && speed === "fast" && risk === "high") {
-    return {
-      primary: BUILDS.dagger,
-      alternatives: [BUILDS.greatsword, BUILDS.sword],
-    };
-  }
-  if (range === "ranged" && priority === "safety") {
-    return {
-      primary: BUILDS.crossbow,
-      alternatives: [BUILDS.staff, BUILDS.sword],
-    };
-  }
-  if (range === "magic" && priority === "damage") {
-    return {
-      primary: BUILDS.staff,
-      alternatives: [BUILDS.tome, BUILDS.crossbow],
-    };
-  }
-  if (range === "magic" && priority === "control") {
-    return {
-      primary: BUILDS.tome,
-      alternatives: [BUILDS.staff, BUILDS.crossbow],
-    };
-  }
-
-  // Default fallback based on first preference (range)
+  // Range weights
   if (range === "melee") {
-    return {
-      primary: BUILDS.sword,
-      alternatives: [BUILDS.greatsword, BUILDS.dagger],
-    };
-  }
-  if (range === "ranged") {
-    return {
-      primary: BUILDS.crossbow,
-      alternatives: [BUILDS.staff, BUILDS.sword],
-    };
-  }
-  if (range === "magic") {
-    return {
-      primary: BUILDS.staff,
-      alternatives: [BUILDS.tome, BUILDS.crossbow],
-    };
+    scores.swordShield += 2;
+    scores.greatsword += 2;
+    scores.dagger += 2;
+  } else if (range === "ranged") {
+    scores.crossbow += 3;
+    scores.swordShield += 1;
+    scores.staff += 1;
+  } else if (range === "magic") {
+    scores.staff += 3;
+    scores.grimoire += 3;
+    scores.crossbow += 1;
   }
 
-  // Ultimate fallback
+  // Priority weights
+  if (priority === "safety") {
+    scores.swordShield += 3;
+    scores.crossbow += 2;
+    scores.greatsword += 1;
+  } else if (priority === "damage") {
+    scores.greatsword += 2;
+    scores.dagger += 2;
+    scores.staff += 1;
+    scores.crossbow += 1;
+  } else if (priority === "control") {
+    scores.grimoire += 2;
+    scores.staff += 2;
+    scores.swordShield += 1;
+    scores.crossbow += 1;
+  }
+
+  // Attack speed weights
+  if (speed === "fast") {
+    scores.dagger += 3;
+    scores.crossbow += 1;
+    scores.grimoire += 1;
+  } else if (speed === "slow") {
+    scores.greatsword += 3;
+    scores.swordShield += 2;
+  }
+
+  // Risk tolerance weights
+  if (risk === "high") {
+    scores.dagger += 3;
+    scores.greatsword += 1;
+    scores.grimoire += 1;
+  } else if (risk === "distance") {
+    scores.crossbow += 2;
+    scores.staff += 2;
+    scores.grimoire += 1;
+    scores.swordShield += 1;
+  }
+
+  // Play mode: light influence only
+  if (mode === "solo") {
+    scores.swordShield += 1;
+    scores.crossbow += 1;
+  } else if (mode === "coop") {
+    scores.staff += 1;
+    scores.grimoire += 1;
+    scores.crossbow += 1;
+  }
+
+  const ranked = (Object.keys(scores) as WeaponId[]).sort((a, b) => scores[b] - scores[a]);
+  const [first, second, third] = ranked;
+
   return {
-    primary: BUILDS.sword,
-    alternatives: [BUILDS.crossbow, BUILDS.staff],
+    primary: BUILDS[first],
+    alternatives: [BUILDS[second], BUILDS[third]],
   };
 }
 
@@ -361,8 +383,8 @@ export default function BuildPicker() {
           <h2 id="build-picker-result-title">{result.primary.name}</h2>
           <p>
             Based on your answers: {summary}. The recommendation below is a
-            starting point — read the full guide to confirm the fit before
-            committing a run.
+            playstyle fit, not a damage ranking — read the full guide to
+            confirm the fit before committing a run.
           </p>
         </div>
 

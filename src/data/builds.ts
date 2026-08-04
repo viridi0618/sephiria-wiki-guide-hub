@@ -2,19 +2,20 @@ import { make } from "./content-helpers";
 import type { GuidePageData, GuideSource, GuideSection } from "@/lib/types";
 
 const STEAM_URL = "https://store.steampowered.com/app/2436940/Sephiria/";
-const BILIBILI_URL = "https://www.bilibili.com/opus/1119413776142041088";
 
 const buildSources: GuideSource[] = [
-  { label: "Sephiria on Steam", url: STEAM_URL, level: "Official", lastChecked: "2026-08-03" },
-  { label: "Sephiria weapon ranking (Bilibili Opus)", url: BILIBILI_URL, level: "Community", lastChecked: "2026-08-03" },
+  { label: "Sephiria on Steam", url: STEAM_URL, level: "Official", lastChecked: "2026-08-04" },
 ];
 
 const BUILD_HERO_IMAGE = "/screenshots/sephiria-builds.webp";
 const BUILD_HERO_WIDTH = 1280;
 const BUILD_HERO_HEIGHT = 720;
-const BUILD_VERSION = "1.0 (Released 2026-07-31)";
+const BUILD_VERSION = "1.0";
 const BUILD_PLATFORMS = "PC (Windows, macOS)";
-const BUILD_INFORMATION_TYPE = "Editorial guide with official game facts";
+const BUILD_INFORMATION_TYPE = "Editorial guide with official game facts and unverified community descriptions";
+
+const BUILD_HERO_ALT = "Official Sephiria inventory screenshot showing artifacts and tablets.";
+const BUILD_HERO_CAPTION = "Official Sephiria inventory screenshot showing artifacts and tablets. Source: Steam store page.";
 
 interface BuildPageInput {
   path: string;
@@ -24,8 +25,6 @@ interface BuildPageInput {
   description: string;
   answer: string;
   warning: string;
-  heroImageAlt: string;
-  heroImageCaption: string;
   sections: GuideSection[];
   related?: string[];
 }
@@ -39,6 +38,8 @@ function buildPage(input: BuildPageInput): GuidePageData {
     platforms: BUILD_PLATFORMS,
     informationType: BUILD_INFORMATION_TYPE,
     heroImage: BUILD_HERO_IMAGE,
+    heroImageAlt: BUILD_HERO_ALT,
+    heroImageCaption: BUILD_HERO_CAPTION,
     heroImageWidth: BUILD_HERO_WIDTH,
     heroImageHeight: BUILD_HERO_HEIGHT,
     sources: buildSources,
@@ -50,30 +51,31 @@ const buildsHubSections: GuideSection[] = [
   {
     heading: "Six weapons, six rhythms",
     paragraphs: [
-      "Sephiria's six weapon families each play a different game. This hub orients you to all six before you pick a page. URLs are kept stable, but each title now reflects the real weapon family.",
+      "Sephiria has six weapon families, each with its own range, pace, and defensive options. This hub orients you to all six before you pick a page. The Steam store confirms six weapon families, each with more than 50 upgrades; the specific traits below are editorial and community assessments, not official ratings.",
     ],
     table: {
-      headers: ["Build page", "Weapon family", "Range", "Pace", "Difficulty"],
+      headers: ["Build page", "Weapon family", "Range", "Pace", "Difficulty (community assessment)"],
       rows: [
-        ["Sword & Shield", "剑盾", "Short melee", "Mid-speed, block-while-move", "Low–mid"],
-        ["Great Sword", "大剑", "Melee, wide arc", "Slow heavy hits", "Mid"],
-        ["Dagger", "匕首", "Close melee", "Multi-hit fast attack", "High"],
-        ["Crossbow", "十字弩", "Ranged", "Varies by branch", "Mid"],
-        ["Staff", "法杖", "Ranged caster", "MP and cooldown gated", "Mid"],
-        ["Magic Tome", "魔导书", "Mid-range caster", "MP-cost rotation", "Unverified"],
+        ["Sword and Shield", "Sword and Shield", "Short melee", "Mid-speed, defensive", "Low–mid"],
+        ["Greatsword", "Greatsword", "Melee, wide arc", "Slow heavy hits", "Mid"],
+        ["Dagger", "Dagger", "Close melee", "Multi-hit fast attack", "High"],
+        ["Crossbow", "Crossbow", "Ranged", "Magazine-based", "Mid"],
+        ["Staff", "Staff", "Ranged caster", "MP and cooldown gated", "Mid"],
+        ["Grimoire", "Grimoire", "Mid-range caster", "MP-cost rotation", "Unverified"],
       ],
     },
+    note: "Range, pace, and difficulty are editorial and community assessments; no official cross-weapon ratings are published.",
   },
   {
     heading: "How to choose",
     paragraphs: [
-      "Pick by the problem you need to solve first. Survivability points to Sword & Shield; reach and safety point to Crossbow or the casters; deliberate big hits point to Great Sword; high-skill parry play points to Dagger.",
+      "Pick by the problem you need to solve first. Defensive play points to Sword and Shield; reach and safety point to Crossbow or the casters; deliberate big hits point to Greatsword; high-skill parry play points to Dagger.",
     ],
     bullets: [
-      "Want the highest fault tolerance? Sword & Shield.",
-      "Want safety through distance? Crossbow, Staff, or Magic Tome.",
-      "Want committed, interrupt-heavy melee? Great Sword.",
-      "Want the highest output ceiling and can parry? Dagger.",
+      "Want a defensive option? Sword and Shield.",
+      "Want safety through distance? Crossbow, Staff, or Grimoire.",
+      "Want committed, interrupt-heavy melee? Greatsword.",
+      "Want fast, high-risk melee with a parry? Dagger.",
     ],
   },
   {
@@ -86,7 +88,6 @@ const buildsHubSections: GuideSection[] = [
       "Core combat loop — the repeatable sequence to drill.",
       "Who this build suits — the player it fits.",
       "Strengths and weaknesses — honest trade-offs.",
-      "Opening choices — early upgrades and branches.",
       "Room combat — handling normal encounters.",
       "Boss combat — adapting the loop to a single target.",
       "Related entry points — where to go next.",
@@ -95,8 +96,7 @@ const buildsHubSections: GuideSection[] = [
   {
     heading: "Accuracy and sources",
     paragraphs: [
-      "Game facts (weapon families, the 0.11.0 Staff addition, platforms, release) come from the official Steam page. Weapon-specific traits — fire-rate breakpoints, the ~140% Great Sword threshold, parry refunds, branch names — are cross-verified from community guides and flagged with notes on each page.",
-      "Confirm any number or branch name in your current patch before committing a run to it.",
+      "Official facts (six weapon families, more than 50 upgrades per family, platforms, release) come from the Steam store page. Weapon-specific traits and preferences are unverified community descriptions — We have not identified a verified English-language source for these weapon-specific descriptions. Confirm any mechanic in your current patch before committing a run to it.",
     ],
   },
 ];
@@ -108,16 +108,15 @@ export const buildsHub = make({
   eyebrow: "BUILD WITH INTENT",
   description: "Compare the six weapon-family playstyles and choose a coherent plan.",
   answer:
-    "Sephiria has six weapon families, each with its own range, pace, and difficulty. These pages explain each one's loop and trade-offs without inventing stats.",
+    "Sephiria has six weapon families, each with its own range, pace, and trade-offs. These pages explain each one's loop without inventing stats or official rankings.",
   category: "Builds",
   pageType: "category",
   version: BUILD_VERSION,
   platforms: BUILD_PLATFORMS,
   informationType: BUILD_INFORMATION_TYPE,
   heroImage: BUILD_HERO_IMAGE,
-  heroImageAlt: "Sephiria inventory grid showing artifacts and tablets",
-  heroImageCaption:
-    "Steam official screenshot showing the inventory and build system.",
+  heroImageAlt: BUILD_HERO_ALT,
+  heroImageCaption: BUILD_HERO_CAPTION,
   heroImageWidth: BUILD_HERO_WIDTH,
   heroImageHeight: BUILD_HERO_HEIGHT,
   heroImageSourceUrl: STEAM_URL,
@@ -131,26 +130,26 @@ const swordShieldSections: GuideSection[] = [
   {
     heading: "Playstyle role",
     paragraphs: [
-      "Sword & Shield is Sephiria's only defensive weapon family. You hold the shield to block while still moving, and a perfect guard opens a counter-attack window. It is a mid-speed, short-range weapon whose entire identity is surviving long enough to punish.",
+      "Sword and Shield is Sephiria's defensive weapon family. You hold the shield to block while moving, and a perfect guard opens a counter-attack window. It is a mid-speed, short-range weapon whose identity is surviving long enough to punish.",
       "Reach is short and the counter-attack travels almost no distance, so this build is about reading attacks and standing your ground rather than chasing.",
     ],
   },
   {
     heading: "Core combat loop",
     paragraphs: [
-      "Approach under the shield, perfect-guard the incoming hit, punish with the counter or a sweep (横扫, which costs MP), then reset behind the shield. The loop is deliberately slow and repeatable.",
+      "Approach under the shield, perfect-guard the incoming hit, punish with the counter, then reset behind the shield. The loop is deliberately slow and repeatable.",
     ],
     bullets: [
       "Close distance with the shield raised so ranged poke is absorbed.",
       "Time a perfect guard on the telegraphed attack to trigger the counter window.",
-      "Spend the window on a counter, or on 横扫 when several enemies are clustered.",
+      "Spend the window on a counter, or on a wide swing when several enemies are clustered.",
       "Return to guard and reposition before the next exchange.",
     ],
   },
   {
     heading: "Who this build suits",
     paragraphs: [
-      "New players and anyone who learns by surviving first. Sword & Shield has the highest fault tolerance of the six weapon families: a mistimed guard still blocks, and you can move while shielding.",
+      "New players and anyone who learns by surviving first. Sword and Shield is presented by community players as the most forgiving family: a mistimed guard still blocks, and you can move while shielding.",
       "It also suits players who enjoy reactive, defensive rhythms over execution-heavy offense.",
     ],
   },
@@ -160,37 +159,25 @@ const swordShieldSections: GuideSection[] = [
       {
         heading: "Strengths",
         bullets: [
-          "Highest survivability of any weapon family; block-while-move is unique.",
+          "Defensive option unique among the melee families; block-while-move.",
           "Perfect guard converts defense directly into a punish window.",
-          "Low-to-mid difficulty, very forgiving for new players.",
+          "Community players rate it low-to-mid difficulty and forgiving for new players.",
         ],
       },
       {
         heading: "Weaknesses",
         bullets: [
           "Very short range, and the counter-attack barely moves you forward.",
-          "Damage output is slow; 横扫 costs MP so it cannot be spammed.",
+          "Damage output is slow relative to faster families.",
           "Mobility-heavy bosses can simply walk out of your punish range.",
         ],
       },
     ],
   },
   {
-    heading: "Opening choices",
-    paragraphs: [
-      "Stabilize the shield first, then scale the punish. Early picks that improve guard stability or counter damage reinforce the same plan instead of splitting your attention.",
-    ],
-    bullets: [
-      "Fire staff (火杖) and lightning staff (雷杖) branches add elemental coverage.",
-      "Rapier (刺剑) sharpens the counter punish.",
-      "Ice hammer (冰锤), laser, and carrot sword (胡萝卜剑) are noted branch options.",
-    ],
-    note: "Branch names come from community guides; confirm exact effects and unlock conditions in your current patch.",
-  },
-  {
     heading: "Room combat",
     paragraphs: [
-      "Use the shield to walk through ranged enemies and group melee foes with positioning. When a cluster forms, a single 横扫 clears several at once for one MP cost.",
+      "Use the shield to walk through ranged enemies and group melee foes with positioning. When a cluster forms, a single wide swing clears several at once.",
       "Never drop guard to chase a runner; let enemies come to your shield and counter them on arrival.",
     ],
   },
@@ -207,7 +194,7 @@ const swordShieldSections: GuideSection[] = [
       "Once the core loop is repeatable, move to the guides that answer your next decision.",
     ],
     bullets: [
-      "Weapons Guide — compare Sword & Shield against the other five families.",
+      "Weapons Guide — compare Sword and Shield against the other five families.",
       "Boss Guide — turn perfect-guard observation into safer damage.",
       "Beginner Guide — keep your first runs decision-focused.",
       "Builds Hub — revisit the other weapon builds when you want to pivot.",
@@ -219,27 +206,26 @@ const crossbowSections: GuideSection[] = [
   {
     heading: "Playstyle role",
     paragraphs: [
-      "Crossbow is the ranged weapon family. Safety comes from distance, and the unique skill is magazine management: every reload is a decision, and the final shot of a magazine carries a bonus.",
-      "Pace varies enormously by branch — from the heavy crossbow with 加速核心 hitting roughly 10.6 shots per second, to XRA-9's slow single-shot bursts.",
+      "Crossbow is the ranged weapon family. Safety comes from distance, and the skill is magazine management: every reload is a decision. Community players describe branch choices as ranging from sustained fire-rate setups to slow, high-damage single-shot builds.",
     ],
   },
   {
     heading: "Core combat loop",
     paragraphs: [
-      "Kite at maximum range, fire through the magazine, reload during a safe window, and exploit the final-shot bonus on a meaningful target.",
+      "Kite at maximum range, fire through the magazine, and reload during a safe window.",
     ],
     bullets: [
       "Open engagements at range and keep enemies in a line.",
-      "Track your shot count so the final, boosted round lands on a priority target.",
+      "Plan your reload before the magazine empties.",
       "Reload during boss phase changes or after repositioning to cover.",
-      "Use the heavy-crossbow fire-rate build (加速核心) for sustained DPS, or XRA-9 for burst.",
+      "Choose a branch identity — sustained fire-rate or single-shot burst — and build around it.",
     ],
   },
   {
     heading: "Who this build suits",
     paragraphs: [
       "Players who like spacing, resource pacing, and kiting. If you enjoy planning reloads the way a melee player plans combos, Crossbow rewards that discipline.",
-      "It is a mid-difficulty weapon: the mechanics are simple, but magazine discipline and positioning under pressure separate good runs from great ones.",
+      "It is a mid-difficulty weapon by community assessment: the mechanics are simple, but magazine discipline and positioning under pressure separate good runs from great ones.",
     ],
   },
   {
@@ -249,44 +235,31 @@ const crossbowSections: GuideSection[] = [
         heading: "Strengths",
         bullets: [
           "Ranged safety — most threats can be answered before they reach you.",
-          "High fire-rate ceiling via 加速核心 (about 10.6 shots/sec).",
-          "XRA-9 offers single-shot burst for break windows.",
+          "Magazine-based pace gives clear decision points.",
+          "Branch options let you pick sustained output or burst.",
         ],
       },
       {
         heading: "Weaknesses",
         bullets: [
           "Reload downtime is exploitable; melee pressure during a reload is dangerous.",
-          "Final-shot bonus requires shot-counting, which is unforgiving under chaos.",
-          "Branches play very differently — a build that worked for one may not transfer.",
+          "Branch builds play differently — a setup that worked for one may not transfer.",
+          "Positioning mistakes are punished harder than for melee families.",
         ],
       },
     ],
   },
   {
-    heading: "Opening choices",
-    paragraphs: [
-      "Pick your branch identity early so every later upgrade reinforces it. The fire-rate build and the single-shot build want different support.",
-    ],
-    bullets: [
-      "加速核心 — sustained fire-rate, the heavy-crossbow DPS build.",
-      "爆炸装置 — adds area coverage to each shot.",
-      "XRA-9 — slow, high single-shot damage.",
-      "双子 — dual-shot branch option.",
-    ],
-    note: "Fire-rate breakpoints and the final-shot bonus are community-tested; verify exact values in the current patch.",
-  },
-  {
     heading: "Room combat",
     paragraphs: [
-      "Funnel enemies into corridors and doorways so your shots pierce or cluster. Pre-plan a reload spot before you commit to a magazine, and never reload with a melee enemy in melee range.",
+      "Funnel enemies into corridors and doorways so your shots cluster. Pre-plan a reload spot before you commit to a magazine, and never reload with a melee enemy in reach.",
       "Against mixed packs, kill the fastest closers first so you keep the spacing that keeps you safe.",
     ],
   },
   {
     heading: "Boss combat",
     paragraphs: [
-      "Hold maximum range and treat reloads as phase-locked: reload during transitions, invulnerable phases, or after a big dodge. Save your magazine's final shot for stun or break windows where the bonus matters most.",
+      "Hold maximum range and treat reloads as phase-locked: reload during transitions, invulnerable phases, or after a big dodge.",
       "If a boss has a gap-closer, identify it first and keep one dodge reserved for it rather than spending everything on damage.",
     ],
   },
@@ -297,7 +270,7 @@ const crossbowSections: GuideSection[] = [
     ],
     bullets: [
       "Weapons Guide — compare Crossbow's range and reload discipline against other families.",
-      "Boss Guide — phase-locked reload timing and break-window bursts.",
+      "Boss Guide — reload timing and break-window bursts.",
       "Progression Guide — pick the next priority instead of chasing every upgrade.",
       "Builds Hub — survey the other weapon builds.",
     ],
@@ -308,8 +281,8 @@ const staffSections: GuideSection[] = [
   {
     heading: "Playstyle role",
     paragraphs: [
-      "Staff is the ranged caster family — a newer, independent weapon added in patch 0.11.0. Special attacks cost MP and carry cooldowns, so it is pure magic output gated by resource and timing rather than by magazine or stamina.",
-      "Because the weapon is young, community documentation is sparse; treat this guide as a framework and confirm specifics in-game.",
+      "Staff is the ranged caster family. Special attacks cost MP and carry cooldowns, so it is magic output gated by resource and timing rather than by magazine or stamina.",
+      "Community documentation is sparse; treat this guide as a framework and confirm specifics in-game.",
     ],
   },
   {
@@ -328,7 +301,7 @@ const staffSections: GuideSection[] = [
     heading: "Who this build suits",
     paragraphs: [
       "Players who enjoy cooldown and MP resource management and spell timing over twitchy parries. If you like the rhythm of 'cast, fill, cast,' Staff is the family built around it.",
-      "Expect a mid-difficulty learning curve, and expect to verify effects yourself since the weapon is new.",
+      "Expect to verify effects yourself since community documentation is limited.",
     ],
   },
   {
@@ -347,21 +320,10 @@ const staffSections: GuideSection[] = [
         bullets: [
           "Cooldown lockout leaves you with only basics if you mistime.",
           "MP dependency — a dry MP bar drops your output sharply.",
-          "New weapon: effects, cooldowns, and scaling are sparsely documented.",
+          "Effects, cooldowns, and scaling are sparsely documented.",
         ],
       },
     ],
-  },
-  {
-    heading: "Opening choices",
-    paragraphs: [
-      "Choose a branch that matches the openings you can reliably create. Both known branches lean into burst windows, so build MP and cooldown support around them.",
-    ],
-    bullets: [
-      "火焰凝视 — fire-gaze branch, noted for sustained flame output.",
-      "雷电之翼 — lightning-wing branch, noted for burst.",
-    ],
-    note: "Spell effects and cooldowns are not yet well documented; confirm exact values in-game.",
   },
   {
     heading: "Room combat",
@@ -373,7 +335,7 @@ const staffSections: GuideSection[] = [
   {
     heading: "Boss combat",
     paragraphs: [
-      "Time specials to the boss's openings rather than firing on cooldown. Conserve MP for break phases, where a queued special plus a follow-up does the real work.",
+      "Time specials to the boss's openings rather than firing on cooldown. Conserve MP for phases where a queued special plus a follow-up does the real work.",
       "If a boss has a fast gap-closer, hold a special or MP in reserve to answer it rather than dumping on the first window.",
     ],
   },
@@ -386,17 +348,17 @@ const staffSections: GuideSection[] = [
       "Weapons Guide — place Staff against the other ranged and melee families.",
       "Boss Guide — break-phase burst timing.",
       "Progression Guide — sequence your upgrade priorities.",
-      "Builds Hub — compare with the Magic Tome and other casters.",
+      "Builds Hub — compare with the Grimoire and other casters.",
     ],
   },
 ];
 
-const greatSwordSections: GuideSection[] = [
+const greatswordSections: GuideSection[] = [
   {
     heading: "Playstyle role",
     paragraphs: [
-      "Great Sword is the slow, heavy melee family. Its identity is large hit area, strong interrupts, and high reliable floor damage — you trade speed for reach and stagger.",
-      "It stays melee but hits a wide arc, so positioning matters more than pinpoint aiming. The weapon only feels good once attack speed is stacked to around 140%.",
+      "Greatsword is the slow, heavy melee family. Its identity is a large hit area, strong interrupts, and reliable floor damage — you trade speed for reach and stagger.",
+      "It stays melee but hits a wide arc, so positioning matters more than pinpoint aiming. Community builds recommend substantial attack-speed investment for Greatsword; treat any specific percentage as a player-reported comfort point, not an official breakpoint.",
     ],
   },
   {
@@ -406,16 +368,16 @@ const greatSwordSections: GuideSection[] = [
     ],
     bullets: [
       "Wait for a confirmed opening before committing — recovery is long.",
-      "Use 旋风斩 (whirlwind) to cover a cluster and interrupt several foes at once.",
-      "Stack attack speed toward the ~140% comfort threshold early.",
+      "Use a wide swing to cover a cluster and interrupt several foes at once.",
+      "Invest in attack speed early so swings feel responsive.",
       "Reposition during recovery; do not stand in the swing's endlag.",
     ],
   },
   {
     heading: "Who this build suits",
     paragraphs: [
-      "Players who like deliberate timing and big, committed hits. If you prefer one well-placed swing over a flurry of small ones, Great Sword fits.",
-      "It is a mid-difficulty weapon: the plan is readable, but each swing is a commitment, so greed is punished.",
+      "Players who like deliberate timing and big, committed hits. If you prefer one well-placed swing over a flurry of small ones, Greatsword fits.",
+      "It is a mid-difficulty weapon by community assessment: the plan is readable, but each swing is a commitment, so greed is punished.",
     ],
   },
   {
@@ -432,7 +394,7 @@ const greatSwordSections: GuideSection[] = [
       {
         heading: "Weaknesses",
         bullets: [
-          "Slow until attack speed reaches ~140%; below that it feels sluggish.",
+          "Feels slow until you invest in attack speed.",
           "Long recovery on every swing is a liability if you mis-time.",
           "Heavy commitment makes fast, mobile bosses frustrating.",
         ],
@@ -440,29 +402,17 @@ const greatSwordSections: GuideSection[] = [
     ],
   },
   {
-    heading: "Opening choices",
-    paragraphs: [
-      "Prioritize attack speed toward the ~140% threshold first, then scale the swing's damage and interrupt. Branches each lean into a different element or control angle.",
-    ],
-    bullets: [
-      "万年寒霜巨剑 — frost great-sword branch.",
-      "骨剑 — bone-sword branch.",
-      "电击大剑 — shock great-sword branch.",
-    ],
-    note: "The ~140% attack-speed threshold and branch names are community-reported; verify in your current patch.",
-  },
-  {
     heading: "Room combat",
     paragraphs: [
-      "Position so a single 旋风斩 catches the whole pack. Bait enemies into a line or cluster, then commit one swing to interrupt and damage all of them at once.",
+      "Position so a single wide swing catches the whole pack. Bait enemies into a line or cluster, then commit one swing to interrupt and damage all of them at once.",
       "After the swing, use the recovery to reposition, not to greed a second hit you cannot confirm.",
     ],
   },
   {
     heading: "Boss combat",
     paragraphs: [
-      "Trade only on windows you have confirmed. Great Sword's interrupts are valuable against boss adds and certain telegraphs — use 旋风斩 during stagger phases where the wide arc and high floor damage compound.",
-      "Against mobile bosses, accept one swing per opening rather than trying to chain; recovery into a boss attack is the classic Great Sword death.",
+      "Trade only on windows you have confirmed. Greatsword's interrupts are valuable against boss adds and certain telegraphs — use wide swings during stagger phases where the arc and floor damage compound.",
+      "Against mobile bosses, accept one swing per opening rather than trying to chain; recovery into a boss attack is the classic Greatsword death.",
     ],
   },
   {
@@ -471,7 +421,7 @@ const greatSwordSections: GuideSection[] = [
       "Once your commit-and-reposition loop is stable, continue with the next decision.",
     ],
     bullets: [
-      "Weapons Guide — compare Great Sword's reach and commitment against other melee.",
+      "Weapons Guide — compare Greatsword's reach and commitment against other melee.",
       "Boss Guide — confirm windows before committing heavy swings.",
       "Progression Guide — sequence attack-speed and damage priorities.",
       "Builds Hub — survey the other weapon builds.",
@@ -483,8 +433,8 @@ const daggerSections: GuideSection[] = [
   {
     heading: "Playstyle role",
     paragraphs: [
-      "Dagger is the close-range, multi-hit fast attacker. It has the highest base output of any weapon family, but it earns that damage in the most dangerous output environment — pressed against the enemy.",
-      "The weapon's core mechanic is the parry: a successful parry refunds MP, so skilled play turns defense into resource generation.",
+      "Dagger is the close-range, multi-hit fast attacker. Community players present it as a high-output option, but no official cross-weapon DPS ranking is published. It earns damage in the most dangerous output environment — pressed against the enemy.",
+      "A core community-described mechanic is the parry, which refunds MP on a successful guard, turning skilled defense into resource generation.",
     ],
   },
   {
@@ -494,7 +444,7 @@ const daggerSections: GuideSection[] = [
     ],
     bullets: [
       "Close to melee and open a multi-hit string.",
-      "Parry the telegraphed attack — success refunds MP and creates an opening.",
+      "Parry the telegraphed attack — a successful parry refunds MP and creates an opening.",
       "Spend the refunded MP on extending the string or a burst.",
       "Reposition hard after each exchange; standing still at this range is death.",
     ],
@@ -502,7 +452,7 @@ const daggerSections: GuideSection[] = [
   {
     heading: "Who this build suits",
     paragraphs: [
-      "High-skill players with fast reactions and a taste for parry-timing. Dagger is the highest-difficulty weapon family: the parry has a startup that tests reaction, and the output range leaves no margin for error.",
+      "High-skill players with fast reactions and a taste for parry-timing. Community players rate Dagger the highest-difficulty family: the parry has a startup that tests reaction, and the output range leaves no margin for error.",
       "Do not pick Dagger to relax. Pick it because you want every fight to be a parry drill.",
     ],
   },
@@ -512,8 +462,8 @@ const daggerSections: GuideSection[] = [
       {
         heading: "Strengths",
         bullets: [
-          "Highest base DPS of any weapon family.",
-          "Parry refunds MP, converting defense into resource.",
+          "Multi-hit strings reward fast, aggressive play.",
+          "Parry refunds MP, converting defense into resource (community-reported).",
           "Fast pace rewards mechanical players.",
         ],
       },
@@ -526,18 +476,6 @@ const daggerSections: GuideSection[] = [
         ],
       },
     ],
-  },
-  {
-    heading: "Opening choices",
-    paragraphs: [
-      "Build around the parry first — its refunds are your engine. Then scale the multi-hit string. Branches each color the playstyle with a different element or trick.",
-    ],
-    bullets: [
-      "优衣的短匕首 — Yui's short dagger branch.",
-      "燃烧之牙 — burning-fang branch.",
-      "模仿之书 — mimic-tome branch, overlaps with the Magic Tome line.",
-    ],
-    note: "Parry startup frames and MP refund amounts are community-sourced; confirm timing windows in-game.",
   },
   {
     heading: "Room combat",
@@ -567,30 +505,30 @@ const daggerSections: GuideSection[] = [
   },
 ];
 
-const magicTomeSections: GuideSection[] = [
+const grimoireSections: GuideSection[] = [
   {
     heading: "Playstyle role",
     paragraphs: [
-      "Magic Tome is the mid-range magic projectile family — an MP-cost caster with its own 魔导书急速 (tome haste) cooldown-reduction stat. Its signature trick is 模仿之书, which can copy the previous spell.",
-      "It is a newer system and its difficulty is not yet verified, so this guide is a framework: confirm spell interactions and copy rules in-game.",
+      "Grimoire is the mid-range magic projectile family — an MP-cost caster. Community players describe it as built around spell rotations and cooldown reduction, but the family's mechanics are not yet well documented.",
+      "Difficulty and specific interactions are unverified, so this guide is a framework: confirm spell behavior in-game.",
     ],
   },
   {
     heading: "Core combat loop",
     paragraphs: [
-      "Cast spells at mid-range, stack 魔导书急速 to shrink cooldowns, and use 模仿之书 to duplicate your highest-value spell. The loop is a rotation, not a single spam.",
+      "Cast spells at mid-range, manage MP, and time your rotation around cooldowns.",
     ],
     bullets: [
       "Open with the spell best suited to the pack shape.",
-      "Stack 魔导书急速 so cooldowns line up with your rotation.",
-      "Use 模仿之书 to repeat the key spell at the right moment.",
-      "Manage MP so the duplicate is affordable when the window opens.",
+      "Track cooldowns so your rotation stays active.",
+      "Manage MP so a high-value spell is affordable when the window opens.",
+      "Fill gaps with basics rather than standing idle.",
     ],
   },
   {
     heading: "Who this build suits",
     paragraphs: [
-      "Players who enjoy spell-rotation optimization and cooldown stacking. If you like the idea of duplicating a perfectly timed spell, Magic Tome is built around it.",
+      "Players who enjoy spell-rotation optimization and cooldown stacking. If you like the idea of timing a powerful spell at the right moment, Grimoire is built around it.",
       "Difficulty is unverified — expect to learn the rotation yourself and to treat early runs as exploration.",
     ],
   },
@@ -601,148 +539,171 @@ const magicTomeSections: GuideSection[] = [
         heading: "Strengths",
         bullets: [
           "Flexible spell rotation adapts to different pack shapes.",
-          "模仿之书 duplicates your best spell for burst windows.",
-          "魔导书急速 scales cooldowns, rewarding investment.",
+          "Ranged magic safety; answer threats before they close.",
+          "Cooldown management rewards planning.",
         ],
       },
       {
         heading: "Weaknesses",
         bullets: [
           "MP-hungry — a dry bar stalls the whole rotation.",
-          "Newer system; difficulty and interactions are not yet verified.",
+          "Newer to documentation; difficulty and interactions are not yet verified.",
           "Rotation complexity raises the floor for execution.",
         ],
       },
     ],
   },
   {
-    heading: "Opening choices",
-    paragraphs: [
-      "Pick the spell you want to duplicate, then build MP and haste around it. Because 模仿之书 copies the previous spell, your rotation order is itself a build decision.",
-    ],
-    bullets: [
-      "模仿之书 — the mimic-tome branch; copies the last spell cast.",
-    ],
-    note: "Spell copy rules, haste scaling, and the branch list are not yet verified; confirm in-game.",
-  },
-  {
     heading: "Room combat",
     paragraphs: [
-      "Open with an area spell to shape the pack, duplicate the best one with 模仿之书, then fill with basics while cooldowns recover. Keep MP in reserve for the duplicate.",
-      "Watch your rotation order: the spell you cast last is the one 模仿之书 will copy, so end on the spell you want repeated.",
+      "Open with an area spell to shape the pack, then fill with basics while cooldowns recover. Keep MP in reserve for the spell you want to land on a priority target.",
+      "Watch your rotation order so the right spell is off cooldown when you need it.",
     ],
   },
   {
     heading: "Boss combat",
     paragraphs: [
-      "Save the duplicate for break windows where two copies of your best spell compound. Stack 魔导书急速 before burst phases so your rotation aligns with the opening.",
-      "If MP runs dry mid-burst, fall back to basics and rebuild — do not force a duplicate you cannot afford.",
+      "Save your highest-value spells for break windows where a well-timed cast compounds. Keep cooldowns aligned with the boss's openings.",
+      "If MP runs dry mid-burst, fall back to basics and rebuild — do not force a cast you cannot afford.",
     ],
   },
   {
     heading: "Related entry points",
     paragraphs: [
-      "Once your cast-and-duplicate rotation is stable, continue with the next decision.",
+      "Once your rotation is stable, continue with the next decision.",
     ],
     bullets: [
-      "Weapons Guide — compare Magic Tome against the Staff and other casters.",
-      "Boss Guide — break-window duplication timing.",
-      "Progression Guide — sequence MP, haste, and duplicate priorities.",
+      "Weapons Guide — compare Grimoire against the Staff and other casters.",
+      "Boss Guide — break-window cast timing.",
+      "Progression Guide — sequence MP and cooldown priorities.",
       "Builds Hub — survey the other weapon builds.",
     ],
   },
 ];
 
+function withLegacyPaths(real: GuidePageData, legacyPaths: string[]): GuidePageData[] {
+  return [
+    real,
+    ...legacyPaths.map((legacy) =>
+      make({
+        ...real,
+        path: legacy,
+        canonicalPath: real.path,
+        title: real.title,
+        h1: real.h1,
+        description: real.description,
+        answer: real.answer,
+        eyebrow: real.eyebrow,
+        category: real.category,
+        categoryPath: real.categoryPath,
+        version: real.version,
+        platforms: real.platforms,
+        informationType: real.informationType,
+        sections: real.sections,
+        related: real.related,
+        warning: real.warning,
+        heroImage: real.heroImage,
+        heroImageAlt: real.heroImageAlt,
+        heroImageCaption: real.heroImageCaption,
+        heroImageWidth: real.heroImageWidth,
+        heroImageHeight: real.heroImageHeight,
+        heroImageSourceUrl: real.heroImageSourceUrl,
+        sources: real.sources,
+      } as GuidePageData),
+    ),
+  ];
+}
+
+const swordShieldReal = buildPage({
+  path: "builds/sword-and-shield",
+  title: "Sword and Shield Build",
+  h1: "Sword and Shield Build",
+  eyebrow: "GUARD AND COUNTER",
+  description:
+    "A defensive Sword and Shield build framework: block-while-move, perfect-guard counters, and short-range punish.",
+  answer:
+    "Sword and Shield is Sephiria's defensive weapon family. Hold the shield to block while moving, perfect-guard to open a counter, and punish at short range. This guide covers the loop and trade-offs without inventing stats.",
+  warning:
+    "Accuracy note: perfect-guard timing is community-sourced; confirm counter damage and MP costs in your current patch.",
+  sections: swordShieldSections,
+});
+
+const crossbowReal = buildPage({
+  path: "builds/crossbow",
+  title: "Crossbow Build",
+  h1: "Crossbow Build",
+  eyebrow: "RANGE AND RHYTHM",
+  description:
+    "A ranged Crossbow build framework: magazine management, safe reload timing, and branch identity.",
+  answer:
+    "Crossbow is Sephiria's ranged weapon family. Safety comes from distance, and the skill is magazine management — plan reloads in safe windows and commit to a branch identity. This guide covers the loop without inventing exact values.",
+  warning:
+    "Accuracy note: branch details and any specific fire-rate numbers come from community testing; verify in the current patch.",
+  sections: crossbowSections,
+});
+
+const staffReal = buildPage({
+  path: "builds/staff",
+  title: "Staff Build",
+  h1: "Staff Build",
+  eyebrow: "SPELL AND COOLDOWN",
+  description:
+    "A ranged caster Staff build framework: MP and cooldown management for the magic weapon line.",
+  answer:
+    "Staff is Sephiria's ranged caster family. Specials cost MP and carry cooldowns, so the loop is cast, fill with basics, and reposition at range. Spell effects are sparse in documentation, so confirm specifics in-game.",
+  warning:
+    "Accuracy note: spell effects, cooldowns, and MP costs are sparsely documented; confirm in-game.",
+  sections: staffSections,
+});
+
+const greatswordReal = buildPage({
+  path: "builds/greatsword",
+  title: "Greatsword Build",
+  h1: "Greatsword Build",
+  eyebrow: "COMMIT AND INTERRUPT",
+  description:
+    "A heavy-melee Greatsword build framework: wide-arc swings, interrupts, and attack-speed investment.",
+  answer:
+    "Greatsword is Sephiria's slow heavy melee family. A large hit area and strong interrupts trade for long recovery. Community builds recommend substantial attack-speed investment. This guide covers the commit-and-reposition loop without inventing stats.",
+  warning:
+    "Accuracy note: any specific attack-speed figure and branch details are community-reported; verify in your current patch.",
+  sections: greatswordSections,
+});
+
+const daggerReal = buildPage({
+  path: "builds/dagger",
+  title: "Dagger Build",
+  h1: "Dagger Build",
+  eyebrow: "STICK AND PARRY",
+  description:
+    "A close-range Dagger build framework: multi-hit strings, parry refunds, and high-risk melee play.",
+  answer:
+    "Dagger is Sephiria's close-range multi-hit family, presented by community players as high-output with the most dangerous output range. The parry refunds MP (community-reported). This guide covers the loop without inventing exact values.",
+  warning:
+    "Accuracy note: parry startup frames and MP refund amounts are community-sourced; confirm timing windows in-game.",
+  sections: daggerSections,
+});
+
+const grimoireReal = buildPage({
+  path: "builds/grimoire",
+  title: "Grimoire Build",
+  h1: "Grimoire Build",
+  eyebrow: "CAST AND ROTATE",
+  description:
+    "A mid-range Grimoire build framework: MP-cost rotations and cooldown timing for the magic projectile family.",
+  answer:
+    "Grimoire is Sephiria's mid-range magic projectile family. Spells cost MP and cooldowns gate the rotation. The family is not yet well documented, so confirm interactions in-game.",
+  warning:
+    "Accuracy note: the Grimoire system is not yet well documented and its difficulty is unverified; confirm spell interactions in-game.",
+  sections: grimoireSections,
+});
+
 export const buildPages: GuidePageData[] = [
   buildsHub,
-  buildPage({
-    path: "builds/sword",
-    title: "Sword & Shield Build",
-    h1: "Sword & Shield Build",
-    eyebrow: "GUARD AND COUNTER",
-    description:
-      "A defensive Sword & Shield build framework: block-while-move, perfect-guard counters, and short-range punish.",
-    answer:
-      "Sword & Shield is Sephiria's defensive weapon family. Hold the shield to block while moving, perfect-guard to open a counter, and punish at short range. This guide covers the loop, branches, and trade-offs without inventing stats.",
-    warning:
-      "Accuracy note: branch names and perfect-guard timing are community-sourced; confirm 横扫 MP cost and counter damage in your current patch.",
-    heroImageAlt: "Sephiria inventory screenshot showing a Sword & Shield loadout",
-    heroImageCaption: "The Sword & Shield loadout viewed in a Sephiria inventory screen.",
-    sections: swordShieldSections,
-  }),
-  buildPage({
-    path: "builds/bow",
-    title: "Crossbow Build",
-    h1: "Crossbow Build",
-    eyebrow: "RANGE AND RHYTHM",
-    description:
-      "A ranged Crossbow build framework: magazine management, final-shot bonuses, and fire-rate vs single-shot branches.",
-    answer:
-      "Crossbow is Sephiria's ranged weapon family. Safety comes from distance, and the skill is magazine management — track shot count, reload in safe windows, and exploit the final-shot bonus. This guide covers the loop and branches without inventing exact values.",
-    warning:
-      "Accuracy note: fire-rate breakpoints (e.g. 加速核心 ~10.6 shots/sec) and the final-shot bonus come from community testing; verify exact values in the current patch.",
-    heroImageAlt: "Sephiria inventory screenshot showing a Crossbow loadout",
-    heroImageCaption: "A Crossbow loadout displayed in the Sephiria inventory screen.",
-    sections: crossbowSections,
-  }),
-  buildPage({
-    path: "builds/magic",
-    title: "Staff Build",
-    h1: "Staff Build",
-    eyebrow: "SPELL AND COOLDOWN",
-    description:
-      "A ranged caster Staff build framework: MP and cooldown management for the 0.11.0 weapon line.",
-    answer:
-      "Staff is Sephiria's ranged caster family, added in patch 0.11.0. Specials cost MP and carry cooldowns, so the loop is cast, fill with basics, and reposition at range. Spell effects are sparse in documentation, so confirm specifics in-game.",
-    warning:
-      "Accuracy note: the Staff is a newer weapon (added 0.11.0) with sparse documentation; confirm spell effects, cooldowns, and MP costs in-game.",
-    heroImageAlt: "Sephiria inventory screenshot showing a Staff loadout",
-    heroImageCaption: "A Staff loadout in the Sephiria inventory screen.",
-    sections: staffSections,
-  }),
-  buildPage({
-    path: "builds/spear",
-    title: "Great Sword Build",
-    h1: "Great Sword Build",
-    eyebrow: "COMMIT AND INTERRUPT",
-    description:
-      "A heavy-melee Great Sword build framework: wide-arc swings, interrupts, and the attack-speed comfort threshold.",
-    answer:
-      "Great Sword is Sephiria's slow heavy melee family. Large hit area and strong interrupts trade for long recovery, and it feels good only once attack speed nears ~140%. This guide covers the commit-and-reposition loop and branches without inventing stats.",
-    warning:
-      "Accuracy note: the ~140% attack-speed comfort threshold and branch names are community-reported; verify in your current patch.",
-    heroImageAlt: "Sephiria inventory screenshot showing a Great Sword loadout",
-    heroImageCaption: "The Great Sword loadout in a Sephiria inventory screen.",
-    sections: greatSwordSections,
-  }),
-  buildPage({
-    path: "builds/fist",
-    title: "Dagger Build",
-    h1: "Dagger Build",
-    eyebrow: "STICK AND PARRY",
-    description:
-      "A close-range Dagger build framework: multi-hit strings, parry refunds, and the highest base output in the game.",
-    answer:
-      "Dagger is Sephiria's close-range multi-hit family with the highest base output — and the most dangerous output range. The parry refunds MP, so skilled play turns defense into resource. This guide covers the loop and branches without inventing exact values.",
-    warning:
-      "Accuracy note: parry startup frames and MP refund amounts are community-sourced; confirm timing windows in-game.",
-    heroImageAlt: "Sephiria inventory screenshot showing a Dagger loadout",
-    heroImageCaption: "A Dagger loadout shown in the Sephiria inventory screen.",
-    sections: daggerSections,
-  }),
-  buildPage({
-    path: "builds/scythe",
-    title: "Magic Tome Build",
-    h1: "Magic Tome Build",
-    eyebrow: "CAST AND DUPLICATE",
-    description:
-      "A mid-range Magic Tome build framework: MP-cost rotations, tome haste, and spell duplication via 模仿之书.",
-    answer:
-      "Magic Tome is Sephiria's mid-range magic projectile family. Spells cost MP, a 魔导书急速 stat shrinks cooldowns, and 模仿之书 can copy the previous spell. The system is new, so confirm interactions in-game.",
-    warning:
-      "Accuracy note: the Magic Tome system is new and its difficulty is not yet verified; confirm spell interactions and 模仿之书 copy rules in-game.",
-    heroImageAlt: "Sephiria inventory screenshot showing a Magic Tome loadout",
-    heroImageCaption: "The Magic Tome loadout viewed in the Sephiria inventory screen.",
-    sections: magicTomeSections,
-  }),
+  ...withLegacyPaths(swordShieldReal, ["builds/sword"]),
+  ...withLegacyPaths(crossbowReal, ["builds/bow"]),
+  ...withLegacyPaths(staffReal, ["builds/magic"]),
+  ...withLegacyPaths(greatswordReal, ["builds/spear"]),
+  ...withLegacyPaths(daggerReal, ["builds/fist"]),
+  ...withLegacyPaths(grimoireReal, ["builds/scythe"]),
 ];

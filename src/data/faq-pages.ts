@@ -4,12 +4,15 @@ const steamSource = {
   label: "Sephiria on Steam",
   url: "https://store.steampowered.com/app/2436940/Sephiria/",
   level: "Official" as const,
-  lastChecked: "2026-08-03",
+  lastChecked: "2026-08-04",
 };
 
-const version = "1.0 (Released 2026-07-31)";
+const version = "1.0";
 const platforms = "PC (Windows, macOS)";
-const informationType = "Official feature verification";
+const informationTypeMultiplayer = "Official feature verification";
+const informationTypeController = "Feature verification with compatibility caveat";
+const informationTypeWorthPlaying = "Editorial fit assessment";
+const informationTypeHard = "Editorial difficulty assessment";
 
 export const faqPages = [
   make({
@@ -18,34 +21,34 @@ export const faqPages = [
     h1: "Is Sephiria Worth Playing?",
     eyebrow: "QUICK ANSWER",
     description:
-      "A direct fit check for action roguelite fans considering Sephiria after its 1.0 launch.",
+      "An editorial fit check for action roguelite fans considering Sephiria after its 1.0 launch.",
     answer:
-      "Yes — Sephiria is worth playing if you enjoy action roguelites with deep build crafting.",
+      "Sephiria is worth considering if you enjoy action roguelites with deep build crafting. Check Steam for current regional pricing and review status before deciding.",
     category: "FAQ",
     version,
     platforms,
-    informationType,
+    informationType: informationTypeWorthPlaying,
     sources: [steamSource],
     sections: [
       {
         heading: "Who will enjoy Sephiria",
         paragraphs: [
-          "Sephiria is a top-down action roguelite from TEAM HORAY, the studio behind Dungreed. If you like refining a build through repeated runs — combining one of six weapon families with 200-plus weapon upgrades, roughly 300 artifacts, and 70 tablets — the core loop will feel familiar and rewarding.",
+          "Sephiria is a top-down action roguelite from TEAM HORAY, the studio behind Dungreed. If you like refining a build through repeated runs — combining one of six weapon families with the game's artifacts, tablets, and weapon upgrades — the core loop will feel familiar and rewarding.",
           "The game rewards patience and observation over pure reaction speed. Players who enjoy studying enemy patterns and gradually tightening their runs tend to click with Sephiria's design.",
         ],
       },
       {
         heading: "Current state and value",
         paragraphs: [
-          "Sephiria left Early Access and launched its 1.0 release on 2026-07-31, after an EA period that ran from 2025-04-03. The shipped version spans six chapters and 10-plus bosses, with full Simplified Chinese support among 12 languages.",
-          "Reception is strong: Steam shows roughly 90% positive in recent reviews and an overall 'Very Positive' rating. At launch the game is discounted 40% to ¥34.80 (regular price ¥58), making the current price-to-content ratio notably favorable.",
+          "TEAM HORAY announced July 31, 2026 as the full-release date for Sephiria, after an EA period that ran from 2025-04-03. The shipped version spans six chapters and more than 10 bosses, with Simplified Chinese interface and subtitles supported.",
+          "Check Steam for current regional pricing, discounts, and review status — these change over time and vary by region.",
         ],
       },
       {
         heading: "Who might want to wait",
         paragraphs: [
           "If you dislike repeating content after death or prefer linear, story-driven campaigns, the roguelite structure may feel repetitive. Sephiria does not hold your hand, and several systems are learned through experimentation rather than tutorial text.",
-          "Even so, the 1.0 build is content-complete and stable, so there is no longer an Early Access caveat. Watch official gameplay footage on the Steam store page to confirm the combat rhythm appeals to you before buying.",
+          "TEAM HORAY announced the 1.0 full release for July 31, 2026. Check the current Steam announcements for the latest content and patch status. Watch official gameplay footage on the Steam store page to confirm the combat rhythm appeals to you before buying.",
         ],
       },
     ],
@@ -58,34 +61,34 @@ export const faqPages = [
     h1: "Is Sephiria Multiplayer?",
     eyebrow: "QUICK ANSWER",
     description:
-      "How Sephiria's 4-player online co-op works, including progression, revival, and item exchange.",
+      "What the official store confirms about Sephiria's 4-player online co-op — item exchange and teammate revival — and what to verify in the current version.",
     answer:
-      "Yes, Sephiria supports online co-op for up to 4 players.",
+      "Yes, the official store confirms Sephiria supports online co-op for up to 4 players, with item exchange and teammate revival.",
     category: "FAQ",
     version,
     platforms,
-    informationType,
+    informationType: informationTypeMultiplayer,
     sources: [steamSource],
     sections: [
       {
-        heading: "How co-op works",
+        heading: "What the official store confirms",
         paragraphs: [
-          "Sephiria includes online co-op for up to four players, letting a group descend into the tower together as a shared experience rather than a spectator mode. Everyone participates in combat and progression during the same run.",
-          "Team up through the in-game co-op menu: the host starts a run and invites friends, who join the active session. Exact lobby flow and matchmaking options can be confirmed on the official Steam store page for the current build.",
+          "Sephiria includes online co-op for up to four players. The Steam store lists Online Co-op as a feature and confirms item exchange between players and the ability to revive downed teammates.",
+          "Players are normally restricted from joining multiplayer lobbies that are ahead of their own main-story progress.",
         ],
       },
       {
         heading: "Progression, revival, and item exchange",
         paragraphs: [
-          "Co-op progress syncs across the party so everyone advances through the same chapter together. Downed teammates can be revived, which keeps runs going even when one player takes a bad engagement.",
-          "Players can also exchange items with each other mid-run, making it easy to pass a key artifact or tablet to the party member whose build benefits most. This turns loot distribution into a cooperative decision rather than a competition.",
+          "The official store confirms teammates can be revived and items can be exchanged mid-run, making loot distribution a cooperative decision rather than a competition.",
+          "Exact lobby flow, matchmaking options, loot ownership, and story-sync rules are not published in official materials; confirm them on the store page or in the current build.",
         ],
       },
       {
         heading: "Co-op versus solo",
         paragraphs: [
-          "Sephiria is fully playable solo, and the game is balanced to be completed alone. Co-op adds a social layer that softens difficulty spikes by sharing aggro and combining complementary build strengths.",
-          "If you plan to play co-op, coordinate pace and roles before starting. Expect some encounters to feel noticeably easier with a full party, since four players can cover more threats simultaneously.",
+          "Sephiria is fully playable solo; the store lists Single-player and Online Co-op as separate features. Co-op adds a social layer by sharing aggro and combining complementary build strengths.",
+          "If you plan to play co-op, coordinate pace and roles before starting. Specific difficulty or scaling differences between solo and co-op are not published and should be checked in the current version.",
         ],
       },
     ],
@@ -98,19 +101,19 @@ export const faqPages = [
     h1: "Is Sephiria Hard?",
     eyebrow: "QUICK ANSWER",
     description:
-      "Where Sephiria's difficulty comes from and which weapons ease the learning curve.",
+      "An editorial assessment of where Sephiria's difficulty comes from and which weapons ease the learning curve.",
     answer:
-      "Sephiria is moderately challenging — harder than most casual roguelites, but fair once you learn enemy patterns.",
+      "Sephiria's difficulty is subjective. It emphasizes repeated runs, enemy-pattern learning, build decisions, and familiarity with weapon timing.",
     category: "FAQ",
     version,
     platforms,
-    informationType,
+    informationType: informationTypeHard,
     sources: [steamSource],
     sections: [
       {
         heading: "Where the difficulty comes from",
         paragraphs: [
-          "Sephiria's challenge comes from pattern recognition and decision load rather than raw reaction speed. Early encounters are approachable, but enemy telegraphs get faster and more layered as you push deeper into the six chapters and toward the 10-plus bosses.",
+          "Sephiria's challenge, in most players' experience, comes from pattern recognition and decision load rather than raw reaction speed. Early encounters are approachable, but enemy telegraphs get faster and more layered as you push deeper into the six chapters and toward the more than 10 bosses.",
           "The game also does not explain every system explicitly. You learn enemy patterns, upgrade synergies, and weapon mechanics through play, which can feel opaque during your first few runs.",
         ],
       },
@@ -118,14 +121,14 @@ export const faqPages = [
         heading: "The learning curve",
         paragraphs: [
           "If you have played other action roguelites, the curve will feel familiar. Newcomers to the genre should expect several runs to internalize the basic combat rhythm before runs start clicking.",
-          "Boss encounters are the main difficulty spikes. They demand observation, positioning discipline, and a willingness to learn from repeated attempts — but their attacks are telegraphed, so deaths feel earned rather than random.",
+          "Boss encounters are commonly cited as the main difficulty spikes. They demand observation, positioning discipline, and a willingness to learn from repeated attempts.",
         ],
       },
       {
         heading: "The most forgiving weapons",
         paragraphs: [
-          "The Sword and Shield is the most forgiving starter because it pairs offense with a block, giving you a defensive answer when you misread an attack. Stick with one weapon family for several runs so mastery compounds.",
-          "To reduce difficulty early, take survivability upgrades before chasing damage, and avoid complex synergies until the core loop feels comfortable. Co-op also naturally softens the experience by sharing aggro across the party.",
+          "The Sword and Shield is commonly recommended as the most forgiving starter because it pairs offense with a block, giving you a defensive answer when you misread an attack. Stick with one weapon family for several runs so mastery compounds.",
+          "To reduce difficulty early, take survivability upgrades before chasing damage, and avoid complex synergies until the core loop feels comfortable. Some players may find co-op more forgiving because attention can be divided across the party.",
         ],
       },
     ],
@@ -138,26 +141,26 @@ export const faqPages = [
     h1: "Sephiria Controller Support",
     eyebrow: "QUICK ANSWER",
     description:
-      "How to set up and tune controller input in Sephiria, including Xbox and PlayStation gamepads.",
+      "How to set up and tune controller input in Sephiria, and what to verify about controller compatibility in the current game version.",
     answer:
-      "Yes, Sephiria has full controller support on Steam, including Xbox and PlayStation controllers.",
+      "Sephiria includes gamepad input support, but the Steam store page currently does not label it as Full Controller Support. Controller compatibility, prompts, and remapping behavior should be checked with the specific device and current game version.",
     category: "FAQ",
     version,
     platforms,
-    informationType,
+    informationType: informationTypeController,
     sources: [steamSource],
     sections: [
       {
-        heading: "Verified controller support",
+        heading: "Controller support status",
         paragraphs: [
-          "Sephiria's Steam store page lists 'Full Controller support,' and the game works out of the box with both Xbox and PlayStation controllers. Because Sephiria runs on Windows and macOS, any standard gamepad recognized by Steam will function.",
-          "Controller support is part of the shipped 1.0 build (released 2026-07-31), not an Early Access caveat — the listing's controller badge reflects the current state of the game.",
+          "Sephiria includes gamepad input support, but the Steam store page currently does not label it as Full Controller Support. Controller compatibility, prompts, and remapping behavior should be checked with the specific device and current game version.",
+          "Do not assume every Xbox, PlayStation, or macOS gamepad has been verified. Confirm your specific device against the current build before relying on controller play.",
         ],
       },
       {
         heading: "How to configure your controller",
         paragraphs: [
-          "Plug in your controller before launching the game and let Steam detect it. If the default bindings feel off, open Steam Input (via Big Picture mode or the controller settings panel) to remap buttons, adjust dead zones, or swap to a community configuration.",
+          "Plug in your controller before launching the game and let Steam detect it. If the default bindings feel off, use Steam Input (via Big Picture mode or the controller settings panel) to remap buttons, adjust dead zones, or swap to a community configuration.",
           "Test your setup in an early encounter before committing to a serious run, especially if you use a less common gamepad. Steam Input makes it easy to iterate without touching in-game settings.",
         ],
       },
